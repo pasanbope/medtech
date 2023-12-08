@@ -79,10 +79,10 @@
                             <div class="collapse" id="sidebarPatient">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="add-patient.html">New Patient</a>
+                                        <a href="index.php?page=add-patient">New Patient</a>
                                     </li>
                                     <li>
-                                        <a href="patients-list.html">Patients List</a>
+                                        <a href="index.php?page=list-patient">Patients List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,10 +96,10 @@
                             <div class="collapse" id="sidebarAppoinment">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="add-appoinment.html">New Appoinment</a>
+                                        <a href="index.php?page=new-appoinment">New Appoinment</a>
                                     </li>
                                     <li>
-                                        <a href="doctor-list.html">Appoinment List</a>
+                                        <a href="index.php?page=list-appoinment">Appoinment List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -113,10 +113,10 @@
                             <div class="collapse" id="sidebarDrugs">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="add-new-drug.html">Add New Drug</a>
+                                        <a href="index.php?page=new-drug">Add New Drug</a>
                                     </li>
                                     <li>
-                                        <a href="drugs-list.html">Drugs List</a>
+                                        <a href="index.php?page=list-drug">Drugs List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -130,10 +130,10 @@
                             <div class="collapse" id="sidebarSupplier">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="add-supplier.html">New Supplier</a>
+                                        <a href="index.php?page=add-supplier">New Supplier</a>
                                     </li>
                                     <li>
-                                        <a href="supplier-list.html">Supplier List</a>
+                                        <a href="index.php?page=list-supplier">Supplier List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -147,7 +147,7 @@
                             <div class="collapse" id="sidebarGRN">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="add-grn.html">Add GRN</a>
+                                        <a href="index.php?page=add-grn">Add GRN</a>
                                     </li>
                                 </ul>
                             </div>
