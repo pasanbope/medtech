@@ -46,7 +46,7 @@
                         <li class="side-nav-title">Navigation</li>
 
                         <li class="side-nav-item">
-                            <a href="index.php" class="side-nav-link">
+                            <a href="home.php" class="side-nav-link">
                                 <i class="uil-home-alt"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -62,10 +62,10 @@
                             <div class="collapse" id="sidebarDoctor">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="index.php?page=add-doctor">Add Doctors</a>
+                                        <a href="home.php?page=add-doctor">Add Doctors</a>
                                     </li>
                                     <li>
-                                        <a href="index.php?page=list-doctor">Doctors List</a>
+                                        <a href="home.php?page=list-doctor">Doctors List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -79,10 +79,10 @@
                             <div class="collapse" id="sidebarPatient">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="index.php?page=add-patient">New Patient</a>
+                                        <a href="home.php?page=add-patient">New Patient</a>
                                     </li>
                                     <li>
-                                        <a href="index.php?page=list-patient">Patients List</a>
+                                        <a href="home.php?page=list-patient">Patients List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,10 +96,10 @@
                             <div class="collapse" id="sidebarAppoinment">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="index.php?page=new-appoinment">New Appoinment</a>
+                                        <a href="home.php?page=new-appoinment">New Appoinment</a>
                                     </li>
                                     <li>
-                                        <a href="index.php?page=list-appoinment">Appoinment List</a>
+                                        <a href="home.php?page=list-appoinment">Appoinment List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -113,10 +113,10 @@
                             <div class="collapse" id="sidebarDrugs">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="index.php?page=new-drug">Add New Drug</a>
+                                        <a href="home.php?page=new-drug">Add New Drug</a>
                                     </li>
                                     <li>
-                                        <a href="index.php?page=list-drug">Drugs List</a>
+                                        <a href="home.php?page=list-drug">Drugs List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -130,10 +130,10 @@
                             <div class="collapse" id="sidebarSupplier">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="index.php?page=add-supplier">New Supplier</a>
+                                        <a href="home.php?page=add-supplier">New Supplier</a>
                                     </li>
                                     <li>
-                                        <a href="index.php?page=list-supplier">Supplier List</a>
+                                        <a href="home.php?page=list-supplier">Supplier List</a>
                                     </li>
                                 </ul>
                             </div>
@@ -147,7 +147,7 @@
                             <div class="collapse" id="sidebarGRN">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="index.php?page=add-grn">Add GRN</a>
+                                        <a href="home.php?page=add-grn">Add GRN</a>
                                     </li>
                                 </ul>
                             </div>
