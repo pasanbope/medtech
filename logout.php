@@ -5,7 +5,7 @@
 <!-- Mirrored from coderthemes.com/hyper/saas/pages-logout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Sep 2023 06:55:30 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Logout | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+        <title>Logout | MedTech - Admin Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -46,7 +46,7 @@
                             <!-- Logo -->
                             <div class="card-header py-4 text-center bg-primary">
                                 <a href="index.html">
-                                    <span><img src="assets/images/logo.png" alt="logo" height="22"></span>
+                                    <span><img src="assets/images/logo.png" alt="logo" height="60"></span>
                                 </a>
                             </div>
 
@@ -76,7 +76,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-muted">Back to <a href="pages-login.html" class="text-muted ms-1"><b>Log In</b></a></p>
+                                <p class="text-muted">Back to <a href="index.php" class="text-muted ms-1"><b>Log In</b></a></p>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
