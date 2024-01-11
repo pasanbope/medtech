@@ -38,8 +38,12 @@ if ($nic == "") {
     <i class='ri-alert-line me-1 align-middle font-16'></i> This is a <strong>warning</strong> alert - Required! NIC.
     </div>";
 }
+else{
+    include('../dbconn.php');
+    $sql_adddoc="INSERT INTO `doctor`(`Doctor_Id`, `Title`, `FirstName`, `LastName`, `Telphone`, `Address`, `Designation`, `Gender`)
+    VALUES ()";
+}
 
 
-include('../dbconn.php');
 
 ?>

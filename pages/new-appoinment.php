@@ -36,9 +36,9 @@
                                                 </select>
                                             </div>
 
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-6">
                                                 <label class="form-label">Select Date</label>
-                                                <input type="text" id="basic-datepicker" class="form-control" placeholder="Basic datepicker">
+                                                <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker1">
                                             </div>                                                 
 
                                             <div class="mb-3 col-md-4">
