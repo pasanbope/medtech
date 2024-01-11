@@ -27,57 +27,92 @@
                     <div class="row g-2">
                         <div class="mb-3 col-md-4">
                             <label for="inputTitlee" class="form-label">Select title</label>
-                            <select id="inputTitle" class="form-select">
+                            <select id="Title" class="form-select">
                                 <option>Dr.</option>
                                 <option>Prof.</option>
                             </select>
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="firstname4" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstname4" placeholder="First Name">
+                            <input type="text" class="form-control" id="Firstname" placeholder="First Name">
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="lastname4" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastname4" placeholder="Last name">
+                            <input type="text" class="form-control" id="Lastname" placeholder="Last name">
                         </div>
                     </div>
                                 
                     <div class="row g-2">
                         <div class="mb-3 col-md-6">
                             <label class="form-label">Telephone</label>
-                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="000-0000000">
+                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="000-0000000" id="Tel">
                             <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="inputAddress" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                            <input type="text" class="form-control" id="Address" placeholder="Address">
                         </div>
                     </div>
                                 
                     <div class="row g-2">
                         <div class="mb-3 col-md-4">
                             <label for="inputDesignation" class="form-label">Designation</label>
-                            <input type="text" class="form-control" id="inputDesignation" placeholder="Designation">
+                            <input type="text" class="form-control" id="Designation" placeholder="Designation">
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="inputNIC" class="form-label">NIC</label>
-                            <input type="text" class="form-control" id="inputNIC" placeholder="NIC">
+                            <input type="text" class="form-control" id="NIC" placeholder="NIC">
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="inputGender" class="form-label">Gender</label>
-                            <select id="inputGender" class="form-select">
+                            <select id="Gender" class="form-select">
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
                         </div>
                     </div><br>
 
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="row g-2">
+                        <div class="mb-3 col-md-12">
+                            </div id="result"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                     <button type="submit" class="btn btn-primary">Reset</button>
                 </form>
                 <!-- end add new doctor form -->
             </div> <!-- end row-->
         </div>
 </div> <!-- container -->
+
+<script>
+    $(document).ready(function(){
+        $("#adddoc_btn").click(function(){
+            $.post(
+                "actions/add_doc.php"
+                {
+                    title:$('#Title').val(),
+                    firstname:$('#Firstname').val(),
+                    lastname:$('#Lastname').val(),
+                    tel:$('#Tel').val(),
+                    address:$('#Address').val(),
+                    designation:$('#Designation').val(),
+                    nic:$('#NIC').val(),
+                    gender:$('#Gender').val(),
+                },
+                function(data){
+                    $('#result').html(data);
+                    $('#Firstname').val("");
+                });
+
+                });
+        });
+
+</script>
 
 </div> <!-- content -->

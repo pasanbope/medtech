@@ -42,7 +42,7 @@
 
                         <!-- Logo -->
                         <div class="card-header py-4 text-center bg-primary">
-                            <a href="index.html">
+                            <a href="">
                                 <span><img src="assets/images/logo.png" alt="logo" height="60"></span>
                             </a>
                         </div>
