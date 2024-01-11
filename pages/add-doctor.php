@@ -73,7 +73,7 @@
                     </div><br>
 
                     <div class="row g-2">
-                        <div class="mb-3 col-md-12">
+                        <div class="mb-3 col-md-6">
                             </div id="result"></div>
                         </div>
                     </div>

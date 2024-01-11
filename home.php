@@ -3,8 +3,8 @@
 session_start();
 if (!isset($_SESSION["username"])) {
     ?>
-    <script>window.location.replace("logout.php");</script>
-    <?php
+<script>window.location.replace("logout.php");</script>
+<?php
 }
 ?>
 <!DOCTYPE html>
@@ -40,11 +40,6 @@ if (!isset($_SESSION["username"])) {
     <!-- Flatpickr Timepicker css -->
     <link href="assets/vendor/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Datatable css -->
-    <link href="assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-
     <!-- Theme Config Js -->
     <script src="assets/js/hyper-config.js"></script>
 
@@ -53,6 +48,7 @@ if (!isset($_SESSION["username"])) {
 
     <!-- Icons css -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -90,25 +86,6 @@ if (!isset($_SESSION["username"])) {
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>
 
-    <!-- Bootstrap Datepicker js -->
-    <script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
-    <!-- Chart js -->
-    <script src="assets/vendor/chart.js/chart.min.js"></script>
-
-    <!-- Projects Analytics Dashboard App js -->
-    <script src="assets/js/pages/demo.dashboard-projects.js"></script>
-
-    <!-- App js -->
-    <script src="assets/js/app.min.js"></script>
-
-    <!-- Datatable js -->
-    <script src="assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-    <script src="assets/vendor/jquery-datatables-checkboxes/js/dataTables.checkboxes.min.js"></script>
-
     <!-- Code Highlight js -->
     <script src="assets/vendor/highlightjs/highlight.pack.min.js"></script>
     <script src="assets/vendor/clipboard/clipboard.min.js"></script>
@@ -127,7 +104,7 @@ if (!isset($_SESSION["username"])) {
     <!-- Bootstrap Timepicker Plugin js -->
     <script src="assets/vendor/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 
-    <!-- Input Mask js -->
+    <!-- Input Mask Plugin js -->
     <script src="assets/vendor/jquery-mask-plugin/jquery.mask.min.js"></script>
 
     <!-- Bootstrap Touchspin Plugin js -->
@@ -148,6 +125,9 @@ if (!isset($_SESSION["username"])) {
 
     <!-- Timepicker Demo js -->
     <script src="assets/js/pages/demo.timepicker.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.min.js"></script>
 
 </body>
 
