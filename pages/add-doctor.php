@@ -1,3 +1,15 @@
+ <!-- App favicon -->
+ <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+<!-- Theme Config Js -->
+<script src="assets/js/hyper-config.js"></script>
+
+<!-- App css -->
+<link href="assets/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+<!-- Icons css -->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
 <div class="content">
 
 <!-- Start Content-->
@@ -70,18 +82,10 @@
                                 <option>Female</option>
                             </select>
                         </div>
-                    </div><br>
-
-                    <div class="row g-2">
-                        <div class="mb-3 col-md-6">
-                            </div id="result"></div>
+                        <div class="mb-3 col-md-12">
+                            <div id="result"></div>
                         </div>
-                    </div>
-
-
-
-
-
+                    </div><br>
                     <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                     <button type="submit" class="btn btn-primary">Reset</button>
                 </form>
@@ -90,11 +94,17 @@
         </div>
 </div> <!-- container -->
 
+ <!-- Vendor js -->
+ <script src="assets/js/vendor.min.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.min.js"></script>
+
 <script>
     $(document).ready(function(){
         $("#adddoc_btn").click(function(){
             $.post(
-                "actions/add_doc.php"
+                "actions/add_doc.php",
                 {
                     title:$('#Title').val(),
                     firstname:$('#Firstname').val(),
@@ -107,7 +117,6 @@
                 },
                 function(data){
                     $('#result').html(data);
-                    $('#Firstname').val("");
                 });
 
                 });
