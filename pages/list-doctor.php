@@ -51,7 +51,7 @@
                                             <td><?php echo $row_docs['Designation']; ?></td>
                                             <td><?php echo $row_docs['NIC']; ?></td>
                                             <td>
-                                                <a href="javascript:void(0);" class="action-icon" data-bs-target="#full-width-modal" data-bs-toggle="modal"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                <a href="#" data-id="<?php echo $row_docs['Doctor_Id']; ?>" class="action-icon btn_edit" data-bs-target="#full-width-modal" data-bs-toggle="modal"> <i class="mdi mdi-square-edit-outline"></i></a>
                                                 <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="lastname4" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastname4" placeholder="Last name">
+                            <input type="text" class="form-control" name="lastname" id="lastname4" placeholder="Last name">
                         </div>
                     </div>
 
@@ -140,3 +140,16 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--End Full width modal content -->
+<script>
+    $(document).ready(function(){
+        /*$(body).on("click",".btn_edit",function(){
+            var doc_id=$(this).data('id');
+            $(".modal-body #firstname4").val(doc_id);
+        });*/
+
+        $('#full-width-modal').on('show.bs.modal', function(e) {
+        var bookId = $(e.relatedTarget).data('id');
+        $(e.currentTarget).find('input[name="lastname"]').val(bookId);
+        });
+    });
+</script>

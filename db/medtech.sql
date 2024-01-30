@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 26, 2023 at 04:10 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: Jan 30, 2024 at 05:26 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `appointment` (
   `Doctor_Id` int(11) DEFAULT NULL,
   `Patient_Id` int(11) DEFAULT NULL,
   `Time` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE `batch_stock` (
   `Quantity` int(11) DEFAULT NULL,
   `MadeDate` date DEFAULT NULL,
   `ExpireDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,13 +57,22 @@ CREATE TABLE `batch_stock` (
 
 CREATE TABLE `doctor` (
   `Doctor_Id` int(11) NOT NULL,
+  `Title` varchar(10) NOT NULL,
   `FirstName` varchar(255) DEFAULT NULL,
   `LastName` varchar(255) DEFAULT NULL,
   `Telphone` varchar(20) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
   `Designation` varchar(255) DEFAULT NULL,
+  `NIC` varchar(15) NOT NULL,
   `Gender` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`Doctor_Id`, `Title`, `FirstName`, `LastName`, `Telphone`, `Address`, `Designation`, `NIC`, `Gender`) VALUES
+(1, 'Prof.', 'Narada', 'Opanayake', '078-5678123', 'Delmalla rd,Egaloya', 'dermelogist', '121233232332', 'Male');
 
 -- --------------------------------------------------------
 
@@ -77,7 +86,7 @@ CREATE TABLE `doctor_schedule` (
   `Doctor_Id` int(11) DEFAULT NULL,
   `Morning_Time` time DEFAULT NULL,
   `Evening_Time` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -93,7 +102,7 @@ CREATE TABLE `drug` (
   `Measurement_Id` int(11) DEFAULT NULL,
   `SellPrice` decimal(10,2) DEFAULT NULL,
   `Category_Id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -104,7 +113,7 @@ CREATE TABLE `drug` (
 CREATE TABLE `drug_category` (
   `Category_Id` int(11) NOT NULL,
   `Category` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -122,7 +131,7 @@ CREATE TABLE `grn_details` (
   `Rate` decimal(10,2) DEFAULT NULL,
   `Quantity` int(11) DEFAULT NULL,
   `Total` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -135,7 +144,7 @@ CREATE TABLE `grn_master` (
   `Supplier_Id` int(11) DEFAULT NULL,
   `Date` date DEFAULT NULL,
   `TotalAmount` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -146,7 +155,7 @@ CREATE TABLE `grn_master` (
 CREATE TABLE `measurement_type` (
   `Measure_Id` int(11) NOT NULL,
   `Name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -163,7 +172,7 @@ CREATE TABLE `patient` (
   `Address` varchar(255) DEFAULT NULL,
   `Birthday` date DEFAULT NULL,
   `Gender` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -176,7 +185,7 @@ CREATE TABLE `patient_bill` (
   `Doctor_Charge` decimal(10,2) DEFAULT NULL,
   `Drug_Charge` decimal(10,2) DEFAULT NULL,
   `Total_Amount` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -191,7 +200,7 @@ CREATE TABLE `prescription_details` (
   `Quantity` int(11) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `Dosage` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -208,7 +217,7 @@ CREATE TABLE `prescription_master` (
   `Time` time DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `Illness` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -221,7 +230,7 @@ CREATE TABLE `stock` (
   `Quantity` int(11) DEFAULT NULL,
   `Last_GRN_Date` date DEFAULT NULL,
   `Last_Bill_Date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -236,7 +245,7 @@ CREATE TABLE `supplier` (
   `ContactNumber` varchar(20) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -251,7 +260,15 @@ CREATE TABLE `user` (
   `Email` varchar(255) DEFAULT NULL,
   `Role_Id` int(11) DEFAULT NULL,
   `Enable` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`User_Id`, `UserName`, `Password`, `Email`, `Role_Id`, `Enable`) VALUES
+(1, 'Pasan B', '123', 'pasan@abc.com', 1, 1),
+(2, 'Narada Opanayake', '123', 'narada@abc.com', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +279,14 @@ CREATE TABLE `user` (
 CREATE TABLE `user_roles` (
   `Role_Id` int(11) NOT NULL,
   `RoleName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+INSERT INTO `user_roles` (`Role_Id`, `RoleName`) VALUES
+(1, 'super admin');
 
 --
 -- Indexes for dumped tables
@@ -382,6 +406,16 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_roles`
   ADD PRIMARY KEY (`Role_Id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `doctor`
+--
+ALTER TABLE `doctor`
+  MODIFY `Doctor_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
