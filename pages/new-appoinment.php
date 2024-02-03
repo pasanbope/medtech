@@ -31,7 +31,7 @@
                                 <label for="inputGender" class="form-label">Select Doctor</label>
                                 <select class="form-control select2" data-toggle="select2">
                                     <option>Select</option>
-                                    <optgroup label="">
+                                    <optgroup>
                                         <option value="AK">Dr.Suranjaya</option>
                                         <option value="HI">Dr.Narada</option>
                                     </optgroup>
