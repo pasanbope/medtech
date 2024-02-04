@@ -27,7 +27,7 @@
                     <div class="row g-2">
                         <div class="mb-3 col-md-4">
                             <label for="inputGender" class="form-label">Catogary</label>
-                            <select id="inputGender" class="form-select">
+                            <select id="inputCat" class="form-select">
                                 <option>Tablet</option>
                                 <option>Cream</option>
                                 <option>Syrup</option>
@@ -37,12 +37,12 @@
 
                         <div class="mb-3 col-md-4">
                             <label for="inptMedName" class="form-label">Medicinal name</label>
-                            <input type="text" class="form-control" id="inptMedName" placeholder="Medicinal name">
+                            <input type="text" class="form-control" id="Medname" placeholder="Medicinal name">
                         </div>                                                 
 
                         <div class="mb-3 col-md-4">
                             <label for="inptBrandName" class="form-label">Brand name</label>
-                            <input type="text" class="form-control" id="inptBrandName" placeholder="Brand name">
+                            <input type="text" class="form-control" id="Brandname" placeholder="Brand name">
                         </div>
 
                     </div>
@@ -50,12 +50,12 @@
                     <div class="row g-2">
                         <div class="mb-3 col-md-4">
                             <label for="example-number" class="form-label">Re Order Level</label>
-                            <input class="form-control" id="example-number" type="number" name="number">
+                            <input class="form-control" id="ReOrLevel" type="number" name="number">
                         </div>
 
                         <div class="mb-3 col-md-4">
                             <label for="inputGender" class="form-label">Measurement Type</label>
-                            <select id="inputGender" class="form-select">
+                            <select id="inputMeas" class="form-select">
                                 <option>ML</option>
                                 <option>tablets</option>
                                 <option>G</option>
@@ -65,16 +65,51 @@
 
                         <div class="mb-3 col-md-4">
                             <label for="example-number" class="form-label">Selling Price(Rs)</label>
-                            <input class="form-control" id="example-number" type="number" name="number">
+                            <input class="form-control" id="SellPrice" type="number" name="number">
+                        </div>
+                        <div class="mb-3 col-md-12">
+                            <div id="result"></div>
                         </div>
                     </div>
                                 
                     <br>
 
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" id="adddrug_btn" class="btn btn-primary">Save</button>
                     <button type="submit" class="btn btn-primary">Reset</button>
                 </form>
                 <!-- end add new doctor form -->
             </div> <!-- end row-->
         </div>
+    </div>
+</div>
+
+        <!-- Vendor js -->
+        <script src="assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/app.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#adddrug_btn").click(function () {
+                    $.post(
+                        "actions/add_drug.php",
+                        {
+                            Catogary: $('#inputCat').val(),
+                            MedicinalName: $('#Medname').val(),
+                            BrandName: $('#Brandname').val(),
+                            ReOrderLevel: $('#ReOrLevel').val(),
+                            MeasurementType: $('#inputMeas').val(),
+                            SellingPrice: $('#SellPrice').val(),
+                        },
+                        function (data) {
+                            $('#result').html(data);
+                        });
+
+                });
+            });
+
+        </script>
+
+
 </div> <!-- content -->

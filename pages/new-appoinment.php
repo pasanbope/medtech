@@ -38,9 +38,9 @@
                                 </select> 
                             </div>
 
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-4">
                                 <div class="mb-3 position-relative" id="datepicker1">
-                                    <label class="form-label">Date Picker</label>
+                                    <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker"
                                         data-date-today-highlight="true" data-date-container="#datepicker1">
                                 </div>
