@@ -1,3 +1,8 @@
+		 <script type="text/javascript">
+       $(function() {
+               $("#Bday").datepicker({ dateFormat: "yyyy/mm/dd" }).val()
+       });
+   </script>
 <!-- App favicon -->
 <link rel="shortcut icon" href="assets/images/favicon.ico">
 
