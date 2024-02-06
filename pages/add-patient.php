@@ -1,13 +1,6 @@
-<<<<<<< Updated upstream
-   </script>
-<!-- App favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.ico">
-=======
+
 <!-- Vendor js -->
 <script src="assets/js/vendor.min.js"></script>
->>>>>>> Stashed changes
-
-
 <div class="content">
 
     <!-- Start Content-->
@@ -97,8 +90,8 @@
 
 
         <script>
-            $(document).ready(function () {
-                $("#addpat_btn").click(function () {
+            $(document).ready(function() {
+                $("#addpat_btn").click(function() {
                     $.post(
                         "actions/add_pat.php",
                         {
