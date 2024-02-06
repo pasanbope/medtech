@@ -38,7 +38,7 @@ if ($birthday == "") {
 </div>";
 } else {
     include('../dbconn.php');
-    $sql_addpat = "INSERT INTO patient(Title, FirstName, LastName, Telephone, Address, Birthday, Gender)
+    $sql_addpat = "INSERT INTO patient(Title, FirstName, LastName, Telephone, Address1, Birthday, Gender)
     VALUES ('$title','$firstname','$lastname','$tel','$address','$birthday','$gender')";
     if (mysqli_query($conn, $sql_addpat)) {
         echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>

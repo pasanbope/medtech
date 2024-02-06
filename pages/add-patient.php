@@ -1,15 +1,12 @@
+<<<<<<< Updated upstream
    </script>
 <!-- App favicon -->
 <link rel="shortcut icon" href="assets/images/favicon.ico">
+=======
+<!-- Vendor js -->
+<script src="assets/js/vendor.min.js"></script>
+>>>>>>> Stashed changes
 
-<!-- Theme Config Js -->
-<script src="assets/js/hyper-config.js"></script>
-
-<!-- App css -->
-<link href="assets/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-style" />
-
-<!-- Icons css -->
-<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
 <div class="content">
 
@@ -97,11 +94,7 @@
             </div>
         </div> <!-- container -->
 
-        <!-- Vendor js -->
-        <script src="assets/js/vendor.min.js"></script>
 
-        <!-- App js -->
-        <script src="assets/js/app.min.js"></script>
 
         <script>
             $(document).ready(function () {
@@ -115,7 +108,6 @@
                             tel: $('#Tel').val(),
                             address: $('#Address').val(),
                             birthday: $('#Bday').val(),
-
                             gender: $('#Gender').val(),
                         },
                         function (data) {
