@@ -153,17 +153,22 @@
                             </div>
                         </li>
 
-                        <!-- Help Box -->
-                        <div class="help-box text-white text-center">
-                            <a href="javascript: void(0);" class="float-end close-btn text-white">
-                                <i class="mdi mdi-close"></i>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarCategory" aria-expanded="false" aria-controls="sidebarCategory" class="side-nav-link">
+                                <i class="uil-book-medical"></i>
+                                <span> Category </span>
                             </a>
-                            <img src="assets/images/svg/help-icon.svg" height="90" alt="Helper Icon Image" />
-                            <h5 class="mt-3">Unlimited Access</h5>
-                            <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                            <a href="javascript: void(0);" class="btn btn-secondary btn-sm">Upgrade</a>
-                        </div>
-                        <!-- end Help Box -->
+                            <div class="collapse" id="sidebarCategory">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="home.php?page=add-category">New Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="home.php?page=add-mesure">New Mesurement</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
 
 
                     </ul>

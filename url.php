@@ -33,6 +33,12 @@ if (isset($_GET['page'])){
     elseif($_GET['page']=='add-grn'){
         $page='pages/add-grn.php';
     }
+    elseif($_GET['page']=='add-category'){
+        $page='pages/add-category.php';
+    }
+    elseif($_GET['page']=='add-mesure'){
+        $page='pages/add-mesure.php';
+    }
     elseif($_GET['page']=='login'){
         $page='pages/login.php';
     }

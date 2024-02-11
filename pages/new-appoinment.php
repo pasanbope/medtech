@@ -1,7 +1,7 @@
-
+<!-- Vendor js -->
+<script src="assets/js/vendor.min.js"></script>
 
 <div class="content">
-
     <!-- Start Content-->
     <div class="container-fluid">
 
@@ -28,27 +28,33 @@
                     <form>
                         <div class="row g-2">
                             <div class="md-3 col-md-4">
-                                <label for="inputGender" class="form-label">Select Doctor</label>
-                                <select class="form-control select2" data-toggle="select2">
+                                <label for="inputDoc" class="form-label">Select Doctor</label>
+                                <select class="form-control select2" data-toggle="select2" id="doc">
                                     <option>Select</option>
                                     <optgroup>
-                                        <option value="AK">Dr.Suranjaya</option>
-                                        <option value="HI">Dr.Narada</option>
+                                        <?php
+                                        include('dbconn.php');
+                                        $sql_doc = "select * from doctor";
+                                        $res_doc = mysqli_query($conn, $sql_doc);
+                                        while ($row_doc = mysqli_fetch_array($res_doc)) {
+                                            echo '<option value="' . $row_doc['Doctor_Id'] . '">' . $row_doc['Title'] . ' ' . $row_doc['FirstName'] . ' ' . $row_doc['LastName'] . '</option>';
+                                        }
+                                        ?>
                                     </optgroup>
-                                </select> 
+                                </select>
                             </div>
 
                             <div class="mb-3 col-md-4">
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker"
-                                        data-date-today-highlight="true" data-date-container="#datepicker1">
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee">
                                 </div>
                             </div>
 
                             <div class="mb-3 col-md-4">
                                 <label for="inputGender" class="form-label">Select Time</label>
-                                <select id="inputGender" class="form-select">
+                                <select id="inputTime" class="form-select">
                                     <option>Morning</option>
                                     <option>Evening</option>
                                 </select>
@@ -59,18 +65,33 @@
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Telephone</label>
                                 <input type="text" class="form-control" data-toggle="input-mask"
-                                    data-mask-format="000-0000000">
+                                    data-mask-format="000-0000000" id="tel">
                                 <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="inputName" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                <label for="inputPat" class="form-label">Select Patient</label>
+                                <select class="form-control select2" data-toggle="select2" id="patient">
+                                    <option>Select</option>
+                                    <optgroup>
+                                        <?php
+                                        include('dbconn.php');
+                                        $sql_pat = "select * from patient";
+                                        $res_pat = mysqli_query($conn, $sql_pat);
+                                        while ($row_pat = mysqli_fetch_array($res_pat)) {
+                                            echo '<option value="' . $row_pat['Patient_Id'] . '">' . $row_pat['Title'] . ' ' . $row_pat['FirstName'] . ' ' . $row_pat['LastName'] . '</option>';
+                                        }
+                                        ?>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
                             </div>
                         </div>
 
                         <br>
 
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" id="addapp_btn" class="btn btn-primary">Save</button>
                         <button type="submit" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
@@ -78,5 +99,24 @@
             </div>
         </div>
     </div>
-</div> <!-- content -->
+    <script>
+        $(document).ready(function(){
+            $("#addapp_btn").click(function(){
+                $.post(
+                    "actions/add_app.php",
+                    {
+                        InputDoc:$('#doc').val(),
+                        Datee:$('#datee').val(),
+                        Intime:$('#inputTime').val(),
+                        Tel:$('#tel').val(),
+                        Patient:$('#patient').val(),
+                    },
+                    function (data) {
+                        $('#result').html(data);
+                    });
 
+            });
+        });
+
+    </script>
+</div> <!-- content -->
