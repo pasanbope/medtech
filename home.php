@@ -141,7 +141,13 @@ if (!isset($_SESSION["username"])) {
     <!-- Timepicker Demo js -->
     <script src="assets/js/pages/demo.timepicker.js"></script>
 
-   
+    <!-- Chart js -->
+    <script src="assets/vendor/chart.js/chart.min.js"></script>
+
+    <!-- Projects Analytics Dashboard App js -->
+    <script src="assets/js/pages/demo.dashboard-projects.js"></script>
+
+
 
 
     <!-- Datatables js -->
@@ -162,8 +168,8 @@ if (!isset($_SESSION["username"])) {
     <!-- Datatable Demo Aapp js -->
     <script src="assets/js/pages/demo.datatable-init.js"></script>
 
-     <!-- App js -->
-     <script src="assets/js/app.min.js"></script>
+    <!-- App js -->
+    <script src="assets/js/app.min.js"></script>
 
 </body>
 

@@ -30,7 +30,7 @@ if ($Email == "") {
 
 }else {
     include('../dbconn.php');
-    $sql_addsup = "INSERT INTO supplier(CompanyName, Contact_Person_Name, ContactNumber, Email,)
+    $sql_addsup = "INSERT INTO supplier(CompanyName, Contact_Person_Name, ContactNumber, Email)
     VALUES ('$CompanyName','$ContactPersonName','$Contactnumber','$Email')";
     if (mysqli_query($conn, $sql_addsup)) {
         echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
