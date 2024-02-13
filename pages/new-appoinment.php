@@ -1,5 +1,7 @@
 <!-- Vendor js -->
-<script src="assets/js/vendor.min.js"></script>
+<!-- <script src="assets/js/vendor.min.js"></script> -->
+<!-- Jquery min -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="content">
     <!-- Start Content-->
@@ -27,7 +29,7 @@
                 <div class="row">
                     <form>
                         <div class="row g-2">
-                            <div class="md-3 col-md-4">
+                            <div class="md-3 col-md-6">
                                 <label for="inputDoc" class="form-label">Select Doctor</label>
                                 <select class="form-control select2" data-toggle="select2" id="doc">
                                     <option>Select</option>
@@ -44,29 +46,22 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3 col-md-4">
+                            <div class="mb-3 col-md-6">
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker"
                                         data-date-today-highlight="true" data-date-container="#datepicker1" id="datee">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="mb-3 col-md-4">
+                        <div class="row g-2">
+                        <div class="mb-3 col-md-6">
                                 <label for="inputGender" class="form-label">Select Time</label>
                                 <select id="inputTime" class="form-select">
                                     <option>Morning</option>
                                     <option>Evening</option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="row g-2">
-                            <div class="mb-3 col-md-6">
-                                <label class="form-label">Telephone</label>
-                                <input type="text" class="form-control" data-toggle="input-mask"
-                                    data-mask-format="000-0000000" id="tel">
-                                <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputPat" class="form-label">Select Patient</label>
@@ -106,9 +101,8 @@
                     "actions/add_app.php",
                     {
                         InputDoc:$('#doc').val(),
-                        Datee:$('#datee').val(),
+                        Date:$('#datee').val(),
                         Intime:$('#inputTime').val(),
-                        Tel:$('#tel').val(),
                         Patient:$('#patient').val(),
                     },
                     function (data) {

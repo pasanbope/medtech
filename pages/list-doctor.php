@@ -140,16 +140,3 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--End Full width modal content -->
-<script>
-    $(document).ready(function(){
-        /*$(body).on("click",".btn_edit",function(){
-            var doc_id=$(this).data('id');
-            $(".modal-body #firstname4").val(doc_id);
-        });*/
-
-        $('#full-width-modal').on('show.bs.modal', function(e) {
-        var bookId = $(e.relatedTarget).data('id');
-        $(e.currentTarget).find('input[name="lastname"]').val(bookId);
-        });
-    });
-</script>
