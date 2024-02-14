@@ -170,6 +170,20 @@
                             </div>
                         </li>
 
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarDocShed" aria-expanded="false" aria-controls="sidebarDocShed" class="side-nav-link">
+                                <i class="uil-book-medical"></i>
+                                <span> Doctor Shedule </span>
+                            </a>
+                            <div class="collapse" id="sidebarDocShed">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="home.php?page=add-doctor-shedule">Edit Doctor Schedule</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
 
                     </ul>
                     <!--- End Sidemenu -->

@@ -39,6 +39,9 @@ if (isset($_GET['page'])){
     elseif($_GET['page']=='add-mesure'){
         $page='pages/add-mesure.php';
     }
+    elseif($_GET['page']=='add-doctor-shedule'){
+        $page='pages/add-doc_shedule.php';
+    }
     elseif($_GET['page']=='login'){
         $page='pages/login.php';
     }
