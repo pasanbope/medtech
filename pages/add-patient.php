@@ -1,6 +1,6 @@
+<!-- Jquery min -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<!-- Vendor js -->
-<script src="assets/js/vendor.min.js"></script>
 <div class="content">
 
     <!-- Start Content-->

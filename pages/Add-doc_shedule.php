@@ -1,5 +1,5 @@
-<!-- Vendor js -->
-<script src="assets/js/vendor.min.js"></script>
+<!-- Jquery min -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
 <div class="content">
@@ -46,70 +46,49 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="row g-2">
-                            <div class="mb-3 col-md-6">
-                                <label class="form-label">Telephone</label>
-                                <input type="text" class="form-control" data-toggle="input-mask"
-                                    data-mask-format="000-0000000" id="Tel">
-                                <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
-                            </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="inputAddress" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="Address" placeholder="Address">
-                            </div>
-                        </div>
-
-                        <div class="row g-2">
-                            <div class="mb-3 col-md-4">
-                                <label for="inputDesignation" class="form-label">Designation</label>
-                                <input type="text" class="form-control" id="Designation" placeholder="Designation">
-                            </div>
-                            <div class="mb-3 col-md-4">
-                                <label for="inputNIC" class="form-label">NIC</label>
-                                <input type="text" class="form-control" id="NIC" placeholder="NIC">
-                            </div>
-                            <div class="mb-3 col-md-4">
-                                <label for="inputGender" class="form-label">Gender</label>
-                                <select id="Gender" class="form-select">
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                            </div>
-                            <div class="mb-3 col-md-12">
-                                <div id="result"></div>
-                            </div>
-                        </div><br>
-                        <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
                 </div> <!-- end row-->
             </div>
         </div> <!-- container -->
 
-        <script>
-            $(document).ready(function () {
-                $("#adddoc_btn").click(function () {
-                    $.post(
-                        "actions/add_doc.php",
-                        {
-                            title: $('#Title').val(),
-                            firstname: $('#Firstname').val(),
-                            lastname: $('#Lastname').val(),
-                            tel: $('#Tel').val(),
-                            address: $('#Address').val(),
-                            designation: $('#Designation').val(),
-                            nic: $('#NIC').val(),
-                            gender: $('#Gender').val(),
-                        },
-                        function (data) {
-                            $('#result').html(data);
-                        });
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <form>
+                        <div class="row g-2">
+                            <h4 class="header-title">Sunday</h4>
+                            <div class="md-3 col-md-2">
+                                <div class="mb-3 position-relative" id="datepicker1">
+                                    <label class="form-label">Date</label>
+                                    <input type="text" class="form-control" data-provide="datepicker"
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee"
+                                        placeholder="Select Date">
+                                </div>
+                            </div>
+                            <div class="md-3 col-md-2">
+                                <label class="form-label">Time</label>
+                                <div class="input-group">
+                                    <input id="basic-timepicker" type="text" class="form-control"
+                                        placeholder="Select Time">
+                                    <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-2">
+                                <label for="example-number" class="form-label">Patients Count</label>
+                                <input class="form-control" id="example-number" type="number" name="number" placeholder="Add Patients Count">
+                            </div>
+                        </div>
 
-                });
-            });
-
-        </script>
-
+                        <div class="row g-2">
+                            <div class="col-md-12">
+                                <div id="result"></div>
+                            </div>
+                        </div><br>
+                        <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                    </form>
+                    <!-- end add new doctor form -->
+                </div> <!-- end row-->
+            </div>
+        </div> <!-- container -->
     </div> <!-- content -->
