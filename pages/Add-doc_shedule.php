@@ -1,33 +1,39 @@
+<?php 
+session_start();
+if (isset($_SESSION["role"]) && ($_SESSION["username"])){
+    $role = $_SESSION["role"];
+}
+?>
 <!-- Jquery min -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <?php
 // Get tomorrow's date
-$day1 = date("Y-m-d", strtotime("+1 day"));
+$day1 = date("Y/m/d", strtotime("+1 day"));
 $dd1 = strtotime("+1 day");
 $day_name1 = date("l", $dd1);
-$day2 = date("Y-m-d", strtotime("+2 day"));
+$day2 = date("Y/m/d", strtotime("+2 day"));
 $dd2 = strtotime("+2 day");
 $day_name2 = date("l", $dd2);
-$day3 = date("Y-m-d", strtotime("+3 day"));
+$day3 = date("Y/m/d", strtotime("+3 day"));
 $dd3 = strtotime("+3 day");
 $day_name3 = date("l", $dd3);
-$day4 = date("Y-m-d", strtotime("+4 day"));
+$day4 = date("Y/m/d", strtotime("+4 day"));
 $dd4 = strtotime("+4 day");
 $day_name4 = date("l", $dd4);
-$day5 = date("Y-m-d", strtotime("+5 day"));
+$day5 = date("Y/m/d", strtotime("+5 day"));
 $dd5 = strtotime("+5 day");
 $day_name5 = date("l", $dd5);
-$day6 = date("Y-m-d", strtotime("+6 day"));
+$day6 = date("Y/m/d", strtotime("+6 day"));
 $dd6 = strtotime("+6 day");
 $day_name6 = date("l", $dd6);
-$day7 = date("Y-m-d", strtotime("+7 day"));
+$day7 = date("Y/m/d", strtotime("+7 day"));
 $dd7 = strtotime("+7 day");
 $day_name7 = date("l", $dd7);
-$day8 = date("Y-m-d", strtotime("+8 day"));
+$day8 = date("Y/m/d", strtotime("+8 day"));
 $dd8 = strtotime("+8 day");
 $day_name8 = date("l", $dd8);
-$day9 = date("Y-m-d", strtotime("+9 day"));
+$day9 = date("Y/m/d", strtotime("+9 day"));
 $dd9 = strtotime("+9 day");
 $day_name9 = date("l", $dd9);
 $day10 = date("Y-m-d", strtotime("+10 day"));
@@ -62,11 +68,11 @@ $day_name10 = date("l", $dd10);
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <form>
+                    <form id="frm_doc">
                         <div class="row g-2">
                             <div class="md-3 col-md-4">
                                 <label for="inputDoc" class="form-label">Select Doctor</label>
-                                <select class="form-control select2" data-toggle="select2" id="doc">
+                                <select class="form-control select2" data-toggle="select2" id="doc" name="doc">
                                     <option>Select</option>
                                     <optgroup>
                                         <?php
@@ -114,7 +120,7 @@ $day_name10 = date("l", $dd10);
                                     placeholder="Add Patients Count">
                             </div>
                             <div class="mb-3 col-md-2">
-                                <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
+                                <label for="addshed_btn1" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                             </div>
                         </div>
@@ -423,7 +429,7 @@ $day_name10 = date("l", $dd10);
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <form>
+                    <form id="form10">
                         <div class="row g-2">
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
@@ -433,22 +439,22 @@ $day_name10 = date("l", $dd10);
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker" value="<?php echo $day10; ?>"
-                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee"
-                                        placeholder="Select Date">
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="date10"
+                                        placeholder="Select Date" name="date">
                                 </div>
                             </div>
                             <div class="md-3 col-md-2">
                                 <label for="example-time" class="form-label">Time</label>
-                                <input class="form-control" id="example-time" type="time" name="time">
+                                <input class="form-control" type="time" name="time" id="time10">
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="example-number" class="form-label">Patients Count</label>
-                                <input class="form-control" id="example-number" type="number" name="number"
+                                <input class="form-control" id="pat10" type="number" name="number"
                                     placeholder="Add Patients Count">
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                                <button type="button" id="addshed_btn10" class="btn btn-primary">Register</button>
                             </div>
                         </div>
                     </form>
@@ -456,4 +462,24 @@ $day_name10 = date("l", $dd10);
                 </div> <!-- end row-->
             </div>
         </div> <!-- container -->
+
+        <script>
+        $(document).ready(function(){
+            $("#addshed_btn10").click(function(){
+                $.post(
+                    "actions/add_docshed.php",
+                    {
+                        Doctor:$('#doc').val(),
+                        Date:$('#date10').val(),
+                        Time1:$('#time10').val(),
+                        Patient:$('#pat10').val(),
+                    },
+                    function (data) {
+                        $('#result').html(data);
+                    });
+
+            });
+        });
+
+    </script>
     </div> <!-- content -->
