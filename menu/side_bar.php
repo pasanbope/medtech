@@ -184,6 +184,20 @@
                             </div>
                         </li>
 
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarPres" aria-expanded="false" aria-controls="sidebarPres" class="side-nav-link">
+                                <i class="uil-clipboard-alt"></i>
+                                <span> Prescription </span>
+                            </a>
+                            <div class="collapse" id="sidebarPres">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="home.php?page=new-prescription">New Prescription</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
 
                     </ul>
                     <!--- End Sidemenu -->

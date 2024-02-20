@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item active">Supplier List</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Appoinment List</h4>
+                    <h4 class="page-title">Supplier List</h4>
                 </div>
             </div>
         </div>
