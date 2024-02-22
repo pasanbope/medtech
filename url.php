@@ -45,6 +45,9 @@ if (isset($_GET['page'])){
     elseif($_GET['page']=='new-prescription'){
         $page='pages/new-prescription.php';
     }
+    elseif($_GET['page']=='add-user'){
+        $page='pages/add-user.php';
+    }
     elseif($_GET['page']=='login'){
         $page='pages/login.php';
     }

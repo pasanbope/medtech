@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 if (isset($_SESSION["role"]) && ($_SESSION["username"])){
     $role = $_SESSION["role"];
 }
@@ -64,35 +64,7 @@ $day_name10 = date("l", $dd10);
             </div>
         </div>
         <!-- end page title -->
-        <!-- Add new doctor form -->
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <form id="frm_doc">
-                        <div class="row g-2">
-                            <div class="md-3 col-md-4">
-                                <label for="inputDoc" class="form-label">Select Doctor</label>
-                                <select class="form-control select2" data-toggle="select2" id="doc" name="doc">
-                                    <option>Select</option>
-                                    <optgroup>
-                                        <?php
-                                        include('dbconn.php');
-                                        $sql_doc = "select * from doctor";
-                                        $res_doc = mysqli_query($conn, $sql_doc);
-                                        while ($row_doc = mysqli_fetch_array($res_doc)) {
-                                            echo '<option value="' . $row_doc['Doctor_Id'] . '">' . $row_doc['Title'] . ' ' . $row_doc['FirstName'] . ' ' . $row_doc['LastName'] . '</option>';
-                                        }
-                                        ?>
-                                    </optgroup>
-                                </select>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- end add new doctor form -->
-                </div> <!-- end row-->
-            </div>
-        </div> <!-- container -->
-
+        
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -463,7 +435,7 @@ $day_name10 = date("l", $dd10);
             </div>
         </div> <!-- container -->
 
-        <script>
+        <!-- <script>
         $(document).ready(function(){
             $("#addshed_btn10").click(function(){
                 $.post(
@@ -481,5 +453,22 @@ $day_name10 = date("l", $dd10);
             });
         });
 
+    </script> -->
+
+    <script>
+        $("body").on("input", "#date10", function (event) {
+    $.ajax({
+        type: 'POST',
+        dataType: "json",
+        url: "actions/add_docshed.php",
+        data: { shed_date: $('#date').val(), shed_time: $('#time').val(), pat_count: $('#number').val() },
+        success: function (data) {
+            $('#time').val(data['Sched_Time']);
+            $('#number').val(data['Patient_Count']);
+
+        }
+    });
+});
     </script>
+
     </div> <!-- content -->

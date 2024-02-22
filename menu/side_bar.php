@@ -198,6 +198,20 @@
                             </div>
                         </li>
 
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebaruser" aria-expanded="false" aria-controls="sidebaruser" class="side-nav-link">
+                                <i class="uil-user"></i>
+                                <span> User </span>
+                            </a>
+                            <div class="collapse" id="sidebaruser">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="home.php?page=add-user">Add User</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
 
                     </ul>
                     <!--- End Sidemenu -->
