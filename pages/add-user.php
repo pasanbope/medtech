@@ -14,11 +14,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
-                            <li class="breadcrumb-item active">Add User</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Doctors</a></li>
+                            <li class="breadcrumb-item active">Add Doctor</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Add New User</h4>
+                    <h4 class="page-title">Add New Doctor</h4>
                 </div>
             </div>
         </div>
@@ -42,30 +42,24 @@
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text" id="basic-addon1">@</span>
                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                        aria-describedby="basic-addon1" id="Username">
+                                        aria-describedby="basic-addon1">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row g-2">
                             <div class="mb-3 col-md-4">
-                                <label for="inputEmail3" class="col-3 col-form-label">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
                             </div>
-
                             <div class="mb-3 col-md-4">
-                                <label for="inputPass" class="form-label">Password</label>
-                                <input type="text" class="form-control" id="pwd" placeholder="Password">
-
+                                <label for="inputPassword4" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="inputPassword" placeholder="Password">
                             </div>
-
-                        </div>
-
-                        <div class="row g-2">
                             <div class="md-3 col-md-4">
-                                <label for="inputDoc" class="form-label">Select User Role</label>
-                                <select class="form-control select2" data-toggle="select2" id="Role">
+                                <label for="inputRole" class="form-label">User Role</label>
+                                <select class="form-control select2" data-toggle="select2" id="role">
                                     <option>Select</option>
                                     <optgroup>
                                         <?php
@@ -73,14 +67,11 @@
                                         $sql_role = "select * from user_roles";
                                         $res_role = mysqli_query($conn, $sql_role);
                                         while ($row_role = mysqli_fetch_array($res_role)) {
-                                            echo '<option value="' . $row_role['Role_Id '] . '">' . $row_role['RoleName'] . '</option>';
+                                            echo '<option value="' . $row_role['Role_Id'] .'">' . $row_role['RoleName'] .'</option>';
                                         }
                                         ?>
                                     </optgroup>
                                 </select>
-                            </div>
-                            <div class="mb-3 col-md-12">
-                                <div id="result"></div>
                             </div>
                         </div><br>
                         <button type="button" id="adduser_btn" class="btn btn-primary">Register</button>
@@ -90,7 +81,7 @@
                 </div> <!-- end row-->
             </div>
         </div> <!-- container -->
-
+        
         <script>
             $(document).ready(function () {
                 $("#adduser_btn").click(function () {
@@ -112,5 +103,4 @@
             });
 
         </script>
-
     </div> <!-- content -->
