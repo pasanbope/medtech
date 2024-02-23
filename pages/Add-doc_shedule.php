@@ -435,7 +435,7 @@ $day_name10 = date("l", $dd10);
             </div>
         </div> <!-- container -->
 
-        <!-- <script>
+    <script>
         $(document).ready(function(){
             $("#addshed_btn10").click(function(){
                 $.post(
@@ -453,22 +453,8 @@ $day_name10 = date("l", $dd10);
             });
         });
 
-    </script> -->
-
-    <script>
-        $("body").on("input", "#date10", function (event) {
-    $.ajax({
-        type: 'POST',
-        dataType: "json",
-        url: "actions/add_docshed.php",
-        data: { shed_date: $('#date').val(), shed_time: $('#time').val(), pat_count: $('#number').val() },
-        success: function (data) {
-            $('#time').val(data['Sched_Time']);
-            $('#number').val(data['Patient_Count']);
-
-        }
-    });
-});
     </script>
+
+
 
     </div> <!-- content -->

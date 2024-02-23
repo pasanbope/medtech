@@ -14,11 +14,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Doctors</a></li>
-                            <li class="breadcrumb-item active">Add Doctor</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
+                            <li class="breadcrumb-item active">Add New User</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Add New Doctor</h4>
+                    <h4 class="page-title">Add New User</h4>
                 </div>
             </div>
         </div>
@@ -30,36 +30,28 @@
                     <form>
                         <div class="row g-2">
                             <div class="mb-3 col-md-4">
-                                <label for="firstname4" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="Firstname" placeholder="First Name">
-                            </div>
-                            <div class="mb-3 col-md-4">
-                                <label for="lastname4" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="Lastname" placeholder="Last name">
-                            </div>
-                            <div class="mb-3 col-md-4">
                                 <label class="form-label">User Name</label>
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text" id="basic-addon1">@</span>
                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                        aria-describedby="basic-addon1">
+                                        aria-describedby="basic-addon1" id="Uname">
                                 </div>
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp"
+                                    placeholder="Enter email">
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="inputPassword4" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="Password" placeholder="Password">
                             </div>
                         </div>
 
                         <div class="row g-2">
-                            <div class="mb-3 col-md-4">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Enter email">
-                            </div>
-                            <div class="mb-3 col-md-4">
-                                <label for="inputPassword4" class="form-label">Password</label>
-                                <input type="text" class="form-control" id="inputPassword" placeholder="Password">
-                            </div>
-                            <div class="md-3 col-md-4">
+                            <div class="md-3 col-md-6">
                                 <label for="inputRole" class="form-label">User Role</label>
-                                <select class="form-control select2" data-toggle="select2" id="role">
+                                <select class="form-control select2" data-toggle="select2" id="Role">
                                     <option>Select</option>
                                     <optgroup>
                                         <?php
@@ -67,11 +59,14 @@
                                         $sql_role = "select * from user_roles";
                                         $res_role = mysqli_query($conn, $sql_role);
                                         while ($row_role = mysqli_fetch_array($res_role)) {
-                                            echo '<option value="' . $row_role['Role_Id'] .'">' . $row_role['RoleName'] .'</option>';
+                                            echo '<option value="' . $row_role['Role_Id'] . '">' . $row_role['RoleName'] . '</option>';
                                         }
                                         ?>
                                     </optgroup>
                                 </select>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
                             </div>
                         </div><br>
                         <button type="button" id="adduser_btn" class="btn btn-primary">Register</button>
@@ -81,18 +76,16 @@
                 </div> <!-- end row-->
             </div>
         </div> <!-- container -->
-        
+
         <script>
             $(document).ready(function () {
                 $("#adduser_btn").click(function () {
                     $.post(
                         "actions/add_user.php",
                         {
-                            firstname: $('#Firstname').val(),
-                            lastname: $('#Lastname').val(),
-                            username: $('#Username').VAL(),
-                            email: $('#inputEmail').val(),
-                            passwort: $('#pwd').val(),
+                            username: $('#Uname').val(),
+                            email: $('#InputEmail').val(),
+                            passwort: $('#Password').val(),
                             role: $('#Role').val(),
                         },
                         function (data) {
