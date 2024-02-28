@@ -3,7 +3,8 @@ session_start();
 include('../dbconn.php');
 $email = $_POST['email'];
 $pwd = $_POST['password'];
-$sql_getuser = "SELECT * FROM user WHERE Email='$email' AND Password='$pwd'";
+$hash_pw = sha1($pwd);
+$sql_getuser = "SELECT * FROM user WHERE Email='$email' AND Password='$hash_pw'";
 $result_getuser = mysqli_query($conn, $sql_getuser);
 $row_data = mysqli_fetch_array($result_getuser);
 $row_count = mysqli_num_rows($result_getuser);
@@ -12,8 +13,10 @@ if ($row_count >= 1) {
     //login Success
     if ($row_data['Enable'] == 1) {
         $role = $row_data['Role_Id'];
+        $userid = $row_data['User_Id'];
         $_SESSION["username"] = $email;
         $_SESSION["role"] = $role;
+        $_SESSION["loginId"] = $userid;
 
         ?>
         <script>window.location.replace("home.php");</script>

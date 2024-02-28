@@ -75,12 +75,12 @@
                                 </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                            <div id="result"></div>
-                        </div>
+                                <div id="result"></div>
+                            </div>
                         </div><br>
 
                         <button type="button" id="addpat_btn" class="btn btn-primary">Register</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
                 </div> <!-- end row-->
@@ -90,8 +90,8 @@
 
 
         <script>
-            $(document).ready(function() {
-                $("#addpat_btn").click(function() {
+            $(document).ready(function () {
+                $("#addpat_btn").click(function () {
                     $.post(
                         "actions/add_pat.php",
                         {

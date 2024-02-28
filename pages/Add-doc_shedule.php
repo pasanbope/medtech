@@ -441,7 +441,7 @@ $day_name10 = date("l", $dd10);
                 $.post(
                     "actions/add_docshed.php",
                     {
-                        Doctor:$('#doc').val(),
+                        Doctor:<?php echo $doc_id; ?>,
                         Date:$('#date10').val(),
                         Time1:$('#time10').val(),
                         Patient:$('#pat10').val(),

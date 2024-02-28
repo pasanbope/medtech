@@ -13,6 +13,23 @@ if (!isset($_SESSION["username"])) {
     $row_get_rolls = mysqli_fetch_array($res_get_rolls);
     $roll_id = $row_get_rolls['Role_Id'];
     $uname = $row_get_rolls['UserName'];
+    $uid = $row_get_rolls['User_Id'];
+
+    if ($roll_id == '2') {
+        $sql_get_doc = "SELECT * FROM doctor WHERE Login_Id = $uid";
+        $res_get_doc = mysqli_query($conn, $sql_get_doc);
+        $row_get_doc = mysqli_fetch_array($res_get_doc);
+        $lable_name = $row_get_doc["FirstName"];
+        $doc_id = $row_get_doc["Doctor_Id"];
+
+    } else {
+        $lable_name = $uname;
+    }
+
+    $sql_get_role = "SELECT * FROM user_roles WHERE Role_Id = $roll_id";
+    $res_get_role = mysqli_query($conn, $sql_get_role);
+    $row_get_role = mysqli_fetch_array($res_get_role);
+    $Role_name = $row_get_role["RoleName"];
 
 }
 ?>
@@ -405,9 +422,11 @@ if (!isset($_SESSION["username"])) {
                     </span>
                     <span class="d-lg-flex flex-column gap-1 d-none">
                         <h5 class="my-0">
-                            <?php echo $uname ?>
+                            <?php echo $lable_name; ?>
                         </h5>
-                        <h6 class="my-0 fw-normal"><?php echo $roll_id ?></h6>
+                        <h6 class="my-0 fw-normal">
+                            <?php echo $Role_name; ?>
+                        </h6>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
@@ -417,10 +436,14 @@ if (!isset($_SESSION["username"])) {
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="mdi mdi-account-circle me-1"></i>
-                        <span>My Account</span>
-                    </a>
+                    <?php
+                    if ($roll_id == 2) {
+                        ?>
+                        <a href="home.php?page=profilr-doctor" class="dropdown-item">
+                            <i class="mdi mdi-account-circle me-1"></i>
+                            <span>My Profile</span>
+                        </a>
+                    <?php } ?>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
