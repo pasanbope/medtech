@@ -1,12 +1,4 @@
 <?php include('url.php'); ?>
-<?php
-session_start();
-if (!isset($_SESSION["username"])) {
-    ?>
-    <script>window.location.replace("logout.php");</script>
-    <?php
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
