@@ -95,6 +95,9 @@ $day_name10 = date("l", $dd10);
                                 <label for="addshed_btn1" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
+                            </div>
                         </div>
                     </form>
                     <!-- end add new doctor form -->
@@ -131,6 +134,9 @@ $day_name10 = date("l", $dd10);
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
                             </div>
                         </div>
                     </form>
@@ -169,6 +175,9 @@ $day_name10 = date("l", $dd10);
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
+                            </div>
                         </div>
                     </form>
                     <!-- end add new doctor form -->
@@ -205,6 +214,9 @@ $day_name10 = date("l", $dd10);
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
                             </div>
                         </div>
                     </form>
@@ -243,6 +255,9 @@ $day_name10 = date("l", $dd10);
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
+                            </div>
                         </div>
                     </form>
                     <!-- end add new doctor form -->
@@ -279,6 +294,9 @@ $day_name10 = date("l", $dd10);
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
                             </div>
                         </div>
                     </form>
@@ -317,6 +335,9 @@ $day_name10 = date("l", $dd10);
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
+                            </div>
                         </div>
                     </form>
                     <!-- end add new doctor form -->
@@ -337,22 +358,25 @@ $day_name10 = date("l", $dd10);
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker" value="<?php echo $day8; ?>"
-                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee"
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="date8"
                                         placeholder="Select Date">
                                 </div>
                             </div>
                             <div class="md-3 col-md-2">
                                 <label for="example-time" class="form-label">Time</label>
-                                <input class="form-control" id="example-time" type="time" name="time">
+                                <input class="form-control" id="time8" type="time" name="time">
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="example-number" class="form-label">Patients Count</label>
-                                <input class="form-control" id="example-number" type="number" name="number"
+                                <input class="form-control" id="pat8" type="number" name="number"
                                     placeholder="Add Patients Count">
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                                <button type="button" id="addshed_btn8" class="btn btn-primary">Register</button>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result8"></div>
                             </div>
                         </div>
                     </form>
@@ -374,22 +398,25 @@ $day_name10 = date("l", $dd10);
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker" value="<?php echo $day9; ?>"
-                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee"
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="date9"
                                         placeholder="Select Date">
                                 </div>
                             </div>
                             <div class="md-3 col-md-2">
                                 <label for="example-time" class="form-label">Time</label>
-                                <input class="form-control" id="example-time" type="time" name="time">
+                                <input class="form-control" id="time9" type="time" name="time">
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="example-number" class="form-label">Patients Count</label>
-                                <input class="form-control" id="example-number" type="number" name="number"
+                                <input class="form-control" id="pat9" type="number" name="number"
                                     placeholder="Add Patients Count">
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                                <button type="button" id="addshed_btn9" class="btn btn-primary">Register</button>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result9"></div>
                             </div>
                         </div>
                     </form>
@@ -428,6 +455,9 @@ $day_name10 = date("l", $dd10);
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="addshed_btn10" class="btn btn-primary">Register</button>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result10"></div>
+                            </div>
                         </div>
                     </form>
                     <!-- end add new doctor form -->
@@ -447,7 +477,47 @@ $day_name10 = date("l", $dd10);
                         Patient:$('#pat10').val(),
                     },
                     function (data) {
-                        $('#result').html(data);
+                        $('#result10').html(data);
+                    });
+
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#addshed_btn9").click(function(){
+                $.post(
+                    "actions/add_docshed.php",
+                    {
+                        Doctor:<?php echo $doc_id; ?>,
+                        Date:$('#date9').val(),
+                        Time1:$('#time9').val(),
+                        Patient:$('#pat9').val(),
+                    },
+                    function (data) {
+                        $('#result9').html(data);
+                    });
+
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#addshed_btn8").click(function(){
+                $.post(
+                    "actions/add_docshed.php",
+                    {
+                        Doctor:<?php echo $doc_id; ?>,
+                        Date:$('#date8').val(),
+                        Time1:$('#time8').val(),
+                        Patient:$('#pat8').val(),
+                    },
+                    function (data) {
+                        $('#result8').html(data);
                     });
 
             });
