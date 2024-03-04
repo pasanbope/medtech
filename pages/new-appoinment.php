@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Appoinment</a></li>
                             <li class="breadcrumb-item active">New Appoinment</li>
                         </ol>
@@ -50,18 +50,24 @@
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Date</label>
                                     <input type="text" class="form-control" data-provide="datepicker"
-                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee">
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="datee"
+                                        placeholder="Select Date">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row g-2">
-                            <div class="mb-3 col-md-6">
-                                <label for="inputGender" class="form-label">Select Time</label>
-                                <select id="inputTime" class="form-select">
-                                    <option>Morning</option>
-                                    <option>Evening</option>
-                                </select>
+                            <div class="mb-3 col-md-4">
+                                <label for="firstname4" class="form-label">Start Time</label>
+                                <input type="text" class="form-control" id="Stime">
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="firstname4" class="form-label">Patient Count</label>
+                                <input type="text" class="form-control" id="pcount">
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="firstname4" class="form-label">Booked</label>
+                                <input type="text" class="form-control" id="booked">
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputPat" class="form-label">Select Patient</label>
@@ -106,6 +112,43 @@
     </div>
     <script>
         $(document).ready(function () {
+            $("#datee").change(function () {
+                var pcount_a;
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: "actions/get_app.php",
+                    data: {
+                        InputDoc: $('#doc').val(),
+                        Date: $('#datee').val(),
+                    },
+                    success: function (data) {
+                        $('#Stime').val(data['Sched_Time']);
+                        $('#pcount').val(data['Patient_Count']);
+                        pcount_a = parseInt($('#pcount').val());
+                    }
+                });
+                var booked_count;
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: "actions/get_app_book.php",
+                    data: {
+                        InputDoc: $('#doc').val(),
+                        Date: $('#datee').val(),
+                    },
+                    success: function (data2) {
+                        $('#booked').val(data2);
+                        var booked_count = parseInt($('#booked').val());
+                        if (booked_count > pcount_a) {
+                            $('#result').html('<h1>Budu ammo</h1>');
+                        }
+
+                    }
+                });
+
+            });
+
             $("#addapp_btn").click(function () {
                 $.post(
                     "actions/add_app.php",

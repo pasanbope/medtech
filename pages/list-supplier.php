@@ -9,7 +9,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Supplier</a></li>
                             <li class="breadcrumb-item active">Supplier List</li>
                         </ol>
@@ -61,9 +61,8 @@
                                                     <?php echo $row_sup['Email']; ?>
                                                 </td>
                                                 <td>
-                                                    <a href="#"
-                                                        class="action-icon btn_edit" data-bs-target="#full-width-modal"
-                                                        data-bs-toggle="modal"> <i
+                                                    <a href="#" class="action-icon btn_edit"
+                                                        data-bs-target="#full-width-modal" data-bs-toggle="modal"> <i
                                                             class="mdi mdi-square-edit-outline"></i></a>
                                                     <a href="javascript:void(0);" class="action-icon"> <i
                                                             class="mdi mdi-delete"></i></a>

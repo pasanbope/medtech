@@ -9,7 +9,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Doctors</a></li>
                             <li class="breadcrumb-item active">Doctors List</li>
                         </ol>
@@ -38,23 +38,39 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php 
+                                        <?php
                                         include('dbconn.php');
-                                        $sql_getdocs="SELECT * FROM doctor";
-                                        $res_getdocs=mysqli_query($conn,$sql_getdocs);
-                                        while($row_docs=mysqli_fetch_array($res_getdocs)){
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $row_docs['Doctor_Id']; ?></td>
-                                            <td><?php echo $row_docs['Title']; ?> <?php echo $row_docs['FirstName']; ?> <?php echo $row_docs['LastName']; ?></td>
-                                            <td><?php echo $row_docs['Telphone']; ?></td>
-                                            <td><?php echo $row_docs['Designation']; ?></td>
-                                            <td><?php echo $row_docs['NIC']; ?></td>
-                                            <td>
-                                                <a href="#" data-id="<?php echo $row_docs['Doctor_Id']; ?>" class="action-icon btn_edit" data-bs-target="#full-width-modal" data-bs-toggle="modal"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                            </td>
-                                        </tr>
+                                        $sql_getdocs = "SELECT * FROM doctor";
+                                        $res_getdocs = mysqli_query($conn, $sql_getdocs);
+                                        while ($row_docs = mysqli_fetch_array($res_getdocs)) {
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $row_docs['Doctor_Id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row_docs['Title']; ?>
+                                                    <?php echo $row_docs['FirstName']; ?>
+                                                    <?php echo $row_docs['LastName']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row_docs['Telphone']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row_docs['Designation']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row_docs['NIC']; ?>
+                                                </td>
+                                                <td>
+                                                    <a href="#" data-id="<?php echo $row_docs['Doctor_Id']; ?>"
+                                                        class="action-icon btn_edit" data-bs-target="#full-width-modal"
+                                                        data-bs-toggle="modal"> <i
+                                                            class="mdi mdi-square-edit-outline"></i></a>
+                                                    <a href="javascript:void(0);" class="action-icon"> <i
+                                                            class="mdi mdi-delete"></i></a>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -96,7 +112,8 @@
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="lastname4" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" name="lastname" id="lastname4" placeholder="Last name">
+                            <input type="text" class="form-control" name="lastname" id="lastname4"
+                                placeholder="Last name">
                         </div>
                     </div>
 

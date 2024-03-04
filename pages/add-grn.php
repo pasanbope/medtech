@@ -9,7 +9,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">GRN</a></li>
                             <li class="breadcrumb-item active">Add GRN</li>
                         </ol>
@@ -49,7 +49,8 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="example-number" class="form-label">Batch Number</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
+                                <input class="form-control" id="example-number" type="number" name="number"
+                                    placeholder="Batch Number">
                             </div>
 
                         </div>
@@ -58,13 +59,13 @@
                             <div class="mb-3 col-md-6 position-relative" id="datepicker1">
                                 <label class="form-label">Manufacture Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker"
-                                    data-date-container="#datepicker1">
+                                    data-date-container="#datepicker1" placeholder="Manufacture Date">
                             </div>
 
                             <div class="mb-3 col-md-6 position-relative" id="datepicker2">
                                 <label class="form-label">Expire Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker"
-                                    data-date-container="#datepicker2">
+                                    data-date-container="#datepicker2" placeholder="Expire Date">
                             </div>
                         </div>
 
@@ -72,7 +73,8 @@
 
                             <div class="mb-3 col-md-6">
                                 <label for="example-number" class="form-label">Quantity</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
+                                <input class="form-control" id="example-number" type="number" name="number"
+                                    placeholder="Quantity">
                             </div>
 
                             <div class="mb-3 col-md-6">

@@ -1,6 +1,6 @@
 <!-- Jquery min -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
+
 <div class="content">
 
     <!-- Start Content-->
@@ -12,7 +12,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Drugs</a></li>
                             <li class="breadcrumb-item active">Add New Drugs</li>
                         </ol>
@@ -58,7 +58,8 @@
                         <div class="row g-2">
                             <div class="mb-3 col-md-4">
                                 <label for="example-number" class="form-label">Re Order Level</label>
-                                <input class="form-control" id="ReOrLevel" type="number" name="number">
+                                <input class="form-control" id="ReOrLevel" type="number" name="number"
+                                    placeholder="Re Order Level">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -77,7 +78,8 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="example-number" class="form-label">Selling Price(Rs)</label>
-                                <input class="form-control" id="SellPrice" type="number" name="number">
+                                <input class="form-control" id="SellPrice" type="number" name="number"
+                                    placeholder="Selling Price">
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result"></div>

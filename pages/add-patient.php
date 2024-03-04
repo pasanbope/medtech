@@ -12,7 +12,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Patients</a></li>
                             <li class="breadcrumb-item active">Add Patient</li>
                         </ol>
@@ -49,7 +49,7 @@
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Telephone</label>
                                 <input type="text" class="form-control" data-toggle="input-mask"
-                                    data-mask-format="000-0000000" id="Tel">
+                                    data-mask-format="000-0000000" id="Tel" placeholder="Telephone Number">
                                 <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
                             </div>
                             <div class="mb-3 col-md-6">
@@ -63,7 +63,8 @@
                                 <div class="mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">Birth Day</label>
                                     <input type="text" class="form-control" data-provide="datepicker"
-                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="Bday">
+                                        data-date-today-highlight="true" data-date-container="#datepicker1" id="Bday"
+                                        placeholder="Birth Day">
                                 </div>
                             </div>
 
