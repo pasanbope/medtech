@@ -36,6 +36,14 @@ class User
 
     }
 
+    public function add_user_log($log_date, $log_time, $log_user, $log_ip, $log_cat, $log_det)
+    {
+        $sql_add_log = "INSERT INTO user_log(Log_Date, Log_Time, Log_User, Log_Ip, Log_Cat, Log_Details)
+        VALUES('$log_date', '$log_time', $log_user, '$log_ip', '$log_cat', '$log_det')";
+        mysqli_query($this->sqlcon, $sql_add_log);
+
+    }
+
 
 }
 ?>

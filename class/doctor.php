@@ -41,8 +41,9 @@ class Doctor
             echo "class='action-icon btn_edit' data-bs-target='#full-width-modal' data-bs-toggle='modal'> 
 			<iclass='mdi mdi-square-edit-outline'></i></a>
             <a href='javascript:void(0);' class='action-icon'> <i class='mdi mdi-delete'></i></a>
-            </td></tr></tbody>";
+            </td></tr>";
         }
+        echo "</tbody>";
 
     }
 
