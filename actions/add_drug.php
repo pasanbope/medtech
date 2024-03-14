@@ -1,62 +1,30 @@
 <?php
-$Catogary = $_POST['Catogary'];
+
+// Include the Patient class file
+include '../class/drug.php';
+
+// Create an instance of the Patient class
+$drug = new Drug();
+
+// Call the add_patient method with appropriate parameters
+
 $MedicinalName = $_POST['MedicinalName'];
 $BrandName = $_POST['BrandName'];
 $ReOrderLevel = $_POST['ReOrderLevel'];
 $MeasurementType = $_POST['MeasurementType'];
-$SellingPrice = $_POST['SellingPrice'];
+$Catogary = $_POST['Catogary'];
 
-if ($Catogary == "") {
+if (($MedicinalName == '') or ($BrandName == '') or ($ReOrderLevel == '') or ($MeasurementType == '') or ($Catogary == '')) {
     echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Warning - </strong> Required Catogary—check it out!
+    <strong>Warning - </strong> Cannot Add Empty Data — check it out!
 </div>";
-}
-if ($MedicinalName == "") {
-    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Warning - </strong> Required Medicinal Name—check it out!
-</div>";
-}
-if ($BrandName == "") {
-    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Warning - </strong> Required Telephone Brand Name—check it out!
-</div>";
-}
-if ($ReOrderLevel == "") {
-    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Warning - </strong> Required Re Order Level—check it out!
-</div>";
-}
-if ($MeasurementType == "") {
-    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Warning - </strong> Required Measurement Type—check it out!
-</div>";
-}
-if ($SellingPrice == "") {
-    echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Warning - </strong> Required Selling Price—check it out!
-</div>";
-
 } else {
-    include('../dbconn.php');
-    $sql_adddrug = "INSERT INTO drug(MedicalName, BrandName, Rol, Measure_Id, SellPrice, Category_Id)
-    VALUES ('$MedicinalName','$BrandName','$ReOrderLevel','$MeasurementType','$SellingPrice','$Catogary')";
-    if (mysqli_query($conn, $sql_adddrug)) {
-        echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
-        <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
-        <strong>Success - </strong> New Patient Added!
-    </div>";
-    } else {
-        echo "<div class='alert alert-danger alert-dismissible text-bg-danger border-0 fade show' role='alert'>
-        <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
-        <strong>Error - </strong> Failed!
-    </div>";
-    }
+    $drug->add_drug($Catogary, $MedicinalName, $BrandName, $ReOrderLevel, $MeasurementType);
+    echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
+    <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
+    <strong>Success - </strong> New Drug Added!
+</div>";
 }
 
 ?>

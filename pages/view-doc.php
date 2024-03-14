@@ -1,13 +1,8 @@
 <!-- Jquery min -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <?php
-include('dbconn.php');
-$sql_get_doc = "SELECT * FROM doctor WHERE Doctor_Id = $doc_id";
-$res_get_doc = mysqli_query($conn, $sql_get_doc);
-$row_get_doc = mysqli_fetch_array($res_get_doc);
-
-$title = $row_get_doc["Title"];
-$gendar = $row_get_doc["Gender"];
+$title = $doctor->getdet_by_docID($doc_id, 'Title');
+$gendar = $doctor->getdet_by_docID($doc_id, 'Gender');
 ?>
 
 <div class="content">
@@ -50,12 +45,12 @@ $gendar = $row_get_doc["Gender"];
                             <div class="mb-3 col-md-4">
                                 <label for="firstname4" class="form-label">First Name</label>
                                 <input type="text" class="form-control" id="Firstname" placeholder="First Name"
-                                    value="<?php echo $row_get_doc['FirstName'] ?>">
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'FirstName'); ?>">
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label for="lastname4" class="form-label">Last Name</label>
                                 <input type="text" class="form-control" id="Lastname" placeholder="Last name"
-                                    value="<?php echo $row_get_doc['LastName'] ?>">
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'LastName'); ?>">
                             </div>
                         </div>
 
@@ -64,13 +59,13 @@ $gendar = $row_get_doc["Gender"];
                                 <label class="form-label">Telephone</label>
                                 <input type="text" class="form-control" data-toggle="input-mask"
                                     data-mask-format="000-0000000" id="Tel"
-                                    value="<?php echo $row_get_doc['Telphone'] ?>">
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'Telphone'); ?>">
                                 <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputAddress" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="Address" placeholder="Address"
-                                    value="<?php echo $row_get_doc['Address'] ?>">
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'Address'); ?>">
                             </div>
                         </div>
 
@@ -78,12 +73,12 @@ $gendar = $row_get_doc["Gender"];
                             <div class="mb-3 col-md-4">
                                 <label for="inputDesignation" class="form-label">Designation</label>
                                 <input type="text" class="form-control" id="Designation" placeholder="Designation"
-                                    value="<?php echo $row_get_doc['Designation'] ?>">
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'Designation'); ?>">
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label for="inputNIC" class="form-label">NIC</label>
                                 <input type="text" class="form-control" id="NIC" placeholder="NIC"
-                                    value="<?php echo $row_get_doc['NIC'] ?>">
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'NIC'); ?>">
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label for="inputGender" class="form-label">Gender</label>

@@ -1,5 +1,9 @@
 <?php
 session_start();
+// Include the Patient class file
+include 'class/doctor.php';
+// Create an instance of the Patient class
+$doctor = new Doctor();
 if (!isset($_SESSION["username"])) {
     ?>
     <script>window.location.replace("logout.php");</script>
@@ -7,29 +11,25 @@ if (!isset($_SESSION["username"])) {
 } else {
 
     $user_email = $_SESSION["username"];
-    include('dbconn.php');
-    $sql_get_rolls = "SELECT * FROM user WHERE Email='$user_email'";
-    $res_get_rolls = mysqli_query($conn, $sql_get_rolls);
-    $row_get_rolls = mysqli_fetch_array($res_get_rolls);
-    $roll_id = $row_get_rolls['Role_Id'];
-    $uname = $row_get_rolls['UserName'];
-    $uid = $row_get_rolls['User_Id'];
+    // Include the Patient class file
+    include 'class/user.php';
+    // Create an instance of the Patient class
+    $user = new User();
+    $roll_id = $user->get_userdet_byemail($user_email, 'Role_Id');
+    $uname = $user->get_userdet_byemail($user_email, 'UserName');
+    $uid = $user->get_userdet_byemail($user_email, 'User_Id');
+
 
     if ($roll_id == '2') {
-        $sql_get_doc = "SELECT * FROM doctor WHERE Login_Id = $uid";
-        $res_get_doc = mysqli_query($conn, $sql_get_doc);
-        $row_get_doc = mysqli_fetch_array($res_get_doc);
-        $lable_name = $row_get_doc["FirstName"];
-        $doc_id = $row_get_doc["Doctor_Id"];
+
+        $lable_name = $doctor->getdet_byID($uid, 'FirstName');
+        $doc_id = $doctor->getdet_byID($uid, 'Doctor_Id');
 
     } else {
         $lable_name = $uname;
     }
 
-    $sql_get_role = "SELECT * FROM user_roles WHERE Role_Id = $roll_id";
-    $res_get_role = mysqli_query($conn, $sql_get_role);
-    $row_get_role = mysqli_fetch_array($res_get_role);
-    $Role_name = $row_get_role["RoleName"];
+    $Role_name = $user->get_userrole($roll_id);
 
 
 

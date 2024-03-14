@@ -76,13 +76,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name1; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed1 = "SELECT * FROM doctor_schedule WHERE Date = '$day1' AND Doctor_Id = $doc_id";
-                            $res_get_shed1 = mysqli_query($conn,$sql_get_shed1);
-                            $row_get_shed1 = mysqli_fetch_array($res_get_shed1);
-                            $count_get_shed1 = mysqli_num_rows($res_get_shed1);
-                            if($count_get_shed1 == 1){
-                                $shed_time1 = $row_get_shed1['Sched_Time'];
-                                $shed_pcount1 = $row_get_shed1['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day1)== 1){
+                                $shed_time1 = $doctor->get_shedule($day1, $doc_id, 'Sched_Time');
+                                $shed_pcount1 = $doctor->get_shedule($day1, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time1 = "";
                                 $shed_pcount1 = "";
@@ -129,13 +126,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name2; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed2 = "SELECT * FROM doctor_schedule WHERE Date = '$day2' AND Doctor_Id = $doc_id";
-                            $res_get_shed2 = mysqli_query($conn,$sql_get_shed2);
-                            $row_get_shed2 = mysqli_fetch_array($res_get_shed2);
-                            $count_get_shed2 = mysqli_num_rows($res_get_shed2);
-                            if($count_get_shed2 == 1){
-                                $shed_time2 = $row_get_shed2['Sched_Time'];
-                                $shed_pcount2 = $row_get_shed2['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day2)== 1){
+                                $shed_time2 = $doctor->get_shedule($day2, $doc_id, 'Sched_Time');
+                                $shed_pcount2 = $doctor->get_shedule($day2, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time2 = "";
                                 $shed_pcount2 = "";
@@ -182,13 +176,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name3; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed3 = "SELECT * FROM doctor_schedule WHERE Date = '$day3' AND Doctor_Id = $doc_id";
-                            $res_get_shed3 = mysqli_query($conn,$sql_get_shed3);
-                            $row_get_shed3 = mysqli_fetch_array($res_get_shed3);
-                            $count_get_shed3 = mysqli_num_rows($res_get_shed3);
-                            if($count_get_shed3 == 1){
-                                $shed_time3 = $row_get_shed3['Sched_Time'];
-                                $shed_pcount3 = $row_get_shed3['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day3)== 1){
+                                $shed_time3 = $doctor->get_shedule($day3, $doc_id, 'Sched_Time');
+                                $shed_pcount3 = $doctor->get_shedule($day3, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time3 = "";
                                 $shed_pcount3 = "";
@@ -235,13 +226,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name4; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed4 = "SELECT * FROM doctor_schedule WHERE Date = '$day4' AND Doctor_Id = $doc_id";
-                            $res_get_shed4 = mysqli_query($conn,$sql_get_shed4);
-                            $row_get_shed4 = mysqli_fetch_array($res_get_shed4);
-                            $count_get_shed4 = mysqli_num_rows($res_get_shed4);
-                            if($count_get_shed4 == 1){
-                                $shed_time4 = $row_get_shed4['Sched_Time'];
-                                $shed_pcount4 = $row_get_shed4['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day4)== 1){
+                                $shed_time1 = $doctor->get_shedule($day4, $doc_id, 'Sched_Time');
+                                $shed_pcount1 = $doctor->get_shedule($day4, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time4 = "";
                                 $shed_pcount4 = "";
@@ -288,13 +276,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name5; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed5 = "SELECT * FROM doctor_schedule WHERE Date = '$day5' AND Doctor_Id = $doc_id";
-                            $res_get_shed5 = mysqli_query($conn,$sql_get_shed5);
-                            $row_get_shed5 = mysqli_fetch_array($res_get_shed5);
-                            $count_get_shed5 = mysqli_num_rows($res_get_shed5);
-                            if($count_get_shed5 == 1){
-                                $shed_time5 = $row_get_shed5['Sched_Time'];
-                                $shed_pcount5 = $row_get_shed5['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day5)== 1){
+                                $shed_time1 = $doctor->get_shedule($day5, $doc_id, 'Sched_Time');
+                                $shed_pcount1 = $doctor->get_shedule($day5, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time5 = "";
                                 $shed_pcount5 = "";
@@ -341,13 +326,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name6; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed6 = "SELECT * FROM doctor_schedule WHERE Date = '$day6' AND Doctor_Id = $doc_id";
-                            $res_get_shed6 = mysqli_query($conn,$sql_get_shed6);
-                            $row_get_shed6 = mysqli_fetch_array($res_get_shed6);
-                            $count_get_shed6 = mysqli_num_rows($res_get_shed6);
-                            if($count_get_shed6 == 1){
-                                $shed_time6 = $row_get_shed6['Sched_Time'];
-                                $shed_pcount6 = $row_get_shed6['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day6)== 1){
+                                $shed_time6 = $doctor->get_shedule($day6, $doc_id, 'Sched_Time');
+                                $shed_pcount6 = $doctor->get_shedule($day6, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time6 = "";
                                 $shed_pcount6 = "";
@@ -394,13 +376,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name7; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed7 = "SELECT * FROM doctor_schedule WHERE Date = '$day7' AND Doctor_Id = $doc_id";
-                            $res_get_shed7 = mysqli_query($conn,$sql_get_shed7);
-                            $row_get_shed7 = mysqli_fetch_array($res_get_shed7);
-                            $count_get_shed7 = mysqli_num_rows($res_get_shed7);
-                            if($count_get_shed7 == 1){
-                                $shed_time7 = $row_get_shed7['Sched_Time'];
-                                $shed_pcount7 = $row_get_shed7['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day7)== 1){
+                                $shed_time1 = $doctor->get_shedule($day7, $doc_id, 'Sched_Time');
+                                $shed_pcount1 = $doctor->get_shedule($day7, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time7 = "";
                                 $shed_pcount7 = "";
@@ -447,13 +426,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name8; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed8 = "SELECT * FROM doctor_schedule WHERE Date = '$day8' AND Doctor_Id = $doc_id";
-                            $res_get_shed8 = mysqli_query($conn,$sql_get_shed8);
-                            $row_get_shed8 = mysqli_fetch_array($res_get_shed8);
-                            $count_get_shed8 = mysqli_num_rows($res_get_shed8);
-                            if($count_get_shed8 == 1){
-                                $shed_time8 = $row_get_shed8['Sched_Time'];
-                                $shed_pcount8 = $row_get_shed8['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day8)== 1){
+                                $shed_time8 = $doctor->get_shedule($day8, $doc_id, 'Sched_Time');
+                                $shed_pcount8 = $doctor->get_shedule($day8, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time8 = "";
                                 $shed_pcount8 = "";
@@ -500,13 +476,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name9; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed9 = "SELECT * FROM doctor_schedule WHERE Date = '$day9' AND Doctor_Id = $doc_id";
-                            $res_get_shed9 = mysqli_query($conn,$sql_get_shed9);
-                            $row_get_shed9 = mysqli_fetch_array($res_get_shed9);
-                            $count_get_shed9 = mysqli_num_rows($res_get_shed9);
-                            if($count_get_shed9 == 1){
-                                $shed_time9 = $row_get_shed9['Sched_Time'];
-                                $shed_pcount9 = $row_get_shed9['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day9)== 1){
+                                $shed_time1 = $doctor->get_shedule($day9, $doc_id, 'Sched_Time');
+                                $shed_pcount1 = $doctor->get_shedule($day9, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time9 = "";
                                 $shed_pcount9 = "";
@@ -553,13 +526,10 @@ $day_name10 = date("l", $dd10);
                                 <h3 class="header-title"><?php echo $day_name10; ?></h3>
                             </div>
                             <?php
-                            $sql_get_shed10 = "SELECT * FROM doctor_schedule WHERE Date = '$day10' AND Doctor_Id = $doc_id";
-                            $res_get_shed10 = mysqli_query($conn,$sql_get_shed10);
-                            $row_get_shed10 = mysqli_fetch_array($res_get_shed10);
-                            $count_get_shed10 = mysqli_num_rows($res_get_shed10);
-                            if($count_get_shed10 == 1){
-                                $shed_time10 = $row_get_shed10['Sched_Time'];
-                                $shed_pcount10 = $row_get_shed10['Patient_Count'];
+                            if($doctor->check_doc_shedule($doc_id, $day10)== 1){
+                                $shed_time1 = $doctor->get_shedule($day10, $doc_id, 'Sched_Time');
+                                $shed_pcount1 = $doctor->get_shedule($day10, $doc_id, 'Patient_Count');
+                                
                             } else {
                                 $shed_time10 = "";
                                 $shed_pcount10 = "";

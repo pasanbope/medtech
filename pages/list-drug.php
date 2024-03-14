@@ -31,45 +31,20 @@
                                             <th>Drug ID</th>
                                             <th>Medicinal name</th>
                                             <th>Brand name</th>
-                                            <th>Batch no</th>
-                                            <th>Qty</th>
+                                            <th>Re-Order Level</th>
+                                            <th>Mesurement type</th>
+                                            <th>Catagory</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    // Include the Patient class file
+                                    include 'class/drug.php';
 
-                                    <tbody>
-                                        <?php
-                                        include('dbconn.php');
-                                        $sql_getsup = "SELECT * FROM supplier";
-                                        $res_getsup = mysqli_query($conn, $sql_getsup);
-                                        while ($row_sup = mysqli_fetch_array($res_getsup)) {
-                                            ?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $row_sup['Supplier_Id']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_sup['CompanyName']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_sup['Contact_Person_Name']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_sup['ContactNumber']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_sup['Email']; ?>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="action-icon btn_edit"
-                                                        data-bs-target="#full-width-modal" data-bs-toggle="modal"> <i
-                                                            class="mdi mdi-square-edit-outline"></i></a>
-                                                    <a href="javascript:void(0);" class="action-icon"> <i
-                                                            class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
+                                    // Create an instance of the Patient class
+                                    $drug = new Drug();
+                                    $drug->list_drug();
+                                    ?>
                                 </table>
                             </div> <!-- end preview-->
                         </div> <!-- end tab-content-->

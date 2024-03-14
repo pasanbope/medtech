@@ -35,12 +35,7 @@
                                     <option>Select</option>
                                     <optgroup>
                                         <?php
-                                        include('dbconn.php');
-                                        $sql_doc = "select * from doctor";
-                                        $res_doc = mysqli_query($conn, $sql_doc);
-                                        while ($row_doc = mysqli_fetch_array($res_doc)) {
-                                            echo '<option value="' . $row_doc['Doctor_Id'] . '">' . $row_doc['Title'] . ' ' . $row_doc['FirstName'] . ' ' . $row_doc['LastName'] . '</option>';
-                                        }
+                                        $doctor->select_doctor();
                                         ?>
                                     </optgroup>
                                 </select>
@@ -75,12 +70,12 @@
                                     <option>Select</option>
                                     <optgroup>
                                         <?php
-                                        include('dbconn.php');
-                                        $sql_pat = "select * from patient";
-                                        $res_pat = mysqli_query($conn, $sql_pat);
-                                        while ($row_pat = mysqli_fetch_array($res_pat)) {
-                                            echo '<option value="' . $row_pat['Patient_Id'] . '">' . $row_pat['Title'] . ' ' . $row_pat['FirstName'] . ' ' . $row_pat['LastName'] . '</option>';
-                                        }
+                                        // Include the Patient class file
+                                        include 'class/Patient.php';
+
+                                        // Create an instance of the Patient class
+                                        $patient = new Patient();
+                                        $patient->select_patient();
                                         ?>
                                     </optgroup>
                                 </select>

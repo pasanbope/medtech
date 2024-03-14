@@ -36,47 +36,17 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    // Include the Patient class file
+                                    include 'class/Patient.php';
 
-                                    <tbody>
-                                        <?php
-                                        include('dbconn.php');
-                                        $sql_getpat = "SELECT * FROM patient";
-                                        $res_getpat = mysqli_query($conn, $sql_getpat);
-                                        while ($row_pats = mysqli_fetch_array($res_getpat)) {
-                                            ?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $row_pats['Patient_Id']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_pats['Title']; ?>
-                                                    <?php echo $row_pats['FirstName']; ?>
-                                                    <?php echo $row_pats['LastName']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_pats['Telephone']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_pats['Birthday']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_pats['Address']; ?>
-                                                </td>
-                                                <td>
-                                                    <a href="#" data-id="<?php echo $row_pats['Patient_Id']; ?>"
-                                                        class="action-icon btn_edit" data-bs-target="#full-width-modal"
-                                                        data-bs-toggle="modal"> <i
-                                                            class="mdi mdi-square-edit-outline"></i></a>
-                                                    <a href="javascript:void(0);" class="action-icon"> <i
-                                                            class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
+                                    // Create an instance of the Patient class
+                                    $patient = new Patient();
+                                    $patient->list_patient();
+                                    ?>
                                 </table>
                             </div> <!-- end preview-->
                         </div> <!-- end tab-content-->
-
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
             </div><!-- end col-->

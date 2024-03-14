@@ -70,15 +70,22 @@
                         </div>
 
                         <div class="row g-2">
-
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-4">
                                 <label for="example-number" class="form-label">Quantity</label>
                                 <input class="form-control" id="example-number" type="number" name="number"
                                     placeholder="Quantity">
                             </div>
 
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-md-4">
                                 <label for="example-number" class="form-label">Purchase Price</label>
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="basic-addon1">Rs</span>
+                                    <input class="form-control" id="example-number" type="number" name="number">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="example-number" class="form-label">Selling Price</label>
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text" id="basic-addon1">Rs</span>
                                     <input class="form-control" id="example-number" type="number" name="number">

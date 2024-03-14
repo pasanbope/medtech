@@ -36,43 +36,10 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                    <?php
 
-                                    <tbody>
-                                        <?php
-                                        include('dbconn.php');
-                                        $sql_getdocs = "SELECT * FROM doctor";
-                                        $res_getdocs = mysqli_query($conn, $sql_getdocs);
-                                        while ($row_docs = mysqli_fetch_array($res_getdocs)) {
-                                            ?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $row_docs['Doctor_Id']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_docs['Title']; ?>
-                                                    <?php echo $row_docs['FirstName']; ?>
-                                                    <?php echo $row_docs['LastName']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_docs['Telphone']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_docs['Designation']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row_docs['NIC']; ?>
-                                                </td>
-                                                <td>
-                                                    <a href="#" data-id="<?php echo $row_docs['Doctor_Id']; ?>"
-                                                        class="action-icon btn_edit" data-bs-target="#full-width-modal"
-                                                        data-bs-toggle="modal"> <i
-                                                            class="mdi mdi-square-edit-outline"></i></a>
-                                                    <a href="javascript:void(0);" class="action-icon"> <i
-                                                            class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
+                                    $doctor->list_doctor();
+                                    ?>
                                 </table>
                             </div> <!-- end preview-->
                         </div> <!-- end tab-content-->

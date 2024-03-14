@@ -75,12 +75,6 @@
                                     ?>
                                 </select>
                             </div>
-
-                            <div class="mb-3 col-md-4">
-                                <label for="example-number" class="form-label">Selling Price(Rs)</label>
-                                <input class="form-control" id="SellPrice" type="number" name="number"
-                                    placeholder="Selling Price">
-                            </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result"></div>
                             </div>
@@ -103,12 +97,11 @@
                 $.post(
                     "actions/add_drug.php",
                     {
-                        Catogary: $('#inputCat').val(),
                         MedicinalName: $('#Medname').val(),
                         BrandName: $('#Brandname').val(),
                         ReOrderLevel: $('#ReOrLevel').val(),
                         MeasurementType: $('#inputMeas').val(),
-                        SellingPrice: $('#SellPrice').val(),
+                        Catogary: $('#inputCat').val(),
                     },
                     function (data) {
                         $('#result').html(data);
