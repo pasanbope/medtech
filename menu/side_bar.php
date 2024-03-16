@@ -1,5 +1,3 @@
-
-
 <div class="leftside-menu">
 
     <!-- Brand Logo Light -->
@@ -221,6 +219,13 @@
                         <li>
                             <a href="home.php?page=add-user">Add User</a>
                         </li>
+                        <li>
+                            <?php
+                            if ($roll_id == 1) {
+                                ?>
+                                <a href="home.php?page=user-logs">User Logs</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </li>

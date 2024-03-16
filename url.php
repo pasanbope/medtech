@@ -32,7 +32,9 @@ if (isset($_GET['page'])) {
         $page = 'pages/new-prescription.php';
     } elseif ($_GET['page'] == 'add-user') {
         $page = 'pages/add-user.php';
-    } elseif ($_GET['page'] == 'profilr-doctor') {
+    }elseif ($_GET['page'] == 'user-logs') {
+        $page = 'pages/list-user-logs.php';
+    }elseif ($_GET['page'] == 'profilr-doctor') {
         $page = 'pages/view-doc.php';
     } elseif ($_GET['page'] == 'login') {
         $page = 'pages/login.php';

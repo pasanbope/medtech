@@ -50,6 +50,23 @@ class Drug
 
     }
 
+    public function add_drugcat($Catogary)
+    {
+
+        $add_drugcat_sql = "INSERT INTO drug_category(Category) 
+		VALUES('" . $Catogary . "')";
+        mysqli_query($this->sqlcon, $add_drugcat_sql);
+    }
+
+    public function add_drugmesure($name)
+    {
+
+        $add_drugmesure_sql = "INSERT INTO measurement_type(Name) 
+		VALUES('" . $name . "')";
+        mysqli_query($this->sqlcon, $add_drugmesure_sql);
+    }
+
+
     public function get_measurement($mes_id)
     {
         $sql_get_measure = "SELECT * FROM measurement_type WHERE Measure_Id = $mes_id";
