@@ -1,9 +1,4 @@
-<?php 
 
-if (isset($_SESSION["role"]) && ($_SESSION["username"])){
-    $role = $_SESSION["role"];
-}
-?>
 
 <!-- Jquery min -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -104,7 +99,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="addshed_btn1" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn1" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn1" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result1"></div>
@@ -154,7 +149,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn2" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn2" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result2"></div>
@@ -204,7 +199,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn3" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn3" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result3"></div>
@@ -254,7 +249,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn4" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn4" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result4"></div>
@@ -304,7 +299,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn5" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn5" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result5"></div>
@@ -354,7 +349,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn6" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn6" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result6"></div>
@@ -404,7 +399,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn7" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn7" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result7"></div>
@@ -454,7 +449,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn8" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn8" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result8"></div>
@@ -504,7 +499,7 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn9" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn9" class="btn btn-primary">Add</button>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result9"></div>
@@ -552,10 +547,14 @@ $day_name10 = date("l", $dd10);
                                 <input class="form-control" id="pat10" type="number" name="number" value="<?php echo $shed_pcount10; ?>"
                                     placeholder="Add Patients Count">
                             </div>
+                            <?php
+                            if ($roll_id == 1) {
+                                ?>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
-                                <button type="button" id="adddoc_btn10" class="btn btn-primary">Register</button>
+                                <button type="button" id="adddoc_btn10" class="btn btn-primary">Add</button>
                             </div>
+                            <?php } ?>
                             <div class="mb-3 col-md-12">
                                 <div id="result10"></div>
                             </div>
