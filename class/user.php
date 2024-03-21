@@ -45,25 +45,33 @@ class User
     }
 
     public function list_logs()
-	{
-		echo "<tbody>";
-		$sql_getlog = "SELECT * FROM user_log";
-		$res_getlog = mysqli_query($this->sqlcon, $sql_getlog);
-		while ($row_logs = mysqli_fetch_array($res_getlog)) {
-			echo "<tr><td>" . $row_logs['Log_Id'] . "</td>";
-			echo "<td>" . $row_logs['Log_Date'] . "</td>";
-			echo "<td>" . $row_logs['Log_Time'] . "</td>";
-			echo "<td>" . $row_logs['Log_User'] . "</td>";
-			echo "<td>" . $row_logs['Log_Ip'] . "</td>";
+    {
+        echo "<tbody>";
+        $sql_getlog = "SELECT * FROM user_log";
+        $res_getlog = mysqli_query($this->sqlcon, $sql_getlog);
+        while ($row_logs = mysqli_fetch_array($res_getlog)) {
+            $user_id = $row_logs['Log_User'];
+            echo "<tr><td>" . $row_logs['Log_Id'] . "</td>";
+            echo "<td>" . $row_logs['Log_Date'] . "</td>";
+            echo "<td>" . $row_logs['Log_Time'] . "</td>";
+            echo "<td>" . $this->get_username($user_id) . "</td>";
+            echo "<td>" . $row_logs['Log_Ip'] . "</td>";
             echo "<td>" . $row_logs['Log_Cat'] . "</td>";
             echo "<td>" . $row_logs['Log_Details'] . "</td>";
-
-
-			echo "<td> <a href='#' data-id='" . $row_logs['Log_Id'] . "'";
-			echo "</td></tr>";
-		}
-		echo "</tbody>";
+            echo "</tr>";
+        }
+        echo "</tbody>";
 
     }
+
+    public function get_username($user_id)
+    {
+        $sql_get_username = "SELECT * FROM user WHERE User_Id = $user_id";
+        $res_get_username = mysqli_query($this->sqlcon, $sql_get_username);
+        $row_get_username = mysqli_fetch_array($res_get_username);
+        return $row_get_username["UserName"];
+    }
+
+
 }
 ?>

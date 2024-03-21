@@ -46,5 +46,14 @@ class Supplier
         echo "</tbody>";
 
     }
+
+    public function select_supplier()
+    {
+        $sql_sup = "select * from supplier";
+        $res_sup = mysqli_query($this->sqlcon, $sql_sup);
+        while ($row_sup = mysqli_fetch_array($res_sup)) {
+            echo '<option value="' . $row_sup['Supplier_Id'] . '">' . $row_sup['Contact_Person_Name'] . ' ' . '</option>';
+        }
+    }
 }
 ?>

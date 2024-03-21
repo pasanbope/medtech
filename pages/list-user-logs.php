@@ -31,15 +31,15 @@
                                             <th>ID</th>
                                             <th>Date</th>
                                             <th>Time</th>
-                                            <th>User</th>
+                                            <th>User Name</th>
                                             <th>IP</th>
                                             <th>Category</th>
                                             <th>Details</th>
                                         </tr>
                                     </thead>
                                     <?php
-                                    
-                                   
+
+
                                     // Create an instance of the Patient class
                                     $user = new User();
                                     $user->list_logs();

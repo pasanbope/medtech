@@ -82,5 +82,22 @@ class Drug
         $row_get_category = mysqli_fetch_array($res_get_category);
         return $row_get_category['Category'];
     }
+
+    public function select_drug()
+    {
+        $sql_drug = "select * from drug";
+        $res_drug = mysqli_query($this->sqlcon, $sql_drug);
+        while ($row_drug = mysqli_fetch_array($res_drug)) {
+            echo '<option value="' . $row_drug['Drug_Id'] . '">' . $row_drug['BrandName'] . ' ' . '</option>';
+        }
+    }
+
+    public function add_grn_detail($grn_id, $order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total)
+    {
+
+        $add_grndetail_sql = "INSERT INTO tmp_grn_details(GRN_Id, Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
+		VALUES('" . $grn_id . "','" . $order_id . "','" . $drug_id . "','" . $batch_no . "','" . $made_date . "','" . $expire_date . "','" . $selling_price . "','" . $purchased_price . "','" . $quantity . "','" . $total . "')";
+        mysqli_query($this->sqlcon, $add_grndetail_sql);
+    }
 }
 ?>
