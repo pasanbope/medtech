@@ -20,11 +20,18 @@ if (($MedicinalName == '') or ($BrandName == '') or ($ReOrderLevel == '') or ($M
     <strong>Warning - </strong> Cannot Add Empty Data — check it out!
 </div>";
 } else {
-    $drug->add_drug($Catogary, $MedicinalName, $BrandName, $ReOrderLevel, $MeasurementType);
-    echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
+    if ($drug->add_drug($MedicinalName, $BrandName, $ReOrderLevel, $MeasurementType, $Catogary) == True) {
+        echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
+        <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
+        <strong>Success - </strong> New Drug Added!
+    </div>";
+    } else {
+        echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
     <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Success - </strong> New Drug Added!
+    <strong>Success - </strong> Error!
 </div>";
+    }
+
 }
 
 

@@ -26,7 +26,7 @@ if (($order_id == '') or ($drug_id == '') or ($batch_no == '') or ($made_date ==
     $drug->add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total);
     echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
     <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Success - </strong> New Doctor Added!
+    <strong>Success - </strong> GRN Added!
 </div>";
 }
 

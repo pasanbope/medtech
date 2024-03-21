@@ -13,16 +13,20 @@ class Drug
         //include 'config/db-config.php';
         $this->sqlcon = mysqli_connect($sql_server, $sql_username, $sql_password, $sql_database);
         if (!$this->sqlcon) {
-            die('Connection Failed :' . mysqli_connect_error());
+            die ('Connection Failed :' . mysqli_connect_error());
         }
     }
 
     public function add_drug($MedicinalName, $BrandName, $ReOrderLevel, $MeasurementType, $Catogary)
     {
 
-        $add_drug_sql = "INSERT INTO drug(MedicalName, BrandName, Rol, Measure_Id, Category_Id) 
-		VALUES('" . $MedicinalName . "','" . $BrandName . "','" . $ReOrderLevel . "','" . $MeasurementType . "','" . $Catogary . "')";
-        mysqli_query($this->sqlcon, $add_drug_sql);
+        $add_drug_sql = "INSERT INTO drug (MedicalName, BrandName, Rol, Measure_Id, Category_Id) 
+		VALUES('$MedicinalName', '$BrandName', $ReOrderLevel, $MeasurementType, $Catogary)";
+        if (mysqli_query($this->sqlcon, $add_drug_sql)) {
+            return True;
+        } else {
+            return False;
+        }
     }
 
     public function list_drug()
@@ -95,9 +99,37 @@ class Drug
     public function add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total)
     {
 
-        $add_grndetail_sql = "INSERT INTO tmp_grn_details(Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
-		VALUES('" . $order_id . "','" . $drug_id . "','" . $batch_no . "','" . $made_date . "','" . $expire_date . "','" . $selling_price . "','" . $purchased_price . "','" . $quantity . "','" . $total . "')";
+        $add_grndetail_sql = "INSERT INTO c (Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
+		VALUES($order_id, $drug_id, '$batch_no', '$made_date', '$expire_date', $selling_price, $purchased_price, $quantity, $total)";
         mysqli_query($this->sqlcon, $add_grndetail_sql);
+    }
+
+
+
+    public function list_grn_detail()
+    {
+        echo "<tbody>";
+        $sql_getgrn = "SELECT * FROM tmp_grn_details";
+        $res_getgrn = mysqli_query($this->sqlcon, $sql_getgrn);
+        while ($row_grn = mysqli_fetch_array($res_getgrn)) {
+            $drug = $row_grn['Drug_Id'];
+            echo "<td>" . $this->get_drug($drug) . "</td>";
+            echo "<td>" . $row_grn['BatchNo'] . "</td>";
+            echo "<td>" . $row_grn['SellingPrice'] . "</td>";
+            echo "<td>" . $row_grn['PurchasedPrice'] . "</td>";
+            echo "<td>" . $row_grn['Quantity'] . "</td>";
+            echo "<td>" . $row_grn['Total'] . "</td>";
+        }
+        echo "</tbody>";
+
+    }
+
+    public function get_drug($drug)
+    {
+        $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        return $row_get_drug['BrandName'];
     }
 }
 ?>

@@ -149,50 +149,17 @@ $day = date("Y/m/d");
                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                     <thead>
                         <tr>
-                            <th>GRN ID</th>
-                            <th>Order ID</th>
-                            <th>Drug ID</th>
+                            <th>Drug Name</th>
                             <th>Batch No</th>
-                            <th>Manufacture Date</th>
-                            <th>Expire Date</th>
                             <th>Selling Price</th>
                             <th>Purchased Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
-
-
-
-
                         </tr>
                     </thead>
-
-
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                            <td>$320,800</td>
-                        </tr>
-                    </tbody>
+                    <?php
+                    $drug->list_grn_detail();
+                    ?>
                 </table>
 
 
