@@ -92,11 +92,11 @@ class Drug
         }
     }
 
-    public function add_grn_detail($grn_id, $order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total)
+    public function add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total)
     {
 
-        $add_grndetail_sql = "INSERT INTO tmp_grn_details(GRN_Id, Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
-		VALUES('" . $grn_id . "','" . $order_id . "','" . $drug_id . "','" . $batch_no . "','" . $made_date . "','" . $expire_date . "','" . $selling_price . "','" . $purchased_price . "','" . $quantity . "','" . $total . "')";
+        $add_grndetail_sql = "INSERT INTO tmp_grn_details(Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
+		VALUES('" . $order_id . "','" . $drug_id . "','" . $batch_no . "','" . $made_date . "','" . $expire_date . "','" . $selling_price . "','" . $purchased_price . "','" . $quantity . "','" . $total . "')";
         mysqli_query($this->sqlcon, $add_grndetail_sql);
     }
 }

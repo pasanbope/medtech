@@ -32,8 +32,8 @@ $day = date("Y/m/d");
                     <form>
                         <div class="row g-2">
                             <div class="mb-3 col-md-6 position-relative" id="datepicker1">
-                                <label for="example-number" class="form-label">Batch Number</label>
-                                <input class="form-control" id="batchNo" type="number" name="number"
+                                <label for="example-number" class="form-label">Order Number</label>
+                                <input class="form-control" id="ONo" type="number" name="number"
                                     placeholder="Batch Number">
                             </div>
 
@@ -47,7 +47,7 @@ $day = date("Y/m/d");
                         <div class="row g-2">
                             <div class="mb-3 col-md-4">
                                 <label for="selectdr" class="form-label">Select Supplier</label>
-                                <select class="form-control select2" data-toggle="select2">
+                                <select class="form-control select2" data-toggle="select2" id="sup">
                                     <option>Select </option>
                                     <?php
                                     // Include the drug class file
@@ -62,7 +62,7 @@ $day = date("Y/m/d");
 
                             <div class="mb-3 col-md-4">
                                 <label for="selectdr" class="form-label">Select Product</label>
-                                <select class="form-control select2" data-toggle="select2">
+                                <select class="form-control select2" data-toggle="select2" id="drug">
                                     <option>Select </option>
                                     <?php
                                     // Include the drug class file
@@ -128,6 +128,9 @@ $day = date("Y/m/d");
                                     <input class="form-control" id="totalp" type="number" name="number">
                                 </div>
                             </div>
+                            <div class="mb-3 col-md-12">
+                                <div id="result"></div>
+                            </div>
                         </div>
 
                         <br>
@@ -146,12 +149,20 @@ $day = date("Y/m/d");
                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>GRN ID</th>
+                            <th>Order ID</th>
+                            <th>Drug ID</th>
+                            <th>Batch No</th>
+                            <th>Manufacture Date</th>
+                            <th>Expire Date</th>
+                            <th>Selling Price</th>
+                            <th>Purchased Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+
+
+
+
                         </tr>
                     </thead>
 
@@ -164,6 +175,10 @@ $day = date("Y/m/d");
                             <td>61</td>
                             <td>2011/04/25</td>
                             <td>$320,800</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
                         </tr>
                         <tr>
                             <td>Garrett Winters</td>
@@ -172,6 +187,10 @@ $day = date("Y/m/d");
                             <td>63</td>
                             <td>2011/07/25</td>
                             <td>$170,750</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
                         </tr>
                     </tbody>
                 </table>
@@ -195,16 +214,15 @@ $day = date("Y/m/d");
                     $.post(
                         "actions/add_grn_detail.php",
                         {
-                            grn_id: $('#Title').val(),
-                            order_id: $('#firstname').val(),
-                            drug_id: $('#lastname').val(),
-                            batch_no: $('#Tel').val(),
-                            made_date: $('#Address').val(),
-                            expire_date: $('#Bday').val(),
-                            selling_price: $('#Gender').val(),
-                            purchased_price: $('#Gender').val(),
-                            quantity: $('#Gender').val(),
-                            total: $('#Gender').val(),
+                            order_id: $('#ONo').val(),
+                            drug_id: $('#drug').val(),
+                            batch_no: $('#batchNo').val(),
+                            made_date: $('#mdate').val(),
+                            expire_date: $('#edate').val(),
+                            selling_price: $('#sprice').val(),
+                            purchased_price: $('#pprice').val(),
+                            quantity: $('#qty').val(),
+                            total: $('#totalp').val(),
                         },
                         function (data) {
                             $('#result').html(data);
