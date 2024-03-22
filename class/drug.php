@@ -101,7 +101,11 @@ class Drug
 
         $add_grndetail_sql = "INSERT INTO tmp_grn_details (Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
 		VALUES($order_id, $drug_id, '$batch_no', '$made_date', '$expire_date', $selling_price, $purchased_price, $quantity, $total)";
-        mysqli_query($this->sqlcon, $add_grndetail_sql);
+        if (mysqli_query($this->sqlcon, $add_grndetail_sql)) {
+            return True;
+        } else {
+            return False;
+        }
     }
 
 
@@ -113,12 +117,17 @@ class Drug
         $res_getgrn = mysqli_query($this->sqlcon, $sql_getgrn);
         while ($row_grn = mysqli_fetch_array($res_getgrn)) {
             $drug = $row_grn['Drug_Id'];
+            $grn_id = $row_grn['GRN_Id'];
+            echo "<tr>";
             echo "<td>" . $this->get_drug($drug) . "</td>";
             echo "<td>" . $row_grn['BatchNo'] . "</td>";
             echo "<td>" . $row_grn['SellingPrice'] . "</td>";
             echo "<td>" . $row_grn['PurchasedPrice'] . "</td>";
             echo "<td>" . $row_grn['Quantity'] . "</td>";
             echo "<td>" . $row_grn['Total'] . "</td>";
+            echo "<td><a id = '" . $grn_id . "'  href='javascript: void(0);' class='action-icon btn_delGRN'> 
+            <i class='mdi mdi-delete'></i></a></td>";
+            echo "</tr>";
         }
         echo "</tbody>";
 
@@ -131,5 +140,23 @@ class Drug
         $row_get_drug = mysqli_fetch_array($res_get_drug);
         return $row_get_drug['BrandName'];
     }
+
+    public function del_grn_detail($grn_id)
+    {
+        $sql_del_grn = "DELETE FROM tmp_grn_details WHERE GRN_Id = $grn_id";
+        mysqli_query($this->sqlcon, $sql_del_grn);
+
+    }
+
+    public function get_grn_sum()
+    {
+
+        $sql_getgrn = "SELECT SUM(Total) AS Total FROM tmp_grn_details";
+        $res_getgrn = mysqli_query($this->sqlcon, $sql_getgrn);
+        $row_grn = mysqli_fetch_array($res_getgrn);
+        return $row_grn['Total'];
+
+    }
+
 }
 ?>
