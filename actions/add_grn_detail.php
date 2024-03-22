@@ -22,12 +22,30 @@ if (($order_id == '') or ($drug_id == '') or ($batch_no == '') or ($made_date ==
     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
     <strong>Warning - </strong> Cannot Add Empty Data — check it out!
 </div>";
-} else {
+}else {
     $drug->add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total);
-    echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
-    <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
-    <strong>Success - </strong> GRN Added!
-</div>";
+    ?>
+    <div class="card">
+        <div class="card-body">
+            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Batch No</th>
+                        <th>Selling Price</th>
+                        <th>Purchased Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <?php $drug->list_grn_detail(); ?>
+            </table>
+            <br>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+    <?php
 }
+
 
 ?>

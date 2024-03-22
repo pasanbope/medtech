@@ -143,7 +143,7 @@ $day = date("Y/m/d");
             </div>
         </div> <!-- content -->
 
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-body">
 
                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
@@ -166,7 +166,7 @@ $day = date("Y/m/d");
                 <br>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </div>
+        </div> -->
 
         <script>
             $(document).ready(function () {
