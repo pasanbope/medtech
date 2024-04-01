@@ -44,7 +44,7 @@ if (($order_id == '') or ($drug_id == '') or ($batch_no == '') or ($made_date ==
             </div>
             <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" id="colFormLabel" value="<?php echo $drug->get_grn_sum(); ?>">
+                <input type="text" class="form-control" id="colFormLabel" value="<?php echo $drug->get_grn_sum($order_id); ?>">
             </div>
         </div>
         <?php

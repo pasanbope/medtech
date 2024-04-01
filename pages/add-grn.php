@@ -4,6 +4,15 @@
 $day = date("Y/m/d");
 ?>
 
+<?php
+// Include the Patient class file
+include 'class/drug.php';
+
+// Create an instance of the Patient class
+$drug = new Drug();
+$order_num = $drug->get_SerialNo('Order No');
+?>
+
 <div class="content">
 
     <!-- Start Content-->
@@ -34,7 +43,7 @@ $day = date("Y/m/d");
                             <div class="mb-3 col-md-6 position-relative" id="datepicker1">
                                 <label for="example-number" class="form-label">Order Number</label>
                                 <input class="form-control" id="ONo" type="number" name="number"
-                                    placeholder="Batch Number">
+                                    placeholder="Batch Number" value="<?php echo $order_num; ?>">
                             </div>
 
                             <div class="mb-3 col-md-6 position-relative" id="datepicker2">
@@ -65,11 +74,6 @@ $day = date("Y/m/d");
                                 <select class="form-control select2" data-toggle="select2" id="drug">
                                     <option>Select </option>
                                     <?php
-                                    // Include the drug class file
-                                    include 'class/drug.php';
-
-                                    // Create an instance of the drug class
-                                    $drug = new Drug();
                                     $drug->select_drug();
                                     ?>
                                 </select>
@@ -168,7 +172,7 @@ $day = date("Y/m/d");
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="colFormLabel"
-                                value="<?php echo $drug->get_grn_sum(); ?>">
+                                value="<?php echo $drug->get_grn_sum($order_num); ?>">
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ class Drug
         //include 'config/db-config.php';
         $this->sqlcon = mysqli_connect($sql_server, $sql_username, $sql_password, $sql_database);
         if (!$this->sqlcon) {
-            die ('Connection Failed :' . mysqli_connect_error());
+            die('Connection Failed :' . mysqli_connect_error());
         }
     }
 
@@ -148,15 +148,106 @@ class Drug
 
     }
 
-    public function get_grn_sum()
+    public function get_grn_sum($order_id)
     {
 
-        $sql_getgrn = "SELECT SUM(Total) AS Total FROM tmp_grn_details";
+        $sql_getgrn = "SELECT SUM(Total) AS Total FROM tmp_grn_details WHERE Order_Id = $order_id";
         $res_getgrn = mysqli_query($this->sqlcon, $sql_getgrn);
         $row_grn = mysqli_fetch_array($res_getgrn);
         return $row_grn['Total'];
 
     }
+
+    public function get_SerialNo($serial_name)
+    {
+
+        $sql_get_SerialNo = "SELECT * FROM tbl_serial WHERE Serial_Name = '$serial_name'";
+        $res_get_SerialNo = mysqli_query($this->sqlcon, $sql_get_SerialNo);
+        $row_get_SerialNo = mysqli_fetch_array($res_get_SerialNo);
+        return $row_get_SerialNo['Serial_No'];
+
+    }
+
+    public function update_GRNDetails($order_id)
+    {
+            $sql_getgrn = "SELECT * FROM tmp_grn_details WHERE Order_Id	= $order_id";
+            $res_getgrn = mysqli_query($this->sqlcon, $sql_getgrn);
+            while ($row_grn = mysqli_fetch_array($res_getgrn)) {
+
+                $grn_id = $row_grn['GRN_Id'];
+                $drug = $row_grn['Drug_Id'];
+                $batch = $row_grn['BatchNo'];
+                $made_date = $row_grn['MadeDate'];
+                $exp_date = $row_grn['ExpireDate'];
+                $Sell = $row_grn['SellingPrice'];
+                $purchased = $row_grn['PurchasedPrice'];
+                $qty = $row_grn['Quantity'];
+                $total = $row_grn['Total'];
+
+            $sql_addgrn = "INSERT INTO grn_details(Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, Rate, PurchasedPrice, Quantity, Total) 
+            VALUES($order_id, $drug, '$batch', '$made_date', '$exp_date', $Sell, $purchased, $qty, $total)";
+            mysqli_query($this->sqlcon, $sql_addgrn);
+
+    }
+
+}
+
+public function get_stock($drug_id)
+{
+    $sql_get_stock = "SELECT * FROM stock WHERE Drug_Id = $drug_id";
+    $res_get_stock = mysqli_query($this->sqlcon, $sql_get_stock);
+    $row_get_stock = mysqli_fetch_array($res_get_stock);
+    return $row_get_stock['Quantity'];
+}
+
+public function get_batch_stock($drug_id, $batch_no)
+{
+    $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = $batch_no";
+    $res_get_bstock = mysqli_query($this->sqlcon, $sql_get_bstock);
+    $row_get_bstock = mysqli_fetch_array($res_get_bstock);
+    return $row_get_bstock['Quantity'];
+}
+
+public function get_stock_availability($drug_id)
+{
+    $sql_get_count = "SELECT * FROM stock WHERE Drug_Id = $drug_id";
+    $res_get_count= mysqli_query($this->sqlcon, $sql_get_count);
+    $row_get_count = mysqli_num_rows($res_get_count);
+    return $row_get_count;
+}
+
+public function get_batch_stockAvailability($drug_id, $batch_no)
+{
+    $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = $batch_no";
+    $res_get_bstock = mysqli_query($this->sqlcon, $sql_get_bstock);
+    $row_get_bstock = mysqli_num_rows($res_get_bstock);
+    return $row_get_bstock;
+}
+
+public function add_stock($drug_id, $Qty, $last_grn_date, $last_bill_date)
+    {
+
+        $add_stock_sql = "INSERT INTO stock (Drug_Id, Quantity, Last_GRN_Date, Last_Bill_Date ) 
+		VALUES($drug_id, $Qty, '$last_grn_date', '$last_bill_date')";
+        if (mysqli_query($this->sqlcon, $add_stock_sql)) {
+            return True;
+        } else {
+            return False;
+        }
+    }
+
+    public function add_batch_stock($drug_id, $batch_no, $qty, $made_date, $exp_date)
+    {
+        $add_batchstock_sql = "INSERT INTO stock (Drug_Id, Batch_No, Quantity, MadeDate, ExpireDate ) 
+		VALUES($drug_id, '$batch_no', $qty, '$made_date', 'ExpireDate')";
+        if (mysqli_query($this->sqlcon, $add_batchstock_sql)) {
+            return True;
+        } else {
+            return False;
+        }
+    }
+
+
 
 }
 ?>

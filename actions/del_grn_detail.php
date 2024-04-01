@@ -31,7 +31,8 @@ $drug->del_grn_detail($grn_id);
     </div>
     <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
     <div class="col-sm-3">
-        <input type="text" class="form-control" id="colFormLabel" value="<?php echo $drug->get_grn_sum(); ?>">
+        <?php $order_num = $drug->get_SerialNo('Order No'); ?>
+        <input type="text" class="form-control" id="colFormLabel" value="<?php echo $drug->get_grn_sum($order_num); ?>">
     </div>
 </div>
 <?php
