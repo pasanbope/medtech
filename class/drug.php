@@ -247,6 +247,19 @@ public function add_stock($drug_id, $Qty, $last_grn_date, $last_bill_date)
         }
     }
 
+    public function update_stock($drug_id, $Qty, $last_grn_date, $last_bill_date )
+    {
+        $sql_update = "UPDATE stock SET Quantity = $Qty , Last_GRN_Date = '$last_grn_date', Last_Bill_Date = '$last_bill_date' WHERE Drug_Id  = $drug_id";
+        mysqli_query($this->sqlcon, $sql_update);
+    }
+
+    public function update_batch_stock($drug_id, $batch_no, $qty, $made_date, $exp_date )
+    { 
+        $sql_update = "UPDATE batch_stock SET Quantity = $qty , MadeDate = '$made_date', ExpireDate = '$exp_date' 
+        WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
+        mysqli_query($this->sqlcon, $sql_update);
+    }
+
 
 
 }
