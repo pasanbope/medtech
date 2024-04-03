@@ -101,7 +101,11 @@ class Drug
 
         $add_grndetail_sql = "INSERT INTO tmp_grn_details (Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, SellingPrice, PurchasedPrice, Quantity, Total) 
 		VALUES($order_id, $drug_id, '$batch_no', '$made_date', '$expire_date', $selling_price, $purchased_price, $quantity, $total)";
-        mysqli_query($this->sqlcon, $add_grndetail_sql);
+        if (mysqli_query($this->sqlcon, $add_grndetail_sql)) {
+            return True;
+        } else {
+            return False;
+        }
 
     }
 
@@ -179,13 +183,11 @@ class Drug
         $current_serial = $this->get_SerialNo($serial_name);
         $new_serial = $current_serial + 1;
         $this->update_SerialNo($serial_name, $new_serial);
-        echo $new_serial;
-
     }
 
 
 
-    public function update_GRNDetails($order_id, $supplier_id, $date, )
+    public function update_GRNDetails($order_id, $supplier_id, $date)
     {
         $sql_getgrn = "SELECT * FROM tmp_grn_details WHERE Order_Id	= $order_id";
         $res_getgrn = mysqli_query($this->sqlcon, $sql_getgrn);
@@ -201,9 +203,7 @@ class Drug
             $qty = $row_grn['Quantity'];
             $total = $row_grn['Total'];
 
-            $sql_addgrn = "INSERT INTO grn_details(Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, Rate, PurchasedPrice, Quantity, Total) 
-            VALUES($order_id, $drug, '$batch', '$made_date', '$exp_date', $Sell, $purchased, $qty, $total)";
-            mysqli_query($this->sqlcon, $sql_addgrn);
+            $this->add_grn_details($order_id, $drug, $batch, $made_date, $exp_date, $Sell, $purchased, $qty, $total);
 
             if ($this->get_stock_availability($drug) > 0) {
                 $current_stock = $this->get_stock($drug);
@@ -220,18 +220,25 @@ class Drug
             } else {
                 $this->add_batch_stock($drug, $batch, $qty, $made_date, $exp_date);
             }
-
-
-
-
-            $sql_delgrn = "DELETE FROM tmp_grn_details WHERE GRN_Id = $grn_id";
-            mysqli_query($this->sqlcon, $sql_delgrn);
-
         }
-        $net_total = $this->get_grn_sum($order_id);
-        $this->add_grn_master($order_id, $supplier_id, $date, $net_total);
 
+        $net_total = $this->get_grn_sum($order_id);
+        $sql_delgrn = "DELETE FROM tmp_grn_details WHERE Order_Id = $order_id";
+        mysqli_query($this->sqlcon, $sql_delgrn);
+        $this->add_grn_master($order_id, $supplier_id, $date, $net_total);
     }
+
+    public function add_grn_details($order_id, $drug, $batch, $made_date, $exp_date, $Sell, $purchased, $qty, $total)
+    {
+        $sql_addgrn = "INSERT INTO grn_details (Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, Rate, PurchasedPrice, Quantity, Total) VALUES ($order_id, $drug, '$batch', '$made_date', '$exp_date', $Sell, $purchased, $qty, $total)";
+        if (mysqli_query($this->sqlcon, $sql_addgrn)) {
+            return True;
+        } else {
+            return False;
+        }
+    }
+
+
 
     public function get_stock($drug_id)
     {
@@ -243,7 +250,7 @@ class Drug
 
     public function get_batch_stock($drug_id, $batch_no)
     {
-        $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = $batch_no";
+        $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
         $res_get_bstock = mysqli_query($this->sqlcon, $sql_get_bstock);
         $row_get_bstock = mysqli_fetch_array($res_get_bstock);
         return $row_get_bstock['Quantity'];
@@ -259,7 +266,7 @@ class Drug
 
     public function get_batch_stockAvailability($drug_id, $batch_no)
     {
-        $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = $batch_no";
+        $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
         $res_get_bstock = mysqli_query($this->sqlcon, $sql_get_bstock);
         $row_get_bstock = mysqli_num_rows($res_get_bstock);
         return $row_get_bstock;
@@ -279,8 +286,8 @@ class Drug
 
     public function add_batch_stock($drug_id, $batch_no, $qty, $made_date, $exp_date)
     {
-        $add_batchstock_sql = "INSERT INTO stock (Drug_Id, Batch_No, Quantity, MadeDate, ExpireDate ) 
-		VALUES($drug_id, '$batch_no', $qty, '$made_date', 'ExpireDate')";
+        $add_batchstock_sql = "INSERT INTO batch_stock (Drug_Id, Batch_No, Quantity, MadeDate, ExpireDate ) 
+		VALUES($drug_id, '$batch_no', $qty, '$made_date', '$exp_date')";
         if (mysqli_query($this->sqlcon, $add_batchstock_sql)) {
             return True;
         } else {

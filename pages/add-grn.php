@@ -239,7 +239,7 @@ $order_num = $drug->get_SerialNo('Order No');
                             sup_id: $('#sup').val(),
                         },
                         function (data) {
-                            $('#viewGRNS').html(data);
+                            $('#viewGRN').html(data);
                         });
 
                 });
