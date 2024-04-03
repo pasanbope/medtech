@@ -49,8 +49,7 @@ $order_num = $drug->get_SerialNo('Order No');
                             <div class="mb-3 col-md-6 position-relative" id="datepicker2">
                                 <label class="form-label">Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker"
-                                    data-date-container="#datepicker2" placeholder="Expire Date" id="edate"
-                                    value="<?php echo $day; ?>">
+                                    data-date-container="#datepicker2" id="GRN_date" value="<?php echo $day; ?>">
                             </div>
                         </div>
                         <div class="row g-2">
@@ -178,7 +177,14 @@ $order_num = $drug->get_SerialNo('Order No');
                 </div>
 
                 <br>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <div class="mb-2 row">
+                    <div class="mb-3 col-md-3">
+                        <button type="button" id="grn_save" class="btn btn-primary">Proceed GRN</button>
+                    </div>
+                    <div class="mb-3 col-md-9">
+                        <div id="viewGRNS"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -219,6 +225,21 @@ $order_num = $drug->get_SerialNo('Order No');
                         },
                         function (data) {
                             $('#viewGRN').html(data);
+                        });
+
+                });
+
+                //Procued button
+                $("#grn_save").click(function () {
+                    $.post(
+                        "actions/proceed_grn.php",
+                        {
+                            order_id: $('#ONo').val(),
+                            grn_date: $('#GRN_date').val(),
+                            sup_id: $('#sup').val(),
+                        },
+                        function (data) {
+                            $('#viewGRNS').html(data);
                         });
 
                 });
