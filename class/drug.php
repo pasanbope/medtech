@@ -111,7 +111,7 @@ class Drug
 
 
 
-    public function list_grn_detail()
+    public function mlist_grn_detail()
     {
         echo "<tbody>";
         $sql_getgrn = "SELECT * FROM tmp_grn_details";

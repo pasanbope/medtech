@@ -29,7 +29,7 @@ $order_num = $drug->get_SerialNo('Order No');
                             <li class="breadcrumb-item active">Add GRN</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Add New Drugs</h4>
+                    <h4 class="page-title">Add GRN</h4>
                 </div>
             </div>
         </div>
