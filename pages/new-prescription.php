@@ -95,20 +95,21 @@ $prescription_num = $drug->get_SerialNo('Prescription No');
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label for="inputGender" class="form-label">Batch</label>
-                                <select id="Gender" class="form-select">
-                                    <option>123</option>
-                                    <option>123</option>
-                                </select>
+                                <div id="get_batch">
+                                    <select id="batch" class="form-select">
+                                        <option>123</option>
+                                        <option>123</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="mb-3 col-md-3 position-relative" id="datepicker2">
-                                <label class="form-label">Manufacture Date</label>
-                                <input type="text" class="form-control" data-provide="datepicker"
-                                    data-date-container="#datepicker2" id="GRN_date" value="<?php echo $day; ?>">
+                            <div class="mb-3 col-md-3">
+                                <label for="lastname4" class="form-label">Available Stock</label>
+                                <input type="number" class="form-control" id="stock">
                             </div>
                             <div class="mb-3 col-md-3 position-relative" id="datepicker2">
                                 <label class="form-label">Expire Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker"
-                                    data-date-container="#datepicker2" id="GRN_date" value="<?php echo $day; ?>">
+                                    data-date-container="#datepicker2" id="exp_date">
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result"></div>
@@ -152,80 +153,240 @@ $prescription_num = $drug->get_SerialNo('Prescription No');
                             </div>
                         </div>
 
-                        </div>
-                        <br>
-                        <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
-                    </form>
-                    <!-- end add new doctor form -->
-                </div> <!-- end row-->
-            </div>
-        </div> <!-- container -->
-
-        <div class="card">
-            <div class="card-body">
-                <div id="viewGRN">
-                    <table class="table table-striped table-centered mb-0">
-                        <thead>
-                            <tr>
-                                <th>Drug Name</th>
-                                <th>Batch No</th>
-                                <th>Selling Price</th>
-                                <th>Purchased Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <?php
-                        $drug->list_grn_detail();
-                        ?>
-                    </table><br />
-                    <div class="mb-2 row">
-                        <div class="col-sm-7">
-                        </div>
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="colFormLabel"
-                                value="<?php echo $drug->get_grn_sum($order_num); ?>">
-                        </div>
-                    </div>
                 </div>
-
                 <br>
-                <div class="mb-2 row">
-                    <div class="mb-3 col-md-3">
-                        <button type="button" id="grn_save" class="btn btn-primary">Proceed GRN</button>
-                    </div>
-                    <div class="mb-3 col-md-9">
-                        <div id="viewGRNS"></div>
-                    </div>
-                </div>
-            </div>
+                <button type="button" id="adddoc_btn" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary">Reset</button>
+                </form>
+                <!-- end add new doctor form -->
+            </div> <!-- end row-->
         </div>
+    </div> <!-- container -->
 
-        <script>
-            $(document).ready(function () {
-                $("#adddoc_btn").click(function () {
-                    $.post(
-                        "actions/add_doc.php",
-                        {
-                            title: $('#Title').val(),
-                            firstname: $('#Firstname').val(),
-                            lastname: $('#Lastname').val(),
-                            tel: $('#Tel').val(),
-                            address: $('#Address').val(),
-                            designation: $('#Designation').val(),
-                            nic: $('#NIC').val(),
-                            gender: $('#Gender').val(),
-                        },
-                        function (data) {
-                            $('#result').html(data);
-                        });
+    <div class="table-responsive">
+        <table class="table table-centered table-nowrap mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th style="width: 20px;">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck1">
+                            <label class="form-check-label" for="customCheck1">&nbsp;</label>
+                        </div>
+                    </th>
+                    <th>Drug Name</th>
+                    <th>Expire Date</th>
+                    <th>Quantity</th>
+                    <th>Frequency</th>
+                    <th>Quantity</th>
+                    <th>Remarks</th>
+                    <th>Adviced</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        01
+                    </td>
+                    <td>
+                        Mr.Tineth Vihanga
+                    </td>
+                    <td>
+                        077-4572345
+                    </td>
+                    <td>
+                        Dr.Suranjata
+                    </td>
+                    <td>
+                        4:30 PM
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
 
-                });
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        02
+                    </td>
+                    <td>
+                        Mr.Imesh Naveen
+                    </td>
+                    <td>
+                        077-4572345
+                    </td>
+                    <td>
+                        Dr.Wasantha
+                    </td>
+                    <td>
+                        4:49 PM
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        03
+                    </td>
+                    <td>
+                        Mr.Tharuka Pathirage
+                    </td>
+                    <td>
+                        077-4572345
+                    </td>
+                    <td>
+                        Dr.Suranjaya
+                    </td>
+                    <td>
+                        5:30 PM
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        04
+                    </td>
+                    <td>
+                        Mr.Pasindu Hansaka
+                    </td>
+                    <td>
+                        077-4572345
+                    </td>
+                    <td>
+                        Dr.Suranjaya
+                    </td>
+                    <td>
+                        4:50 PM
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        05
+                    </td>
+                    <td>
+                        Mr. Jeewantha Jayamal
+                    </td>
+                    <td>
+                        077-4572345
+                    </td>
+                    <td>
+                        Dr.Suranjaya
+                    </td>
+                    <td>
+                        4:35 PM
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#adddoc_btn").click(function () {
+                $.post(
+                    "actions/add_doc.php",
+                    {
+                        title: $('#Title').val(),
+                        firstname: $('#Firstname').val(),
+                        lastname: $('#Lastname').val(),
+                        tel: $('#Tel').val(),
+                        address: $('#Address').val(),
+                        designation: $('#Designation').val(),
+                        nic: $('#NIC').val(),
+                        gender: $('#Gender').val(),
+                    },
+                    function (data) {
+                        $('#result').html(data);
+                    });
+
             });
 
-        </script>
 
-    </div> <!-- content -->
+            $("#patient").change(function () {
+                $.post(
+                    "actions/get_age.php",
+                    {
+                        patient_id: $('#patient').val(),
+                    },
+                    function (data) {
+                        $('#age').val(data);
+                    });
+            });
+
+            $("#drug").change(function () {
+                $.post(
+                    "actions/get_batch.php",
+                    {
+                        drug_id: $('#drug').val(),
+                    },
+                    function (data) {
+                        $('#get_batch').html(data);
+                    });
+            });
+
+            $("#batch").change(function () {
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: "actions/get_batch_stock_data.php",
+                    data: {
+                        batch_id: $('#batch').val(),
+                        drug_id: $('#drug').val()
+                    },
+                    success: function (data) {
+                        $('#stock').val(data['Quantity']);
+                        $('#exp_date').val(data['ExpireDate']);
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</div> <!-- content -->

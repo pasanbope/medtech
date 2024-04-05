@@ -126,7 +126,7 @@ class Doctor
 
     public function check_appoinment($day, $doc_id)
     {
-        $sql_book_app = "SELECT * FROM doctor_schedule WHERE Date = '$day' AND Doctor_Id = $doc_id";
+        $sql_book_app = "SELECT * FROM appointment WHERE Date = '$day' AND Doctor_Id = $doc_id";
         $res_book_app = mysqli_query($this->sqlcon, $sql_book_app);
         $row_book_app = mysqli_num_rows($res_book_app);
         return json_encode($row_book_app);

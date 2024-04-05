@@ -50,11 +50,19 @@ class Patient
 
 	public function select_patient()
 	{
-		$sql_pat = "select * from patient";
+		$sql_pat = "SELECT * from patient";
 		$res_pat = mysqli_query($this->sqlcon, $sql_pat);
 		while ($row_pat = mysqli_fetch_array($res_pat)) {
 			echo '<option value="' . $row_pat['Patient_Id'] . '">' . $row_pat['Title'] . ' ' . $row_pat['FirstName'] . ' ' . $row_pat['LastName'] . '</option>';
 		}
+	}
+
+	public function get_details_By_Id($patient_id, $col)
+	{
+		$sql_pat_details = "SELECT * FROM patient WHERE Patient_Id = $patient_id";
+		$res_pat_details = mysqli_query($this->sqlcon, $sql_pat_details);
+		$row_pat_details = mysqli_fetch_array($res_pat_details);
+		return $row_pat_details[$col];
 	}
 
 }

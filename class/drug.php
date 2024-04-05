@@ -96,6 +96,15 @@ class Drug
         }
     }
 
+    public function select_batch_from_drug($drug_id)
+    {
+        $sql_drug = "SELECT * from batch_stock WHERE Drug_Id = $drug_id";
+        $res_drug = mysqli_query($this->sqlcon, $sql_drug);
+        while ($row_drug = mysqli_fetch_array($res_drug)) {
+            echo '<option value="' . $row_drug['Batch_No'] . '">' . $row_drug['Batch_No'] . ' ' . '</option>';
+        }
+    }
+
     public function add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total)
     {
 
@@ -111,7 +120,7 @@ class Drug
 
 
 
-    public function mlist_grn_detail()
+    public function list_grn_detail()
     {
         echo "<tbody>";
         $sql_getgrn = "SELECT * FROM tmp_grn_details";
@@ -326,6 +335,15 @@ class Drug
             return False;
         }
     }
+
+    public function get_batch_stock_details($drug_id, $batch_no)
+    {
+        $sql_get_batch = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
+        $res_get_batch = mysqli_query($this->sqlcon, $sql_get_batch);
+        $row_get_batch = mysqli_fetch_array($res_get_batch);
+        return json_encode($row_get_batch);
+    }
+
 
 
 
