@@ -1,14 +1,13 @@
 <?php
 
 $Pres_ID = $_POST['pres_id'];
-$App_ID = $_POST[1];
 $Pat_ID = $_POST['pat_id'];
-$Doc_ID = $_POST[1];
+$doc_id = $_POST['doc_id'];
 $Date = $_POST['date'];
 $S_Note = $_POST['s_note'];
 $Ill = $_POST['ill'];
 $Test = $_POST['test'];
-
+$time = date('h:i:s');
 // Include the Prescription class file
 include '../class/prescription.php';
 
@@ -21,10 +20,9 @@ if ($prescription->check_pres_items($Pres_ID) <= 0) {
     <strong>Warning - </strong> A simple warning alert—check it out!
 </div>";
 } else {
-    $prescription->update_Pres_Details($Pres_ID, $drug_id, $Date, $App_ID, $Pat_ID, $Doc_ID, $time, $S_Note, $Ill, $Test);
+    $prescription->update_Pres_Details($Pres_ID, $Date, 0, $Pat_ID, $doc_id, $time, $S_Note, $Ill, $Test);
     $prescription->genarate_new_serial('Prescription No', $Pres_ID);
 }
-
 
 
 ?>

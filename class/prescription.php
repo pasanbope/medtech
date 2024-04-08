@@ -24,11 +24,11 @@ class Prescription
         return $age;
     }
 
-    public function add_pres_detail($pre_no, $batch_no, $stock, $expire_date, $drug_id, $qty, $freq, $remark, $advice)
+    public function add_pres_detail($pre_no, $batch_no, $expire_date, $drug_id, $qty, $freq, $remark, $advice)
     {
 
-        $add_Presdetail_sql = "INSERT INTO tmp_prescription_details (Prescription_N0, Batch_No, Available_Stock, Expire_Date, Drug_Id, Quantity, Frequency, Remarks, Adviced) 
-		VALUES($pre_no, $batch_no, $stock, $expire_date, $drug_id, $qty, '$freq', '$remark', '$advice')";
+        $add_Presdetail_sql = "INSERT INTO tmp_prescription_details (Prescription_NO, Batch_No, Expire_Date, Drug_Id, Quantity, Frequency, Remarks, Adviced) 
+		VALUES($pre_no, '$batch_no', '$expire_date', $drug_id, $qty, '$freq', '$remark', '$advice')";
         if (mysqli_query($this->sqlcon, $add_Presdetail_sql)) {
             return True;
         } else {
@@ -47,7 +47,7 @@ class Prescription
 
     public function list_pres_detail()
     {
-        
+
         echo "<tbody>";
         $sql_getpres = "SELECT * FROM tmp_prescription_details";
         $res_getpres = mysqli_query($this->sqlcon, $sql_getpres);
@@ -104,15 +104,14 @@ class Prescription
         $this->update_SerialNo_Pres($serial_name, $new_serial);
     }
 
-    public function update_Pres_Details($pres_no, $drug_id, $date, $app_id, $patint_id, $doc_id, $time, $note, $ill, $test)
+    public function update_Pres_Details($pres_no, $date, $app_id, $patint_id, $doc_id, $time, $note, $ill, $test)
     {
-        $sql_getpres = "SELECT * FROM tmp_prescription_details WHERE Prescription_N0 = $pres_no";
+        $sql_getpres = "SELECT * FROM tmp_prescription_details WHERE Prescription_NO = $pres_no";
         $res_getpres = mysqli_query($this->sqlcon, $sql_getpres);
         while ($row_pres = mysqli_fetch_array($res_getpres)) {
 
-            $pres_id  = ['Pres_id '];
+            $pres_id = ['Pres_id'];
             $batch = $row_pres['Batch_No'];
-            $A_srock = $row_pres['Available_Stock'];
             $exp_date = $row_pres['Expire_Date'];
             $drug = $row_pres['Drug_Id'];
             $qty = $row_pres['Quantity'];
@@ -120,12 +119,12 @@ class Prescription
             $remark = $row_pres['Remarks'];
             $advice = $row_pres['Adviced'];
 
-            $this->add_pres_details($pres_no, $drug_id, $qty, $freq, $remark, $advice);
+            $this->add_pres_details($pres_no, $drug, $qty, $freq, $remark, $advice);
         }
 
-        $sql_delpres = "DELETE FROM tmp_prescription_details WHERE Prescription_No = $pres_no";
+        $sql_delpres = "DELETE FROM tmp_prescription_details WHERE Prescription_NO = $pres_no";
         mysqli_query($this->sqlcon, $sql_delpres);
-        $this->add_prescription_master($pres_id, $app_id, $patint_id, $doc_id, $date, $time, $note, $ill, $test);
+        $this->add_prescription_master($pres_no, $app_id, $patint_id, $doc_id, $date, $time, $note, $ill, $test);
     }
 
     public function add_pres_details($pres_no, $drug, $qty, $freq, $remark, $advice)
@@ -141,17 +140,17 @@ class Prescription
 
     public function check_pres_items($pres_no)
     {
-        $sql_check_pres = "SELECT * FROM tmp_prescription_details WHERE Prescription_N0 = $pres_no";
+        $sql_check_pres = "SELECT * FROM tmp_prescription_details WHERE Prescription_NO = $pres_no";
         $res_check_pres = mysqli_query($this->sqlcon, $sql_check_pres);
         $row_check_pres = mysqli_num_rows($res_check_pres);
         return $row_check_pres;
     }
 
-    public function add_prescription_master($pres_id, $app_id, $patint_id, $doc_id, $date, $time, $note, $ill, $test)
+    public function add_prescription_master($pres_id, $app_id, $patint_id, $doc_id, $p_date, $p_time, $note, $ill, $test)
     {
 
-        $add_pres_master = "INSERT INTO prescription_master (Prescription_Id, Appointment_Id, Patient_Id, Doctor_Id, Date, Time, Description, Illness, Test) 
-		VALUES($pres_id, $app_id, $patint_id, $doc_id, '$date', '$time', '$note', '$ill', '$test')";
+        $add_pres_master = "INSERT INTO prescription_master (Prescription_Id, Appointment_Id, Patient_Id, Doctor_Id, P_Date, P_Time, P_Description, Illness, Test) 
+		VALUES($pres_id, $app_id, $patint_id, $doc_id, '$p_date', '$p_time', '$note', '$ill', '$test')";
         if (mysqli_query($this->sqlcon, $add_pres_master)) {
             return True;
         } else {

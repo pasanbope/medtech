@@ -22,7 +22,7 @@ if (($Batch_Num == '') or ($Drug_Id == '') or ($Quantity == '') or ($Frequency =
     <strong>Warning - </strong> Cannot Add Empty Data — check it out!
 </div>";
 } else {
-    if ($prescription->add_pres_detail($Pres_Num, $Batch_Num, $Stock, $Exp_Date, $Drug_Id, $Quantity, $Frequency, $Remark, $Advice) == True) {
+    if ($prescription->add_pres_detail($Pres_Num, $Batch_Num, $Exp_Date, $Drug_Id, $Quantity, $Frequency, $Remark, $Advice) == True) {
         ?>
         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
             <thead>

@@ -249,23 +249,23 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
         });
 
         $("#pres_save").click(function () {
-                    $.post(
-                        "actions/proceed_prescriprion.php",
-                        {
-                            pres_id: $('#pnum').val(),
-                            // app_id: $('1').val(),
-                            pat_id: $('#patient').val(),
-                            // doc_id: $('1').val(),
-                            date: $('#PRES_date').val(),
-                            s_note: $('#S_Note').val(),
-                            ill: $('#ill').val(),
-                            test: $('#test').val(),
-                        },
-                        function (data) {
-                            $('#viewGRN').html(data);
-                        });
-
+            $.post(
+                "actions/proceed_prescriprion.php",
+                {
+                    pres_id: $('#pnum').val(),
+                    // app_id: $('1').val(),
+                    pat_id: $('#patient').val(),
+                    doc_id: <?php echo $doc_id; ?>,
+                    date: $('#PRES_date').val(),
+                    s_note: $('#S_Note').val(),
+                    ill: $('#ill').val(),
+                    test: $('#test').val(),
+                },
+                function (data) {
+                    $('#viewPRES').html(data);
                 });
+
+        });
 
 
 
