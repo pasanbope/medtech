@@ -9,5 +9,10 @@ include '../class/doctor.php';
 
 // Create an instance of the Patient class
 $doctor = new Doctor();
-echo $doctor->get_appoinment($Date, $InputDoc);
+if ($doctor->get_appoinment_docshed($Date, $InputDoc) != 0) {
+    echo $doctor->get_appoinment($Date, $InputDoc);
+} else {
+    echo " ";
+}
+
 ?>

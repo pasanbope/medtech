@@ -64,21 +64,31 @@
                                 <label for="firstname4" class="form-label">Booked</label>
                                 <input type="text" class="form-control" id="booked">
                             </div>
-                            <div class="mb-3 col-md-6">
-                                <label for="inputPat" class="form-label">Select Patient</label>
-                                <select class="form-control select2" data-toggle="select2" id="patient">
-                                    <option>Select</option>
-                                    <optgroup>
-                                        <?php
-                                        // Include the Patient class file
-                                        include 'class/Patient.php';
+                            <div class="row g-2">
+                                <div class="mb-3 col-md-6">
+                                    <label for="inputPat" class="form-label">Select Patient</label>
+                                    <select class="form-control select2" data-toggle="select2" id="patient">
+                                        <option>Select</option>
+                                        <optgroup>
+                                            <?php
+                                            // Include the Patient class file
+                                            include 'class/Patient.php';
 
-                                        // Create an instance of the Patient class
-                                        $patient = new Patient();
-                                        $patient->select_patient();
-                                        ?>
-                                    </optgroup>
-                                </select>
+                                            // Create an instance of the Patient class
+                                            $patient = new Patient();
+                                            $patient->select_patient();
+                                            ?>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label for="firstname4" class="form-label">Patient Number</label>
+                                    <input type="text" class="form-control" id="pnumber">
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label for="firstname4" class="form-label">Patient Time</label>
+                                    <input type="text" class="form-control" id="ptime">
+                                </div>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result"></div>
@@ -121,6 +131,10 @@
                         $('#Stime').val(data['Sched_Time']);
                         $('#pcount').val(data['Patient_Count']);
                         pcount_a = parseInt($('#pcount').val());
+                    },
+                    error: function (xhr, status, error) {
+                        $('#Stime').val('00:00');
+                        $('#pcount').val('');
                     }
                 });
                 var booked_count;
@@ -142,6 +156,46 @@
                     }
                 });
 
+                //Appoinment Time
+                setTimeout(function () {
+
+
+                    $.ajax({
+                        type: 'POST',
+                        dataType: "text",
+                        url: "actions/get_app_time.php",
+                        data: {
+                            Shed_Time: $('#Stime').val(),
+                            Book_Count: $('#booked').val(),
+                        },
+                        success: function (data3) {
+                            $('#ptime').val(data3);
+
+
+                        }
+                    });
+                }, 200);
+
+                //Get Appoinment Number
+                setTimeout(function () {
+
+
+                    $.ajax({
+                        type: 'POST',
+                        dataType: "text",
+                        url: "actions/get_app_num.php",
+                        data: {
+                            Doc_id: $('#doc').val(),
+                            Shed_Date: $('#datee').val(),
+                        },
+                        success: function (data4) {
+                            $('#pnumber').val(data4);
+
+
+                        }
+                    });
+                }, 200);
+
             });
 
             $("#addapp_btn").click(function () {
@@ -150,8 +204,9 @@
                     {
                         InputDoc: $('#doc').val(),
                         Date: $('#datee').val(),
-                        Intime: $('#inputTime').val(),
+                        Intime: $('#ptime').val(),
                         Patient: $('#patient').val(),
+                        PatientApp: $('#pnumber').val(),
                     },
                     function (data) {
                         $('#result').html(data);

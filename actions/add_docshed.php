@@ -30,6 +30,8 @@ if ($Patient == "") {
     $doctor = new Doctor();
     if ($doctor->check_doc_shedule($Doctor, $Date) == 0) {
         $doctor->add_doc_shedule($Date, $Doctor, $Time, $Patient);
+        $doctor->add_appoinment_forShed($Date, $Doctor);
+
     } else {
         $doctor->update_shedule($Time, $Patient, $Doctor, $Date);
     }

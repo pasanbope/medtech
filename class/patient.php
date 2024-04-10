@@ -48,12 +48,13 @@ class Patient
 
 	}
 
-	public function select_patient()
+	public function select_patient($P_id = 1)
 	{
 		$sql_pat = "SELECT * from patient";
 		$res_pat = mysqli_query($this->sqlcon, $sql_pat);
 		while ($row_pat = mysqli_fetch_array($res_pat)) {
-			echo '<option value="' . $row_pat['Patient_Id'] . '">' . $row_pat['Title'] . ' ' . $row_pat['FirstName'] . ' ' . $row_pat['LastName'] . '</option>';
+			$patient_id = $row_pat['Patient_Id'];
+			echo '<option ' . ($patient_id == $P_id ? 'selected' : '') . ' value="' . $row_pat['Patient_Id'] . '">' . $row_pat['Title'] . ' ' . $row_pat['FirstName'] . ' ' . $row_pat['LastName'] . '</option>';
 		}
 	}
 

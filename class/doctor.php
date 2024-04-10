@@ -81,6 +81,49 @@ class Doctor
         }
     }
 
+    public function add_appoinment_forShed($Date, $Doctor)
+    {
+        $sql_addshed = "INSERT INTO tbl_appoinment_number (Doc_Id, App_Date, App_Number)
+        VALUES ($Doctor, '$Date', 1)";
+        mysqli_query($this->sqlcon, $sql_addshed);
+    }
+
+
+    public function add_appoinment($Date, $InputDoc, $Patient, $Ptime, $PatAppNum)
+    {
+        $sql_addap = "INSERT INTO appointment(Date, Doctor_Id, Patient_Id, Time, Patient_App_Num)
+        VALUES ('$Date',$InputDoc,$Patient,'$Ptime', $PatAppNum)";
+        if (mysqli_query($this->sqlcon, $sql_addap)) {
+            return True;
+        } else {
+            return False;
+        }
+    }
+
+    public function view_appoinment_forShed($Date, $Doctor)
+    {
+        $sql_addshed = "SELECT * FROM tbl_appoinment_number WHERE App_Date = '$Date' AND Doc_Id = $Doctor";
+        $res_Shed = mysqli_query($this->sqlcon, $sql_addshed);
+        $row_Shed = mysqli_fetch_array($res_Shed);
+        return $row_Shed['App_Number'];
+    }
+
+    public function update_appoinment_forShed($Date, $Doctor, $Pnum)
+    {
+        $new_p_num = $Pnum + 1;
+        $sql_addshed = "UPDATE tbl_appoinment_number SET App_Number = $new_p_num WHERE App_Date = '$Date' AND Doc_Id = $Doctor";
+        mysqli_query($this->sqlcon, $sql_addshed);
+    }
+
+    public function get_patient_from_appoinment($app_no, $app_date, $doc_id)
+    {
+        $sql_get_pat_app = "SELECT * FROM appointment WHERE Patient_App_Num = $app_no AND Date = '$app_date' AND Doctor_Id = $doc_id";
+        $res_get_pat_app = mysqli_query($this->sqlcon, $sql_get_pat_app);
+        $row_get_pat_app = mysqli_fetch_array($res_get_pat_app);
+        return $row_get_pat_app['Patient_Id'];
+    }
+
+
     public function update_shedule($Time, $Patient, $Doctor, $Date)
     {
         $sql_update = "UPDATE doctor_schedule SET Sched_Time = '$Time' , Patient_Count = $Patient WHERE Doctor_Id = $Doctor AND Date = '$Date'";
@@ -130,6 +173,14 @@ class Doctor
         $res_book_app = mysqli_query($this->sqlcon, $sql_book_app);
         $row_book_app = mysqli_num_rows($res_book_app);
         return json_encode($row_book_app);
+    }
+
+    public function get_appoinment_docshed($day, $doc_id)
+    {
+        $sql_get_app2 = "SELECT * FROM doctor_schedule WHERE Date = '$day' AND Doctor_Id = $doc_id";
+        $res_get_app2 = mysqli_query($this->sqlcon, $sql_get_app2);
+        $row_get_app2 = mysqli_num_rows($res_get_app2);
+        return json_encode($row_get_app2);
     }
 
 }

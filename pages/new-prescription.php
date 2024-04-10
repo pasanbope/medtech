@@ -45,7 +45,18 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
                                 <input type="number" class="form-control" id="pnum"
                                     value="<?php echo $prescription_num; ?>">
                             </div>
-                            <div class="mb-3 col-md-8"></div>
+
+                            <div class="mb-3 col-md-1"></div>
+
+                            <div class="mb-3 col-md-3">
+                                <label for="firstname4" class="form-label">Appoinment Search</label>
+                                <input type="number" class="form-control" id="search"
+                                    placeholder="Enter Appoint Number">
+                            </div>
+
+
+                            <div class="mb-3 col-md-3"></div>
+
                             <div class="mb-3 col-md-2 position-relative" id="datepicker2">
                                 <label class="form-label">Date</label>
                                 <input type="text" class="form-control" data-provide="datepicker"
@@ -56,19 +67,21 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
                         <div class="row g-2">
                             <div class="mb-3 col-md-4">
                                 <label for="inputPat" class="form-label">Select Patient</label>
-                                <select class="form-control select2" data-toggle="select2" id="patient">
-                                    <option>Select</option>
-                                    <optgroup>
-                                        <?php
-                                        // Include the Patient class file
-                                        include 'class/Patient.php';
+                                <div id="view_patient">
+                                    <select class="form-control select2" data-toggle="select2" id="patient">
+                                        <option>Select</option>
+                                        <optgroup>
+                                            <?php
+                                            // Include the Patient class file
+                                            include 'class/Patient.php';
 
-                                        // Create an instance of the Patient class
-                                        $patient = new Patient();
-                                        $patient->select_patient();
-                                        ?>
-                                    </optgroup>
-                                </select>
+                                            // Create an instance of the Patient class
+                                            $patient = new Patient();
+                                            $patient->select_patient();
+                                            ?>
+                                        </optgroup>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="mb-3 col-md-2">
@@ -278,6 +291,20 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
                 function (data) {
                     $('#age').val(data);
                 });
+        });
+
+        $("#search").on('input', function () {
+
+            $.post(
+                "actions/get_patient_for_appoinment.php",
+                {
+                    App_no: $(this).val(),
+                    App_date: $('#PRES_date').val(),
+                    Doc_ID: <?php echo $doc_id; ?>,
+                },
+                function (data) {
+                    $('#view_patient').html(data);
+                })
         });
 
         $("#drug").change(function () {

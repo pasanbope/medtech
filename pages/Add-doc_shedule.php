@@ -222,8 +222,8 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <?php
                             if($doctor->check_doc_shedule($doc_id, $day4)== 1){
-                                $shed_time1 = $doctor->get_shedule($day4, $doc_id, 'Sched_Time');
-                                $shed_pcount1 = $doctor->get_shedule($day4, $doc_id, 'Patient_Count');
+                                $shed_time4 = $doctor->get_shedule($day4, $doc_id, 'Sched_Time');
+                                $shed_pcount4 = $doctor->get_shedule($day4, $doc_id, 'Patient_Count');
                                 
                             } else {
                                 $shed_time4 = "";
@@ -272,8 +272,8 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <?php
                             if($doctor->check_doc_shedule($doc_id, $day5)== 1){
-                                $shed_time1 = $doctor->get_shedule($day5, $doc_id, 'Sched_Time');
-                                $shed_pcount1 = $doctor->get_shedule($day5, $doc_id, 'Patient_Count');
+                                $shed_time5 = $doctor->get_shedule($day5, $doc_id, 'Sched_Time');
+                                $shed_pcount5 = $doctor->get_shedule($day5, $doc_id, 'Patient_Count');
                                 
                             } else {
                                 $shed_time5 = "";
@@ -372,8 +372,8 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <?php
                             if($doctor->check_doc_shedule($doc_id, $day7)== 1){
-                                $shed_time1 = $doctor->get_shedule($day7, $doc_id, 'Sched_Time');
-                                $shed_pcount1 = $doctor->get_shedule($day7, $doc_id, 'Patient_Count');
+                                $shed_time7 = $doctor->get_shedule($day7, $doc_id, 'Sched_Time');
+                                $shed_pcount7 = $doctor->get_shedule($day7, $doc_id, 'Patient_Count');
                                 
                             } else {
                                 $shed_time7 = "";
@@ -472,8 +472,8 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <?php
                             if($doctor->check_doc_shedule($doc_id, $day9)== 1){
-                                $shed_time1 = $doctor->get_shedule($day9, $doc_id, 'Sched_Time');
-                                $shed_pcount1 = $doctor->get_shedule($day9, $doc_id, 'Patient_Count');
+                                $shed_time9 = $doctor->get_shedule($day9, $doc_id, 'Sched_Time');
+                                $shed_pcount9 = $doctor->get_shedule($day9, $doc_id, 'Patient_Count');
                                 
                             } else {
                                 $shed_time9 = "";
@@ -522,8 +522,8 @@ $day_name10 = date("l", $dd10);
                             </div>
                             <?php
                             if($doctor->check_doc_shedule($doc_id, $day10)== 1){
-                                $shed_time1 = $doctor->get_shedule($day10, $doc_id, 'Sched_Time');
-                                $shed_pcount1 = $doctor->get_shedule($day10, $doc_id, 'Patient_Count');
+                                $shed_time10 = $doctor->get_shedule($day10, $doc_id, 'Sched_Time');
+                                $shed_pcount10 = $doctor->get_shedule($day10, $doc_id, 'Patient_Count');
                                 
                             } else {
                                 $shed_time10 = "";
@@ -547,14 +547,10 @@ $day_name10 = date("l", $dd10);
                                 <input class="form-control" id="pat10" type="number" name="number" value="<?php echo $shed_pcount10; ?>"
                                     placeholder="Add Patients Count">
                             </div>
-                            <?php
-                            if ($roll_id == 1) {
-                                ?>
                             <div class="mb-3 col-md-2">
                                 <label for="adddoc_btn" class="form-label">&nbsp; </label><br />
                                 <button type="button" id="adddoc_btn10" class="btn btn-primary">Add</button>
                             </div>
-                            <?php } ?>
                             <div class="mb-3 col-md-12">
                                 <div id="result10"></div>
                             </div>
