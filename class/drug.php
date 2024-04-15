@@ -316,6 +316,44 @@ class Drug
         mysqli_query($this->sqlcon, $sql_update);
     }
 
+    public function list_stock()
+    {
+        echo "<tbody>";
+        $sql_getstock = "SELECT * FROM stock";
+        $res_getstock = mysqli_query($this->sqlcon, $sql_getstock);
+        while ($row_stock = mysqli_fetch_array($res_getstock)) {
+            $drug = $row_stock['Drug_Id'];
+            echo "<td>" . $this->get_drug($drug) . "</td>";
+            echo "<td>" . $row_stock['Quantity'] . "</td>";
+            echo "<td>" . $row_stock['Last_GRN_Date'] . "</td>";
+            echo "<td>" . $row_stock['Last_Bill_Date'] . "</td>";
+
+            echo "</tr>";
+        }
+        echo "</tbody>";
+
+    }
+
+    public function list_batch_stock()
+    {
+        echo "<tbody>";
+        $sql_get_bachstock = "SELECT * FROM batch_stock";
+        $res_get_bachstock = mysqli_query($this->sqlcon, $sql_get_bachstock);
+        while ($row_batchstock = mysqli_fetch_array($res_get_bachstock)) {
+            $drug = $row_batchstock['Drug_Id'];
+            echo "<td>" . $this->get_drug($drug) . "</td>";
+            echo "<td>" . $row_batchstock['Batch_No'] . "</td>";
+            echo "<td>" . $row_batchstock['Quantity'] . "</td>";
+            echo "<td>" . $row_batchstock['MadeDate'] . "</td>";
+            echo "<td>" . $row_batchstock['ExpireDate'] . "</td>";
+
+            echo "</tr>";
+        }
+        echo "</tbody>";
+
+    }
+
+
     public function check_grn_items($order_id)
     {
         $sql_check_grn = "SELECT * FROM tmp_grn_details WHERE Order_Id = $order_id";

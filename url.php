@@ -36,6 +36,10 @@ if (isset($_GET['page'])) {
         $page = 'pages/list-user-logs.php';
     }elseif ($_GET['page'] == 'profilr-doctor') {
         $page = 'pages/view-doc.php';
+    }elseif ($_GET['page'] == 'repotr-stock') {
+        $page = 'pages/list-stock.php';
+    }elseif ($_GET['page'] == 'report-batch-stock') {
+        $page = 'pages/list-batch-stock.php';
     } elseif ($_GET['page'] == 'login') {
         $page = 'pages/login.php';
     } elseif ($_GET['page'] == 'logout') {

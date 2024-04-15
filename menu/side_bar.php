@@ -161,6 +161,24 @@
             </li>
 
             <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarReport" aria-expanded="false" aria-controls="sidebarReport"
+                    class="side-nav-link">
+                    <i class="uil-file-check-alt"></i>
+                    <span> Reports </span>
+                </a>
+                <div class="collapse" id="sidebarReport">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="home.php?page=repotr-stock">Stock</a>
+                        </li>
+                        <li>
+                            <a href="home.php?page=report-batch-stock">Batch Stock</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarCategory" aria-expanded="false"
                     aria-controls="sidebarCategory" class="side-nav-link">
                     <i class="uil-book-medical"></i>
@@ -208,27 +226,29 @@
                 </div>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebaruser" aria-expanded="false" aria-controls="sidebaruser"
-                    class="side-nav-link">
-                    <i class="ri-user-add-line"></i>
-                    <span> User </span>
-                </a>
-                <div class="collapse" id="sidebaruser">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=add-user">Add User</a>
-                        </li>
-                        <li>
-                            <?php
-                            if ($roll_id == 1) {
-                                ?>
+            <?php
+            if ($roll_id == 1) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebaruser" aria-expanded="false" aria-controls="sidebaruser"
+                        class="side-nav-link">
+                        <i class="ri-user-add-line"></i>
+                        <span> User </span>
+                    </a>
+                    <div class="collapse" id="sidebaruser">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=add-user">Add User</a>
+                            </li>
+                            <li>
+
                                 <a href="home.php?page=user-logs">User Logs</a>
                             </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </li>
+
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
 
 
         </ul>
