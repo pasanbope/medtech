@@ -26,21 +26,23 @@ if ($prescription->check_pres_items($Pres_ID) <= 0) {
 
 
 ?>
-<table id="basic-datatable" class="table dt-responsive nowrap w-100">
-    <thead>
-        <tr>
-            <th>Drug Name</th>
-            <th>Batch No</th>
-            <th>Expire Date</th>
-            <th>Quantity</th>
-            <th>Frequency</th>
-            <th>Remarks</th>
-            <th>Adviced</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <?php $prescription->list_pres_detail(); ?>
-</table>
+<div class="tab-pane show active" id="buttons-table-preview">
+    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+        <thead>
+            <tr>
+                <th>Drug Name</th>
+                <th>Batch No</th>
+                <th>Expire Date</th>
+                <th>Quantity</th>
+                <th>Frequency</th>
+                <th>Remarks</th>
+                <th>Adviced</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <?php $prescription->list_pres_detail(); ?>
+    </table>
+</div>
 <script>
     $(document).ready(function () {
         $(".btn_delPRES").click(function () {

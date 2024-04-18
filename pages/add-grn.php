@@ -146,32 +146,35 @@ $order_num = $drug->get_SerialNo('Order No');
             </div>
         </div> <!-- content -->
 
+
         <div class="card">
             <div class="card-body">
                 <div id="viewGRN">
-                    <table class="table table-striped table-centered mb-0">
-                        <thead>
-                            <tr>
-                                <th>Drug Name</th>
-                                <th>Batch No</th>
-                                <th>Selling Price</th>
-                                <th>Purchased Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <?php
-                        $drug->list_grn_detail();
-                        ?>
-                    </table><br />
-                    <div class="mb-2 row">
-                        <div class="col-sm-7">
-                        </div>
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="colFormLabel"
-                                value="<?php echo $drug->get_grn_sum($order_num); ?>">
+                    <div class="tab-pane show active" id="buttons-table-preview">
+                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th>Drug Name</th>
+                                    <th>Batch No</th>
+                                    <th>Selling Price</th>
+                                    <th>Purchased Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <?php
+                            $drug->list_grn_detail();
+                            ?>
+                        </table><br />
+                        <div class="mb-2 row">
+                            <div class="col-sm-7">
+                            </div>
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="colFormLabel"
+                                    value="<?php echo $drug->get_grn_sum($order_num); ?>">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -185,6 +188,7 @@ $order_num = $drug->get_SerialNo('Order No');
                         <div id="viewGRNS"></div>
                     </div>
                 </div>
+
             </div>
         </div>
 

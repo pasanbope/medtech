@@ -120,12 +120,49 @@ class Prescription
             $advice = $row_pres['Adviced'];
 
             $this->add_pres_details($pres_no, $drug, $qty, $freq, $remark, $advice);
-        }
 
+            $current_stock = $this->get_stock($drug);
+            $new_stock = $current_stock - $qty;
+            $this->update_stock($drug, $new_stock);
+            $current_batch_stock = $this->get_batch_stock($drug, $batch);
+            $new_batch_stock = $current_batch_stock - $qty;
+            $this->update_batch_stock($drug, $batch, $new_batch_stock);
+
+        }
         $sql_delpres = "DELETE FROM tmp_prescription_details WHERE Prescription_NO = $pres_no";
         mysqli_query($this->sqlcon, $sql_delpres);
         $this->add_prescription_master($pres_no, $app_id, $patint_id, $doc_id, $date, $time, $note, $ill, $test);
     }
+
+    public function get_stock($drug_id)
+    {
+        $sql_get_stock = "SELECT * FROM stock WHERE Drug_Id = $drug_id";
+        $res_get_stock = mysqli_query($this->sqlcon, $sql_get_stock);
+        $row_get_stock = mysqli_fetch_array($res_get_stock);
+        return $row_get_stock['Quantity'];
+    }
+
+    public function update_stock($drug_id, $Qty, $last_grn_date = '0000-00-00')
+    {
+        $sql_update = "UPDATE stock SET Quantity = $Qty , Last_GRN_Date = '$last_grn_date' WHERE Drug_Id  = $drug_id";
+        mysqli_query($this->sqlcon, $sql_update);
+    }
+
+    public function get_batch_stock($drug_id, $batch_no)
+    {
+        $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
+        $res_get_bstock = mysqli_query($this->sqlcon, $sql_get_bstock);
+        $row_get_bstock = mysqli_fetch_array($res_get_bstock);
+        return $row_get_bstock['Quantity'];
+    }
+
+    public function update_batch_stock($drug_id, $batch_no, $qty)
+    {
+        $sql_update = "UPDATE batch_stock SET Quantity = $qty WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
+        mysqli_query($this->sqlcon, $sql_update);
+    }
+
+
 
     public function add_pres_details($pres_no, $drug, $qty, $freq, $remark, $advice)
     {
@@ -149,8 +186,8 @@ class Prescription
     public function add_prescription_master($pres_id, $app_id, $patint_id, $doc_id, $p_date, $p_time, $note, $ill, $test)
     {
 
-        $add_pres_master = "INSERT INTO prescription_master (Prescription_Id, Appointment_Id, Patient_Id, Doctor_Id, P_Date, P_Time, P_Description, Illness, Test) 
-		VALUES($pres_id, $app_id, $patint_id, $doc_id, '$p_date', '$p_time', '$note', '$ill', '$test')";
+        $add_pres_master = "INSERT INTO prescription_master (Prescription_Id, Appointment_Id, Patient_Id, Doctor_Id, P_Date, P_Time, P_Description, Illness, Test, Is_issued) 
+		VALUES($pres_id, $app_id, $patint_id, $doc_id, '$p_date', '$p_time', '$note', '$ill', '$test', 0)";
         if (mysqli_query($this->sqlcon, $add_pres_master)) {
             return True;
         } else {

@@ -23,20 +23,22 @@ if ($grn->check_grn_items($o_id) <= 0) {
 
 
 ?>
-<table id="basic-datatable" class="table dt-responsive nowrap w-100">
-    <thead>
-        <tr>
-            <th>Drug Name</th>
-            <th>Batch No</th>
-            <th>Selling Price</th>
-            <th>Purchased Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <?php $grn->list_grn_detail(); ?>
-</table>
+<div class="tab-pane show active" id="buttons-table-preview">
+    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+        <thead>
+            <tr>
+                <th>Drug Name</th>
+                <th>Batch No</th>
+                <th>Selling Price</th>
+                <th>Purchased Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <?php $grn->list_grn_detail(); ?>
+    </table>
+</div>
 <div class="mb-2 row">
     <div class="col-sm-7">
     </div>

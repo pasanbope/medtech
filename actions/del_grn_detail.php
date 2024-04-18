@@ -12,19 +12,21 @@ $grn_id = $_POST['grn_id'];
 $drug->del_grn_detail($grn_id);
 
 ?>
-<table id="basic-datatable" class="table dt-responsive nowrap w-100">
-    <thead>
-        <tr>
-            <th>Drug Name</th>
-            <th>Batch No</th>
-            <th>Selling Price</th>
-            <th>Purchased Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <?php $drug->list_grn_detail(); ?>
+<div class="tab-pane show active" id="buttons-table-preview">
+    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+        <thead>
+            <tr>
+                <th>Drug Name</th>
+                <th>Batch No</th>
+                <th>Selling Price</th>
+                <th>Purchased Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+</div>
+<?php $drug->list_grn_detail(); ?>
 </table>
 <div class="mb-2 row">
     <div class="col-sm-7">

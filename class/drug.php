@@ -304,7 +304,7 @@ class Drug
         }
     }
 
-    public function update_stock($drug_id, $Qty, $last_grn_date)
+    public function update_stock($drug_id, $Qty, $last_grn_date = '0000-00-00')
     {
         $sql_update = "UPDATE stock SET Quantity = $Qty , Last_GRN_Date = '$last_grn_date' WHERE Drug_Id  = $drug_id";
         mysqli_query($this->sqlcon, $sql_update);

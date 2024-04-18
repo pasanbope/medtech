@@ -117,10 +117,20 @@ class Doctor
 
     public function get_patient_from_appoinment($app_no, $app_date, $doc_id)
     {
-        $sql_get_pat_app = "SELECT * FROM appointment WHERE Patient_App_Num = $app_no AND Date = '$app_date' AND Doctor_Id = $doc_id";
-        $res_get_pat_app = mysqli_query($this->sqlcon, $sql_get_pat_app);
-        $row_get_pat_app = mysqli_fetch_array($res_get_pat_app);
-        return $row_get_pat_app['Patient_Id'];
+        if ($app_no == null) {
+            return 0;
+        } else {
+            $sql_get_pat_app = "SELECT * FROM appointment WHERE Patient_App_Num = $app_no AND Date = '$app_date' AND Doctor_Id = $doc_id";
+            $res_get_pat_app = mysqli_query($this->sqlcon, $sql_get_pat_app);
+            $row_get_pat_app_count = mysqli_num_rows($res_get_pat_app);
+            if ($row_get_pat_app_count != 0) {
+                $row_get_pat_app = mysqli_fetch_array($res_get_pat_app);
+                return $row_get_pat_app['Patient_Id'];
+            } else {
+                return 0;
+            }
+        }
+
     }
 
 

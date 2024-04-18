@@ -86,7 +86,9 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
 
                             <div class="mb-3 col-md-2">
                                 <label for="lastname4" class="form-label">Age</label>
-                                <input type="number" class="form-control" id="age">
+                                <div id="view_age">
+                                    <input type="number" class="form-control" id="age">
+                                </div>
                             </div>
 
                             <div class="mb-3 col-md-3 ">
@@ -185,8 +187,7 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
 
                 </div>
                 <br>
-                <button type="button" id="addPres_btn" class="btn btn-primary">Save</button>
-                <button type="submit" class="btn btn-primary">Reset</button>
+                <button type="button" id="addPres_btn" class="btn btn-primary">Add</button>
                 </form>
                 <!-- end add new doctor form -->
             </div> <!-- end row-->
@@ -197,23 +198,25 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
 <div class="card">
     <div class="card-body">
         <div id="viewPRES">
-            <table class="table table-striped table-centered mb-0">
-                <thead>
-                    <tr>
-                        <th>Drug Name</th>
-                        <th>Batch No</th>
-                        <th>Expire Date</th>
-                        <th>Quantity</th>
-                        <th>Frequency</th>
-                        <th>Remarks</th>
-                        <th>Adviced</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <?php
-                $prescription->list_pres_detail();
-                ?>
-            </table>
+            <div class="tab-pane show active" id="buttons-table-preview">
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                    <thead>
+                        <tr>
+                            <th>Drug Name</th>
+                            <th>Batch No</th>
+                            <th>Expire Date</th>
+                            <th>Quantity</th>
+                            <th>Frequency</th>
+                            <th>Remarks</th>
+                            <th>Adviced</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    $prescription->list_pres_detail();
+                    ?>
+                </table>
+            </div>
         </div>
 
         <br>
@@ -304,6 +307,16 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
                 },
                 function (data) {
                     $('#view_patient').html(data);
+                })
+            $.post(
+                "actions/get_patientAge_for_appoinment.php",
+                {
+                    App_no: $(this).val(),
+                    App_date: $('#PRES_date').val(),
+                    Doc_ID: <?php echo $doc_id; ?>,
+                },
+                function (datax) {
+                    $('#view_age').html(datax);
                 })
         });
 

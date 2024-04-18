@@ -1,4 +1,11 @@
+<!-- Datatables css -->
+<link href="assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
+    type="text/css" />
+
+
 <?php
+
 
 // Include the Patient class file
 include '../class/drug.php';
@@ -25,26 +32,30 @@ if (($order_id == '') or ($drug_id == '') or ($batch_no == '') or ($made_date ==
 } else {
     if ($drug->add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total) == True) {
         ?>
-        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-            <thead>
-                <tr>
-                    <th>Drug Name</th>
-                    <th>Batch No</th>
-                    <th>Selling Price</th>
-                    <th>Purchased Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <?php $drug->list_grn_detail(); ?>
-        </table>
-        <div class="mb-2 row">
-            <div class="col-sm-7">
-            </div>
-            <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
-            <div class="col-sm-3">
-                <input type="text" class="form-control" id="colFormLabel" value="<?php echo $drug->get_grn_sum($order_id); ?>">
+        <div class="tab-pane show active" id="buttons-table-preview">
+            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Batch No</th>
+                        <th>Selling Price</th>
+                        <th>Purchased Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <?php $drug->list_grn_detail(); ?>
+            </table>
+
+            <div class="mb-2 row">
+                <div class="col-sm-7">
+                </div>
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Total Amount</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="colFormLabel"
+                        value="<?php echo $drug->get_grn_sum($order_id); ?>">
+                </div>
             </div>
         </div>
         <?php
@@ -72,3 +83,12 @@ if (($order_id == '') or ($drug_id == '') or ($batch_no == '') or ($made_date ==
         });
     });
 </script>
+
+<!-- Datatables js -->
+<script src="assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+
+<!-- Datatable Init js -->
+<script src="assets/js/pages/demo.datatable-init.js"></script>

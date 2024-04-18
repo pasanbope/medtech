@@ -58,12 +58,28 @@ class Patient
 		}
 	}
 
-	public function get_details_By_Id($patient_id, $col)
+	public function get_details_By_Id($patient_id = 0, $col)
 	{
 		$sql_pat_details = "SELECT * FROM patient WHERE Patient_Id = $patient_id";
 		$res_pat_details = mysqli_query($this->sqlcon, $sql_pat_details);
-		$row_pat_details = mysqli_fetch_array($res_pat_details);
-		return $row_pat_details[$col];
+		$row_pat_details_count = mysqli_num_rows($res_pat_details);
+		if ($row_pat_details_count != 0) {
+			$row_pat_details = mysqli_fetch_array($res_pat_details);
+			return $row_pat_details[$col];
+		} else {
+			return 0;
+		}
+
+	}
+
+	public function get_birthday($bday = 0)
+	{
+		if ($bday == 0) {
+			return 0;
+		} else {
+			$age = date_diff(date_create($bday), date_create('today'))->y;
+			return $age;
+		}
 	}
 
 }
