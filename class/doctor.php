@@ -133,6 +133,44 @@ class Doctor
 
     }
 
+    public function get_doc($doc)
+    {
+        $sql_get_drug = "SELECT * FROM doctor WHERE Doctor_Id  = $doc";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        return $row_get_drug['FirstName'];
+    }
+
+    public function get_pat($pat)
+    {
+        $sql_get_pat = "SELECT * FROM patient WHERE Patient_Id = $pat";
+        $res_get_pat = mysqli_query($this->sqlcon, $sql_get_pat);
+        $row_get_pat = mysqli_fetch_array($res_get_pat);
+        return $row_get_pat['FirstName'];
+    }
+
+
+
+
+    public function list_appoinment(){
+        echo "<tbody>";
+        $sql_getapp = "SELECT * FROM appointment";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $doc = $row_app['Doctor_Id'];
+            $pat = $row_app['Patient_Id'];
+            echo "<tr>";
+            echo "<td>" . $row_app['Appointment_Id'] . "</td>";
+            echo "<td>" . $row_app['Date'] . "</td>";
+            echo "<td>" . $this->get_doc($doc) . "</td>";
+            echo "<td>" . $this->get_pat($pat) . "</td>";
+            echo "<td>" . $row_app['Time'] . "</td>";
+            echo "<td>" . $row_app['Patient_App_Num'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</tbody>";
+    }
+
 
     public function update_shedule($Time, $Patient, $Doctor, $Date)
     {

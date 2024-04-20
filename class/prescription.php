@@ -195,6 +195,47 @@ class Prescription
         }
     }
 
+    public function get_doc_pres($doc)
+    {
+        $sql_get_drug = "SELECT * FROM doctor WHERE Doctor_Id  = $doc";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        return $row_get_drug['FirstName'];
+    }
+
+    public function get_pat_pres($pat)
+    {
+        $sql_get_pat = "SELECT * FROM patient WHERE Patient_Id = $pat";
+        $res_get_pat = mysqli_query($this->sqlcon, $sql_get_pat);
+        $row_get_pat = mysqli_fetch_array($res_get_pat);
+        return $row_get_pat['FirstName'];
+    }
+
+    public function list_pres_master()
+    {
+
+        echo "<tbody>";
+        $sql_getapp = "SELECT * FROM prescription_master";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $doc = $row_app['Doctor_Id'];
+            $pat = $row_app['Patient_Id'];
+            echo "<tr>";
+            echo "<td>" . $row_app['Prescription_Id'] . "</td>";
+            echo "<td>" . $row_app['Appointment_Id'] . "</td>";
+            echo "<td>" . $this->get_pat_pres($pat) . "</td>";
+            echo "<td>" . $this->get_doc_pres($doc) . "</td>";
+            echo "<td>" . $row_app['P_Date'] . "</td>";
+            echo "<td>" . $row_app['P_Time'] . "</td>";
+            echo "<td>" . $row_app['P_Description'] . "</td>";
+            echo "<td>" . $row_app['Illness'] . "</td>";
+            echo "<td>" . $row_app['Test'] . "</td>";
+            echo "<td>" . $row_app['Is_issued'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</tbody>";
+
+    }
 
 
 

@@ -30,6 +30,8 @@ if (isset($_GET['page'])) {
         $page = 'pages/add-doc_shedule.php';
     } elseif ($_GET['page'] == 'new-prescription') {
         $page = 'pages/new-prescription.php';
+    }elseif ($_GET['page'] == 'view-prescription'){
+        $page = 'pages/view-prescription.php';
     } elseif ($_GET['page'] == 'add-user') {
         $page = 'pages/add-user.php';
     }elseif ($_GET['page'] == 'user-logs') {

@@ -10,11 +10,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">MedTech</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Appoinment</a></li>
-                            <li class="breadcrumb-item active">Appoinment List</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Prescription</a></li>
+                            <li class="breadcrumb-item active">Prescription List</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Appoinment List</h4>
+                    <h4 class="page-title">Prescription List</h4>
                 </div>
             </div>
         </div>
@@ -28,16 +28,25 @@
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
+                                            <th>Prescription ID</th>
                                             <th>Appoinment ID</th>
-                                            <th>Date</th>
-                                            <th>Doctor</th>
                                             <th>Patient</th>
+                                            <th>Doctor</th>
+                                            <th>Date</th>
                                             <th>Time</th>
-                                            <th>Appoinment Number</th>
+                                            <th>Description</th>
+                                            <th>Illness</th>
+                                            <th>Test</th>
+                                            <th>Is Issued</th>
                                         </tr>
                                     </thead>
-                                    <?php    
-                                    $doctor->list_appoinment();
+                                    <?php
+                                    // Include the Prescription class file
+                                    include 'class/prescription.php';
+
+                                    // Create an instance of the Prescription class
+                                    $prescription = new Prescription();
+                                    $prescription->list_pres_master();
                                     ?>
                                 </table>
                             </div> <!-- end preview-->

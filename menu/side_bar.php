@@ -222,6 +222,9 @@
                         <li>
                             <a href="home.php?page=new-prescription">New Prescription</a>
                         </li>
+                        <li>
+                            <a href="home.php?page=view-prescription">View Prescription</a>
+                        </li>
                     </ul>
                 </div>
             </li>
