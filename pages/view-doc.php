@@ -91,6 +91,11 @@ $gendar = $doctor->getdet_by_docID($doc_id, 'Gender');
                                     } ?>>Female</option>
                                 </select>
                             </div>
+							 <div class="mb-3 col-md-4">
+                                <label for="inputNIC" class="form-label">Doctor Charge</label>
+                                <input type="text" class="form-control" id="Doc_charge" placeholder="Doc_charge"
+                                    value="<?php echo $doctor->getdet_by_docID($doc_id, 'Doc_charge'); ?>">
+                            </div>
                             <div class="mb-3 col-md-12">
                                 <div id="result"></div>
                             </div>
@@ -116,6 +121,7 @@ $gendar = $doctor->getdet_by_docID($doc_id, 'Gender');
                             address: $('#Address').val(),
                             designation: $('#Designation').val(),
                             nic: $('#NIC').val(),
+							doc_charge:$('#Doc_charge').val(),
                             gender: $('#Gender').val(),
                         },
                         function (data) {
