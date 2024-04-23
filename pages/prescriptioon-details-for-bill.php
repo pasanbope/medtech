@@ -1,3 +1,5 @@
+<!-- Jquery min -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <?php
 // Include the Prescription class file
 include 'class/prescription.php';
@@ -128,33 +130,49 @@ $prescription = new Prescription();
                         <form>
                             <div class="row gy-2 gx-2 align-items-center">
                                 <div class="col-auto">
-                                    <label class="" for="inlineFormInput">Name</label>
-                                    <input type="text" class="form-control mb-2" id="inlineFormInput"
-                                        placeholder="Jane Doe">
-                                </div>
-                                <div class="col-auto">
-                                    <label class="" for="inlineFormInputGroup">Username</label>
+                                    <label class="" for="inlineFormInput">Drug Charge</label>
                                     <div class="input-group mb-2">
-                                        <input type="text" class="form-control" id="inlineFormInputGroup"
-                                            placeholder="Username">
+                                        <div class="input-group-text">Rs</div>
+                                        <input type="text" value="<?php
+                                        $drug_chargex = $prescription->get_total_drug_charge($pres_id);
+                                        echo $drug_chargex;
+                                        ?>" class="form-control" id="drug_charge">
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <label class="" for="inlineFormInputGroup">Username</label>
+                                    <label class="" for="inlineFormInputGroup">Doctor Charge</label>
                                     <div class="input-group mb-2">
-                                        <input type="text" class="form-control" id="inlineFormInputGroup"
-                                            placeholder="Username">
+                                        <div class="input-group-text">Rs</div>
+                                        <input type="text" value="<?php
+                                        $doc_id = $prescription->getPres_Master_by_PresId($pres_id, 'Doctor_Id');
+                                        $doc_charge = $doctor->getdet_by_docID($doc_id, 'Doc_charge');
+                                        echo $doc_charge;
+                                        ?>" class="form-control" id="doc_charge">
                                     </div>
                                 </div>
+                                <div class="col-auto">
+                                    <label class="" for="inlineFormInputGroup">Total Charge</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-text">Rs</div>
+                                        <input type="text" value="<?php echo $drug_chargex + $doc_charge; ?>"
+                                            class="form-control" id="total">
+                                    </div>
+                                </div>
+
+
+                                <input type="hidden" value="<?php echo $pres_id; ?>" class="form-control" id="pres_id">
 
                                 <div class="col-auto">
                                     <label class="" for="inlineFormInputGroup">&nbsp; </label>
                                     <div class="input-group mb-2">
-                                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                        <button type="button" id="btn_bill" class="btn btn-primary mb-2">Submit</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        <div class="mb-3 col-md-12">
+                            <div id="result"></div>
+                        </div>
                     </div> <!-- end card body-->
 
 
@@ -168,6 +186,25 @@ $prescription = new Prescription();
 </div> <!-- container -->
 
 </div> <!-- content -->
+<script>
+    $(document).ready(function () {
+        $("#btn_bill").click(function () {
+            $.post(
+                "actions/drug_bill.php",
+                {
+                    pres_id: $('#pres_id').val(),
+                    drug_charge: $('#drug_charge').val(),
+                    doc_charge: $('#doc_charge').val(),
+                    total: $('#total').val(),
+                },
+                function (data) {
+                    $('#result').html(data);
+                });
+
+        });
+    });
+
+</script>
 
 <!-- Full width modal content -->
 <div id="full-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="fullWidthModalLabel"

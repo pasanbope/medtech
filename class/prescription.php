@@ -313,6 +313,27 @@ class Prescription
 
     }
 
+    public function add_bill($pat_id, $doc_charge, $drug_charge, $tot)
+    {
+
+        $add_bill_sql = "INSERT INTO patient_bill (Prescription_Id, Doctor_Charge, Drug_Charge, Total_Amount) 
+		VALUES($pat_id, $doc_charge, $drug_charge, $tot)";
+        if (mysqli_query($this->sqlcon, $add_bill_sql)) {
+            return True;
+        } else {
+            return False;
+        }
+
+    }
+
+
+    public function update_prescription_issue($pres_id)
+    {
+
+        $sql_update_prescription_issue = "UPDATE prescription_master SET Is_issued = 1 WHERE Prescription_Id = $pres_id";
+        mysqli_query($this->sqlcon, $sql_update_prescription_issue);
+
+    }
 
 
 
