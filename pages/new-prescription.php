@@ -269,7 +269,7 @@ $prescription_num = $prescription->get_SerialNo_Pres('Prescription No');
                 "actions/proceed_prescriprion.php",
                 {
                     pres_id: $('#pnum').val(),
-                    // app_id: $('1').val(),
+                    app_id: $('#search').val(),
                     pat_id: $('#patient').val(),
                     doc_id: <?php echo $doc_id; ?>,
                     date: $('#PRES_date').val(),
