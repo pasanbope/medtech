@@ -30,18 +30,20 @@ if (isset($_GET['page'])) {
         $page = 'pages/add-doc_shedule.php';
     } elseif ($_GET['page'] == 'new-prescription') {
         $page = 'pages/new-prescription.php';
-    }elseif ($_GET['page'] == 'view-prescription'){
+    } elseif ($_GET['page'] == 'view-prescription') {
         $page = 'pages/view-prescription.php';
     } elseif ($_GET['page'] == 'add-user') {
         $page = 'pages/add-user.php';
-    }elseif ($_GET['page'] == 'user-logs') {
+    } elseif ($_GET['page'] == 'user-logs') {
         $page = 'pages/list-user-logs.php';
-    }elseif ($_GET['page'] == 'profilr-doctor') {
+    } elseif ($_GET['page'] == 'profilr-doctor') {
         $page = 'pages/view-doc.php';
-    }elseif ($_GET['page'] == 'repotr-stock') {
+    } elseif ($_GET['page'] == 'repotr-stock') {
         $page = 'pages/list-stock.php';
-    }elseif ($_GET['page'] == 'report-batch-stock') {
+    } elseif ($_GET['page'] == 'report-batch-stock') {
         $page = 'pages/list-batch-stock.php';
+    } elseif ($_GET['page'] == 'all-prescription') {
+        $page = 'pages/all-prescriptions.php';
     } elseif ($_GET['page'] == 'login') {
         $page = 'pages/login.php';
     } elseif ($_GET['page'] == 'logout') {

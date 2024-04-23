@@ -146,6 +146,23 @@
             </li>
 
             <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarpharmacy" aria-expanded="false"
+                    aria-controls="sidebarpharmacy" class="side-nav-link">
+                    <i class="uil-medical-square-full"></i>
+                    <span> Pharmacy </span>
+                </a>
+                <div class="collapse" id="sidebarpharmacy">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="home.php?page=all-prescription">Prescription View
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarGRN" aria-expanded="false" aria-controls="sidebarGRN"
                     class="side-nav-link">
                     <i class="uil-box"></i>
