@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item active">View Prescription</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">View Prescription</h4>
+                    <h4 class="page-title">Today Prescription - <?php echo date('Y-m-d'); ?></h4>
                 </div>
             </div>
         </div>
@@ -41,14 +41,16 @@
                                                 <th>Is Issued</th>
                                             </tr>
                                         </thead>
-                                        <?php
-                                        // Include the Prescription class file
-                                        include 'class/prescription.php';
+                                        <a href="#">
+                                            <?php
+                                            // Include the Prescription class file
+                                            include 'class/prescription.php';
 
-                                        // Create an instance of the Prescription class
-                                        $prescription = new Prescription();
-                                        $prescription->list_pres_master();
-                                        ?>
+                                            // Create an instance of the Prescription class
+                                            $prescription = new Prescription();
+                                            $prescription->list_pres_master();
+                                            ?>
+                                        </a>
                                     </table>
                                 </div>
                             </div> <!-- end preview-->

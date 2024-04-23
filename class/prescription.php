@@ -45,6 +45,15 @@ class Prescription
         return $row_get_drug['BrandName'];
     }
 
+
+    public function get_drug_pres_med($drug)
+    {
+        $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        return $row_get_drug['MedicalName'];
+    }
+
     public function list_pres_detail()
     {
 
@@ -119,7 +128,7 @@ class Prescription
             $remark = $row_pres['Remarks'];
             $advice = $row_pres['Adviced'];
 
-            $this->add_pres_details($pres_no, $drug, $qty, $freq, $remark, $advice);
+            $this->add_pres_details($pres_no, $drug, $batch, $qty, $freq, $remark, $advice);
 
             $current_stock = $this->get_stock($drug);
             $new_stock = $current_stock - $qty;
@@ -164,10 +173,10 @@ class Prescription
 
 
 
-    public function add_pres_details($pres_no, $drug, $qty, $freq, $remark, $advice)
+    public function add_pres_details($pres_no, $drug, $batch_no, $qty, $freq, $remark, $advice)
     {
-        $sql_addpres = "INSERT INTO prescription_details (Prescription_Id, Drug_Id, Quantity, Frequency, Remarks, Adviced) 
-        VALUES ($pres_no, $drug, '$qty', '$freq', '$remark', '$advice')";
+        $sql_addpres = "INSERT INTO prescription_details (Prescription_Id, Drug_Id, Batch_No, Quantity, Frequency, Remarks, Adviced) 
+        VALUES ($pres_no, $drug, '$batch_no', $qty, '$freq', '$remark', '$advice')";
         if (mysqli_query($this->sqlcon, $sql_addpres)) {
             return True;
         } else {
@@ -200,7 +209,8 @@ class Prescription
         $sql_get_drug = "SELECT * FROM doctor WHERE Doctor_Id  = $doc";
         $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
         $row_get_drug = mysqli_fetch_array($res_get_drug);
-        return $row_get_drug['FirstName'];
+        $full_name = $row_get_drug['Title'] . " " . $row_get_drug['FirstName'] . " " . $row_get_drug['LastName'];
+        return $full_name;
     }
 
     public function get_pat_pres($pat)
@@ -208,7 +218,8 @@ class Prescription
         $sql_get_pat = "SELECT * FROM patient WHERE Patient_Id = $pat";
         $res_get_pat = mysqli_query($this->sqlcon, $sql_get_pat);
         $row_get_pat = mysqli_fetch_array($res_get_pat);
-        return $row_get_pat['FirstName'];
+        $full_name = $row_get_pat['Title'] . " " . $row_get_pat['FirstName'] . " " . $row_get_pat['LastName'];
+        return $full_name;
     }
 
     public function list_pres_master()
@@ -220,8 +231,10 @@ class Prescription
         while ($row_app = mysqli_fetch_array($res_getapp)) {
             $doc = $row_app['Doctor_Id'];
             $pat = $row_app['Patient_Id'];
+
             echo "<tr>";
-            echo "<td>" . $row_app['Prescription_Id'] . "</td>";
+
+            echo "<td><a href='home.php?page=all-prescription&pres=" . $row_app['Prescription_Id'] . "'>" . $row_app['Prescription_Id'] . "</a></td>";
             echo "<td>" . $row_app['Appointment_Id'] . "</td>";
             echo "<td>" . $this->get_pat_pres($pat) . "</td>";
             echo "<td>" . $this->get_doc_pres($doc) . "</td>";
@@ -231,11 +244,76 @@ class Prescription
             echo "<td>" . $row_app['Illness'] . "</td>";
             echo "<td>" . $row_app['Test'] . "</td>";
             echo "<td>" . $row_app['Is_issued'] . "</td>";
+
             echo "</tr>";
+
         }
         echo "</tbody>";
 
     }
+
+    public function list_pres_detail_pharmacy($pres_id)
+    {
+
+        echo "<tbody>";
+        $sql_getapp = "SELECT * FROM prescription_details WHERE Prescription_Id = $pres_id";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        $tot_drug_price = 0;
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $drug = $row_app['Drug_Id'];
+            $batch_num = $row_app['Batch_No'];
+            $qty = $row_app['Quantity'];
+            echo "<tr>";
+            echo "<td data-bs-toggle='popover' data-bs-trigger='hover' data-bs-content='" . $this->get_drug_pres_med($drug) . "' title='Medical Name'>" . $this->get_drug_pres($drug) . "
+            </td>";
+            echo "<td>" . $row_app['Batch_No'] . "</td>";
+            echo "<td>" . $row_app['Quantity'] . "</td>";
+            echo "<td>" . $row_app['Frequency'] . "</td>";
+            echo "<td>" . $row_app['Remarks'] . "</td>";
+            echo "<td>" . $row_app['Adviced'] . "</td>";
+            echo "</tr>";
+
+
+        }
+        echo "</tbody>";
+
+
+    }
+
+    public function get_total_drug_charge($pres_id)
+    {
+        $sql_getapp = "SELECT * FROM prescription_details WHERE Prescription_Id = $pres_id";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        $tot_drug_price = 0;
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $drug = $row_app['Drug_Id'];
+            $batch_num = $row_app['Batch_No'];
+            $qty = $row_app['Quantity'];
+            $drug_price = $this->get_dru_rate($drug, $batch_num);
+            $drug_qty_price = $drug_price * $qty;
+            $tot_drug_price = $tot_drug_price + $drug_qty_price;
+        }
+        return $tot_drug_price;
+    }
+
+    public function getPres_Master_by_PresId($pres_id, $col)
+    {
+        $sql_get_pre_mast = "SELECT * FROM prescription_master WHERE Prescription_Id = $pres_id";
+        $res_get_pre_mast = mysqli_query($this->sqlcon, $sql_get_pre_mast);
+        $row_get_pre_mast = mysqli_fetch_array($res_get_pre_mast);
+        return $row_get_pre_mast[$col];
+    }
+
+    public function get_dru_rate($drug_id, $batch_num)
+    {
+        $sql_get_dru_rate = "SELECT * FROM grn_details WHERE Drug_Id = $drug_id";
+        $res_get_dru_rate = mysqli_query($this->sqlcon, $sql_get_dru_rate);
+        $row_get_dru_rate = mysqli_fetch_array($res_get_dru_rate);
+        return $row_get_dru_rate['Rate'];
+
+    }
+
+
 
 
 

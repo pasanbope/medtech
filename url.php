@@ -43,7 +43,13 @@ if (isset($_GET['page'])) {
     } elseif ($_GET['page'] == 'report-batch-stock') {
         $page = 'pages/list-batch-stock.php';
     } elseif ($_GET['page'] == 'all-prescription') {
-        $page = 'pages/all-prescriptions.php';
+        // $page = 'pages/all-prescriptions.php';
+        if (isset($_GET['pres'])) {
+            $pres_id = $_GET['pres'];
+            $page = 'pages/prescriptioon-details-for-bill.php';
+        } else {
+            $page = 'pages/all-prescriptions.php';
+        }
     } elseif ($_GET['page'] == 'login') {
         $page = 'pages/login.php';
     } elseif ($_GET['page'] == 'logout') {
