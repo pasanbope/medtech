@@ -82,6 +82,14 @@ class Patient
 		}
 	}
 
+	public function get_pat_num()
+	{
+		$sql_get_pat_num = "SELECT * FROM patient ";
+		$res_get_pat_num = mysqli_query($this->sqlcon, $sql_get_pat_num);
+		$row_get_pat_num = mysqli_num_rows($res_get_pat_num);
+		return $row_get_pat_num;
+	}
+
 }
 
 ?>

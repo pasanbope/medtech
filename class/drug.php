@@ -382,6 +382,22 @@ class Drug
         return json_encode($row_get_batch);
     }
 
+    public function get_drugs_num()
+    {
+        $sql_get_count = "SELECT * FROM drug ";
+        $res_get_count = mysqli_query($this->sqlcon, $sql_get_count);
+        $row_get_count = mysqli_num_rows($res_get_count);
+        return $row_get_count;
+    }
+
+    public function expire_soon_drug_count($date)
+    {
+        $sql_get_exp_count = "SELECT * FROM batch_stock WHERE ExpireDate <= '$date'";
+        $res_get_exp_count = mysqli_query($this->sqlcon, $sql_get_exp_count);
+        $row_get_exp_count = mysqli_num_rows($res_get_exp_count);
+        return $row_get_exp_count;
+    }
+
 
 
 

@@ -27,9 +27,17 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="card rounded-0 shadow-none m-0">
                                     <div class="card-body text-center">
-                                        <i class="ri-briefcase-line text-muted font-24"></i>
-                                        <h3><span>29</span></h3>
-                                        <p class="text-muted font-15 mb-0">Total Projects</p>
+                                        <i class=" uil-capsule font-24"></i>
+                                        <?php
+                                        // Include the Drug class file
+                                        include 'class/drug.php';
+
+                                        // Create an instance of the Drug class
+                                        $drug = new Drug();
+                                        $drug_num = $drug->get_drugs_num();
+                                        ?>
+                                        <h3><span><?php echo $drug_num; ?></span></h3>
+                                        <p class="text-muted font-15 mb-0">Total Drugs</p>
                                     </div>
                                 </div>
                             </div>
@@ -37,29 +45,51 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
                                     <div class="card-body text-center">
-                                        <i class="ri-list-check-2 text-muted font-24"></i>
-                                        <h3><span>715</span></h3>
-                                        <p class="text-muted font-15 mb-0">Total Tasks</p>
+                                        <i class="ri-user-add-line text-muted font-24"></i>
+                                        <?php
+                                        // Include the Patient class file
+                                        include 'class/patient.php';
+
+                                        // Create an instance of the Patient class
+                                        $pat = new Patient();
+                                        $pat_num = $pat->get_pat_num();
+                                        ?>
+                                        <h3><span><?php echo $pat_num; ?></span></h3>
+                                        <p class="text-muted font-15 mb-0">Total Patients</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card rounded-0 shadow-none m-0 border-start border-light">
-                                    <div class="card-body text-center">
-                                        <i class="ri-group-line text-muted font-24"></i>
-                                        <h3><span>31</span></h3>
-                                        <p class="text-muted font-15 mb-0">Members</p>
+                            <?php
+                            if ($roll_id == 2) {
+                                ?>
+                                <div class="col-sm-6 col-lg-3">
+                                    <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                                        <div class="card-body text-center">
+                                            <?php
+
+                                            $today_app = $doctor->check_appoinment(date("Y-m-d"), $doc_id)
+                                                ?>
+                                            <i class="ri-group-line text-muted font-24"></i>
+                                            <h3><span><?php echo $today_app; ?></span></h3>
+                                            <p class="text-muted font-15 mb-0">Today Appoinments</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } ?>
 
                             <div class="col-sm-6 col-lg-3">
                                 <div class="card rounded-0 shadow-none m-0 border-start border-light">
                                     <div class="card-body text-center">
-                                        <i class="ri-line-chart-line text-muted font-24"></i>
-                                        <h3><span>93%</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
-                                        <p class="text-muted font-15 mb-0">Productivity</p>
+                                        <i class="uil-clock-eight text-muted font-24"></i>
+                                        <?php
+                                        $day30 = date("Y-m-d", strtotime("+30 day"));
+                                        $drug_exp_count = $drug->expire_soon_drug_count($day30);
+                                        ?>
+                                        <h3><span><?php echo $drug_exp_count; ?></span> </h3>
+                                        <p class="text-muted font-15 mb-0">Drugs that Expire</p>
+                                        <br\>
+                                            <p class="text-muted font-15 mb-0">(Within 30 days)</p>
                                     </div>
                                 </div>
                             </div>
