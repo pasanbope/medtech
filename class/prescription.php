@@ -234,6 +234,36 @@ class Prescription
 
             echo "<tr>";
 
+            echo "<td>" . $row_app['Prescription_Id'] . "</td>";
+            echo "<td>" . $row_app['Appointment_Id'] . "</td>";
+            echo "<td>" . $this->get_pat_pres($pat) . "</td>";
+            echo "<td>" . $this->get_doc_pres($doc) . "</td>";
+            echo "<td>" . $row_app['P_Date'] . "</td>";
+            echo "<td>" . $row_app['P_Time'] . "</td>";
+            echo "<td>" . $row_app['P_Description'] . "</td>";
+            echo "<td>" . $row_app['Illness'] . "</td>";
+            echo "<td>" . $row_app['Test'] . "</td>";
+            echo "<td>" . $row_app['Is_issued'] . "</td>";
+
+            echo "</tr>";
+
+        }
+        echo "</tbody>";
+
+    }
+
+    public function list_pres_master_today()
+    {
+        $today = date('Y-m-d');
+        echo "<tbody>";
+        $sql_getapp = "SELECT * FROM prescription_master WHERE P_Date = '$today' AND Is_issued = 0";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $doc = $row_app['Doctor_Id'];
+            $pat = $row_app['Patient_Id'];
+
+            echo "<tr>";
+
             echo "<td><a href='home.php?page=all-prescription&pres=" . $row_app['Prescription_Id'] . "'>" . $row_app['Prescription_Id'] . "</a></td>";
             echo "<td>" . $row_app['Appointment_Id'] . "</td>";
             echo "<td>" . $this->get_pat_pres($pat) . "</td>";
@@ -251,6 +281,7 @@ class Prescription
         echo "</tbody>";
 
     }
+
 
     public function list_pres_detail_pharmacy($pres_id)
     {
@@ -296,6 +327,26 @@ class Prescription
         return $tot_drug_price;
     }
 
+    public function get_total_drug_cost($pres_id)
+    {
+        $sql_getapp = "SELECT * FROM prescription_details WHERE Prescription_Id = $pres_id";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        $tot_drug_cost = 0;
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $drug = $row_app['Drug_Id'];
+            $batch_num = $row_app['Batch_No'];
+            $qty = $row_app['Quantity'];
+
+
+            //genarate cost of drug
+            $drug_cost = $this->get_dru_purchased($drug, $batch_num);
+            $drug_qty_cost = $drug_cost * $qty;
+            $tot_drug_cost = $tot_drug_cost + $drug_qty_cost;
+        }
+        return $tot_drug_cost;
+    }
+
+
     public function getPres_Master_by_PresId($pres_id, $col)
     {
         $sql_get_pre_mast = "SELECT * FROM prescription_master WHERE Prescription_Id = $pres_id";
@@ -313,11 +364,20 @@ class Prescription
 
     }
 
-    public function add_bill($pat_id, $doc_charge, $drug_charge, $tot)
+    public function get_dru_purchased($drug_id, $batch_num)
+    {
+        $sql_get_dru_purchased = "SELECT * FROM grn_details WHERE Drug_Id = $drug_id";
+        $res_get_dru_purchased = mysqli_query($this->sqlcon, $sql_get_dru_purchased);
+        $row_get_dru_purchased = mysqli_fetch_array($res_get_dru_purchased);
+        return $row_get_dru_purchased['PurchasedPrice'];
+
+    }
+
+    public function add_bill($pat_id, $doc_charge, $drug_charge, $drug_cost, $tot)
     {
 
-        $add_bill_sql = "INSERT INTO patient_bill (Prescription_Id, Doctor_Charge, Drug_Charge, Total_Amount) 
-		VALUES($pat_id, $doc_charge, $drug_charge, $tot)";
+        $add_bill_sql = "INSERT INTO patient_bill (Prescription_Id, Doctor_Charge, Drug_Charge, Drug_Cost, Total_Amount) 
+		VALUES($pat_id, $doc_charge, $drug_charge, $drug_cost, $tot)";
         if (mysqli_query($this->sqlcon, $add_bill_sql)) {
             return True;
         } else {

@@ -72,7 +72,7 @@
                                         <optgroup>
                                             <?php
                                             // Include the Patient class file
-                                            include 'class/Patient.php';
+                                            include 'class/patient.php';
 
                                             // Create an instance of the Patient class
                                             $patient = new Patient();

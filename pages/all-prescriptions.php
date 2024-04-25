@@ -48,7 +48,7 @@
 
                                             // Create an instance of the Prescription class
                                             $prescription = new Prescription();
-                                            $prescription->list_pres_master();
+                                            $prescription->list_pres_master_today();
                                             ?>
                                         </a>
                                     </table>

@@ -17,7 +17,8 @@ if (($pres_id == '') or ($drug_charge == '') or ($doc_charge == '') or ($tot == 
     <strong>Warning - </strong> Cannot Add Empty Data — check it out!
 </div>";
 } else {
-    $pres->add_bill($pres_id, $doc_charge, $drug_charge, $tot);
+    $drug_cost = $pres->get_total_drug_cost($pres_id);
+    $pres->add_bill($pres_id, $doc_charge, $drug_charge, $drug_cost, $tot);
     $pres->update_prescription_issue($pres_id);
     echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
     <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
