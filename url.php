@@ -50,6 +50,9 @@ if (isset($_GET['page'])) {
         } else {
             $page = 'pages/all-prescriptions.php';
         }
+    } elseif ($_GET['page'] == 'print-reciept') {
+        $page = 'pages/recipt.php';
+
     } elseif ($_GET['page'] == 'login') {
         $page = 'pages/login.php';
     } elseif ($_GET['page'] == 'logout') {

@@ -24,5 +24,10 @@ if (($pres_id == '') or ($drug_charge == '') or ($doc_charge == '') or ($tot == 
     <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>
     <strong>Success - </strong> New Bill Genarated!
 </div>";
+    ?>
+    <script>
+        window.location.replace("home.php?page=print-reciept&Pres=<?php echo $pres_id; ?>");
+    </script>
+    <?php
 }
 ?>

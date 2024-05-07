@@ -387,6 +387,17 @@ class Prescription
     }
 
 
+    public function view_bill_by_pres($pres_id, $col)
+    {
+        $sql_view_bill = "SELECT * FROM patient_bill WHERE Prescription_Id = $pres_id";
+        $res_view_bill = mysqli_query($this->sqlcon, $sql_view_bill);
+        $row_view_bill = mysqli_fetch_array($res_view_bill);
+        return $row_view_bill[$col];
+
+    }
+
+
+
     public function update_prescription_issue($pres_id)
     {
 

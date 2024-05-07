@@ -80,7 +80,7 @@ $order_num = $drug->get_SerialNo('Order No');
 
                             <div class="mb-3 col-md-4">
                                 <label for="example-number" class="form-label">Batch Number</label>
-                                <input class="form-control" id="batchNo" type="number" name="number"
+                                <input class="form-control" id="batchNo" type="text" name="number"
                                     placeholder="Batch Number">
                             </div>
 
