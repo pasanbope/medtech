@@ -150,6 +150,14 @@ class Drug
         return $row_get_drug['BrandName'];
     }
 
+    public function get_drug_med($drug)
+    {
+        $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        return $row_get_drug['MedicalName'];
+    }
+
     public function del_grn_detail($grn_id)
     {
         $sql_del_grn = "DELETE FROM tmp_grn_details WHERE GRN_Id = $grn_id";
@@ -322,6 +330,13 @@ class Drug
         $res_getstock = mysqli_query($this->sqlcon, $sql_getstock);
         while ($row_stock = mysqli_fetch_array($res_getstock)) {
             $drug = $row_stock['Drug_Id'];
+            $rol = $this->get_drug_details($drug, 'Rol');
+            $qty = $row_stock['Quantity'];
+            if ($qty <= $rol) {
+                echo "<tr style='background-color: #f5abab;'>";
+            } else {
+                echo "<tr>";
+            }
             echo "<td>" . $this->get_drug($drug) . "</td>";
             echo "<td>" . $row_stock['Quantity'] . "</td>";
             echo "<td>" . $row_stock['Last_GRN_Date'] . "</td>";
@@ -395,6 +410,51 @@ class Drug
         $res_get_exp_count = mysqli_query($this->sqlcon, $sql_get_exp_count);
         $row_get_exp_count = mysqli_num_rows($res_get_exp_count);
         return $row_get_exp_count;
+    }
+
+    public function expire_soon_drug_detais($date, $date2)
+    {
+        $sql_get_exp = "SELECT * FROM batch_stock WHERE ExpireDate <= '$date'";
+        $res_get_exp = mysqli_query($this->sqlcon, $sql_get_exp);
+        while ($row_get_exp = mysqli_fetch_array($res_get_exp)) {
+            $exp_date = $row_get_exp['ExpireDate'];
+            $drug_id = $row_get_exp['Drug_Id'];
+            ?>
+            <tr>
+                <td>
+                    <h5 class="font-14 my-1"><a href="javascript:void(0);"
+                            class="text-body"><?php echo $this->get_drug($drug_id); ?></a></h5>
+                    <h5 class="font-14 mt-1 fw-normal"><?php echo $this->get_drug_med($drug_id); ?></h5>
+                </td>
+                <td>
+                    <span class="text-muted font-13">Status</span> <br />
+                    <?php if ($exp_date <= $date2) { ?>
+                        <span class="badge badge-danger-lighten">Expired</span>
+                    <?php } else { ?>
+                        <span class="badge badge-warning-lighten">Expire Soon</span>
+                    <?php } ?>
+                </td>
+                <td>
+                    <span class="text-muted font-13"><?php echo $row_get_exp['MadeDate']; ?></span>
+                    <h5 class="font-14 mt-1 fw-normal">Manufactured</h5>
+                </td>
+                <td>
+                    <span class="text-muted font-13"><?php echo $row_get_exp['ExpireDate']; ?></span>
+                    <h5 class="font-14 mt-1 fw-normal">Expire</h5>
+                </td>
+
+            </tr>
+            <?php
+        }
+
+    }
+
+    public function get_drug_details($drug, $col)
+    {
+        $sql_get_drug_det = "SELECT * FROM drug WHERE Drug_Id = $drug";
+        $res_get_drug_det = mysqli_query($this->sqlcon, $sql_get_drug_det);
+        $row_get_drug_det = mysqli_fetch_array($res_get_drug_det);
+        return $row_get_drug_det[$col];
     }
 
 

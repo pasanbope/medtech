@@ -55,6 +55,8 @@
 
             <li class="side-nav-title">Apps</li>
 
+
+
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarDoctor" aria-expanded="false" aria-controls="sidebarDoctor"
                     class="side-nav-link">
@@ -64,14 +66,12 @@
                 <div class="collapse" id="sidebarDoctor">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="home.php?page=add-doctor">Add Doctors</a>
-                        </li>
-                        <li>
                             <a href="home.php?page=list-doctor">Doctors List</a>
                         </li>
                     </ul>
                 </div>
             </li>
+
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPatient" aria-expanded="false" aria-controls="sidebarPatient"
@@ -81,15 +81,20 @@
                 </a>
                 <div class="collapse" id="sidebarPatient">
                     <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=add-patient">New Patient</a>
-                        </li>
+                        <?php
+                        if ($roll_id == 1 or $roll_id == 2 or $roll_id == 4) {
+                            ?>
+                            <li>
+                                <a href="home.php?page=add-patient">New Patient</a>
+                            </li>
+                        <?php } ?>
                         <li>
                             <a href="home.php?page=list-patient">Patients List</a>
                         </li>
                     </ul>
                 </div>
             </li>
+
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarAppoinment" aria-expanded="false"
@@ -99,9 +104,13 @@
                 </a>
                 <div class="collapse" id="sidebarAppoinment">
                     <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=new-appoinment">New Appoinment</a>
-                        </li>
+                        <?php
+                        if ($roll_id == 1 or $roll_id == 2 or $roll_id == 4) {
+                            ?>
+                            <li>
+                                <a href="home.php?page=new-appoinment">New Appoinment</a>
+                            </li>
+                        <?php } ?>
                         <li>
                             <a href="home.php?page=list-appoinment">Appoinment List</a>
                         </li>
@@ -117,101 +126,131 @@
                 </a>
                 <div class="collapse" id="sidebarDrugs">
                     <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=new-drug">Add New Drug</a>
-                        </li>
-                        <li>
-                            <a href="home.php?page=list-drug">Drugs List</a>
-                        </li>
+                        <?php
+                        if ($roll_id == 1 or $roll_id == 3) {
+                            ?>
+                            <li>
+                                <a href="home.php?page=new-drug">Add New Drug</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php
+                        if ($roll_id == 1 or $roll_id == 2 or $roll_id == 3) {
+                            ?>
+                            <li>
+                                <a href="home.php?page=list-drug">Drugs List</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarSupplier" aria-expanded="false"
-                    aria-controls="sidebarSupplier" class="side-nav-link">
-                    <i class="uil-ambulance"></i>
-                    <span> Supplier </span>
-                </a>
-                <div class="collapse" id="sidebarSupplier">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=add-supplier">New Supplier</a>
-                        </li>
-                        <li>
-                            <a href="home.php?page=list-supplier">Supplier List</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            <?php
+            if ($roll_id == 1 or $roll_id == 3) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarSupplier" aria-expanded="false"
+                        aria-controls="sidebarSupplier" class="side-nav-link">
+                        <i class="uil-ambulance"></i>
+                        <span> Supplier </span>
+                    </a>
+                    <div class="collapse" id="sidebarSupplier">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=add-supplier">New Supplier</a>
+                            </li>
+                            <li>
+                                <a href="home.php?page=list-supplier">Supplier List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarpharmacy" aria-expanded="false"
-                    aria-controls="sidebarpharmacy" class="side-nav-link">
-                    <i class="uil-medical-square-full"></i>
-                    <span> Pharmacy </span>
-                </a>
-                <div class="collapse" id="sidebarpharmacy">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=all-prescription">Prescription View
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            <?php
+            if ($roll_id == 1 or $roll_id == 3) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarpharmacy" aria-expanded="false"
+                        aria-controls="sidebarpharmacy" class="side-nav-link">
+                        <i class="uil-medical-square-full"></i>
+                        <span> Pharmacy </span>
+                    </a>
+                    <div class="collapse" id="sidebarpharmacy">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=all-prescription">Prescription View
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
 
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarGRN" aria-expanded="false" aria-controls="sidebarGRN"
-                    class="side-nav-link">
-                    <i class="uil-box"></i>
-                    <span> GRN </span>
-                </a>
-                <div class="collapse" id="sidebarGRN">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=add-grn">Add GRN</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            <?php
+            if ($roll_id == 1 or $roll_id == 3) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarGRN" aria-expanded="false" aria-controls="sidebarGRN"
+                        class="side-nav-link">
+                        <i class="uil-box"></i>
+                        <span> GRN </span>
+                    </a>
+                    <div class="collapse" id="sidebarGRN">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=add-grn">Add GRN</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarReport" aria-expanded="false" aria-controls="sidebarReport"
-                    class="side-nav-link">
-                    <i class="uil-file-check-alt"></i>
-                    <span> Reports </span>
-                </a>
-                <div class="collapse" id="sidebarReport">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=repotr-stock">Stock</a>
-                        </li>
-                        <li>
-                            <a href="home.php?page=report-batch-stock">Batch Stock</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            <?php
+            if ($roll_id == 1 or $roll_id == 3 or $roll_id == 2) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarReport" aria-expanded="false" aria-controls="sidebarReport"
+                        class="side-nav-link">
+                        <i class="uil-file-check-alt"></i>
+                        <span> Reports </span>
+                    </a>
+                    <div class="collapse" id="sidebarReport">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=repotr-stock">Stock</a>
+                            </li>
+                            <li>
+                                <a href="home.php?page=report-batch-stock">Batch Stock</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarCategory" aria-expanded="false"
-                    aria-controls="sidebarCategory" class="side-nav-link">
-                    <i class="uil-book-medical"></i>
-                    <span> Category </span>
-                </a>
-                <div class="collapse" id="sidebarCategory">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=add-category">New Category</a>
-                        </li>
-                        <li>
-                            <a href="home.php?page=add-mesure">New Mesurement</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            <?php
+            if ($roll_id == 1 or $roll_id == 3) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarCategory" aria-expanded="false"
+                        aria-controls="sidebarCategory" class="side-nav-link">
+                        <i class="uil-book-medical"></i>
+                        <span> Category </span>
+                    </a>
+                    <div class="collapse" id="sidebarCategory">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=add-category">New Category</a>
+                            </li>
+                            <li>
+                                <a href="home.php?page=add-mesure">New Mesurement</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
+
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarDocShed" aria-expanded="false" aria-controls="sidebarDocShed"
@@ -228,23 +267,27 @@
                 </div>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPres" aria-expanded="false" aria-controls="sidebarPres"
-                    class="side-nav-link">
-                    <i class="uil-clipboard-alt"></i>
-                    <span> Prescription </span>
-                </a>
-                <div class="collapse" id="sidebarPres">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=new-prescription">New Prescription</a>
-                        </li>
-                        <li>
-                            <a href="home.php?page=view-prescription">View Prescription</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            <?php
+            if ($roll_id == 1 or $roll_id == 2) {
+                ?>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPres" aria-expanded="false" aria-controls="sidebarPres"
+                        class="side-nav-link">
+                        <i class="uil-clipboard-alt"></i>
+                        <span> Prescription </span>
+                    </a>
+                    <div class="collapse" id="sidebarPres">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="home.php?page=new-prescription">New Prescription</a>
+                            </li>
+                            <li>
+                                <a href="home.php?page=view-prescription">View Prescription</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <?php } ?>
 
             <?php
             if ($roll_id == 1) {
