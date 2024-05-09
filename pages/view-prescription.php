@@ -25,30 +25,34 @@
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="tab-pane show active" id="buttons-table-preview">
-                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                    <thead>
-                                        <tr>
-                                            <th>Prescription ID</th>
-                                            <th>Appoinment ID</th>
-                                            <th>Patient</th>
-                                            <th>Doctor</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Description</th>
-                                            <th>Illness</th>
-                                            <th>Test</th>
-                                            <th>Is Issued</th>
-                                        </tr>
-                                    </thead>
-                                    <?php
-                                    // Include the Prescription class file
-                                    include 'class/prescription.php';
+                                <div class="table-responsive-sm">
+                                    <table id="datatable-buttons"
+                                        class="table table-striped dt-responsive nowrap w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Prescription ID</th>
+                                                <th>Appoinment ID</th>
+                                                <th>Patient</th>
+                                                <th>Doctor</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Description</th>
+                                                <th>Illness</th>
+                                                <th>Test</th>
+                                                <th>Is Issued</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        // Include the Prescription class file
+                                        include 'class/prescription.php';
 
-                                    // Create an instance of the Prescription class
-                                    $prescription = new Prescription();
-                                    $prescription->list_pres_master();
-                                    ?>
-                                </table>
+                                        // Create an instance of the Prescription class
+                                        $prescription = new Prescription();
+                                        $prescription->list_pres_master();
+                                        ?>
+                                    </table>
+                                    </div>
+                                </div>
                             </div> <!-- end preview-->
                         </div> <!-- end tab-content-->
 
