@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from coderthemes.com/hyper/saas/pages-logout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Sep 2023 06:55:30 GMT -->
-
 <head>
     <meta charset="utf-8" />
     <title>Logout | MedTech - Admin Dashboard</title>
@@ -98,7 +95,7 @@
 
     <footer class="footer footer-alt">
         2018 -
-        <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+        <script>document.write(new Date().getFullYear())</script> © MedTech - Pasan Bopegamage
     </footer>
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>
@@ -108,6 +105,5 @@
 
 </body>
 
-<!-- Mirrored from coderthemes.com/hyper/saas/pages-logout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Sep 2023 06:55:30 GMT -->
 
 </html>

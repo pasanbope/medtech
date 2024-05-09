@@ -1,12 +1,12 @@
 <?php
 
-// Include the Patient class file
+// Include the Doctor class file
 include '../class/doctor.php';
 
-// Create an instance of the Patient class
+// Create an instance of the Doctor class
 $doctor = new Doctor();
 
-// Call the add_patient method with appropriate parameters
+
 $title = $_POST['title'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];

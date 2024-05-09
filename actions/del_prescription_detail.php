@@ -5,7 +5,6 @@ include '../class/prescription.php';
 // Create an instance of the Prescription class
 $prescription = new Prescription();
 
-// Call the add_patient method with appropriate parameters
 $pres_id = $_POST['pres_id'];
 
 $prescription->del_pres_detail($pres_id);

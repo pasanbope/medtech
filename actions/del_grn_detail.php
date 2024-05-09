@@ -1,12 +1,12 @@
 <?php
 
-// Include the Patient class file
+// Include the Drug class file
 include '../class/drug.php';
 
-// Create an instance of the Patient class
+// Create an instance of the Drug class
 $drug = new Drug();
 
-// Call the add_patient method with appropriate parameters
+
 $grn_id = $_POST['grn_id'];
 
 $drug->del_grn_detail($grn_id);

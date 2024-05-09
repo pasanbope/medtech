@@ -1,8 +1,11 @@
+
 <?php
 class Drug
 {
     private $sqlcon;
 
+
+    // Constructor to establish database connection
     public function __construct()
     {
         if (file_exists('../db-config.php')) {
@@ -17,6 +20,8 @@ class Drug
         }
     }
 
+
+    // Function to add a drug to the database
     public function add_drug($MedicinalName, $BrandName, $ReOrderLevel, $MeasurementType, $Catogary)
     {
 
@@ -29,6 +34,8 @@ class Drug
         }
     }
 
+
+    // Function to list drugs
     public function list_drug()
     {
         echo "<tbody>";
@@ -53,6 +60,7 @@ class Drug
 
     }
 
+    // Function to add a drug category
     public function add_drugcat($Catogary)
     {
 
@@ -61,6 +69,8 @@ class Drug
         mysqli_query($this->sqlcon, $add_drugcat_sql);
     }
 
+
+    // Function to add a drug measurement type
     public function add_drugmesure($name)
     {
 
@@ -70,6 +80,8 @@ class Drug
     }
 
 
+
+    // Function to retrieve measurement type by ID
     public function get_measurement($mes_id)
     {
         $sql_get_measure = "SELECT * FROM measurement_type WHERE Measure_Id = $mes_id";
@@ -78,6 +90,8 @@ class Drug
         return $row_get_measure['Name'];
     }
 
+
+    // Function to retrieve drug category by ID
     public function get_category($cat_id)
     {
         $sql_get_category = "SELECT * FROM drug_category WHERE Category_Id = $cat_id";
@@ -86,6 +100,8 @@ class Drug
         return $row_get_category['Category'];
     }
 
+
+    // Function to select a drug
     public function select_drug()
     {
         $sql_drug = "select * from drug";
@@ -95,6 +111,8 @@ class Drug
         }
     }
 
+
+    // Function to select batch from a drug
     public function select_batch_from_drug($drug_id)
     {
         $sql_drug = "SELECT * from batch_stock WHERE Drug_Id = $drug_id";
@@ -104,6 +122,8 @@ class Drug
         }
     }
 
+
+    // Function to add GRN detail
     public function add_grn_detail($order_id, $drug_id, $batch_no, $made_date, $expire_date, $selling_price, $purchased_price, $quantity, $total)
     {
 
@@ -118,7 +138,7 @@ class Drug
     }
 
 
-
+    // Function to list GRN detail
     public function list_grn_detail()
     {
         echo "<tbody>";
@@ -142,6 +162,8 @@ class Drug
 
     }
 
+
+    // Function to get drug name by ID
     public function get_drug($drug)
     {
         $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
@@ -150,6 +172,8 @@ class Drug
         return $row_get_drug['BrandName'];
     }
 
+
+    // Function to get drug medical name by ID
     public function get_drug_med($drug)
     {
         $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
@@ -158,6 +182,8 @@ class Drug
         return $row_get_drug['MedicalName'];
     }
 
+
+    // Function to delete GRN detail by ID
     public function del_grn_detail($grn_id)
     {
         $sql_del_grn = "DELETE FROM tmp_grn_details WHERE GRN_Id = $grn_id";
@@ -165,6 +191,8 @@ class Drug
 
     }
 
+
+    // Function to get total GRN amount by order ID
     public function get_grn_sum($order_id)
     {
 
@@ -175,6 +203,8 @@ class Drug
 
     }
 
+
+    // Function to get serial number by name
     public function get_SerialNo($serial_name)
     {
 
@@ -185,6 +215,8 @@ class Drug
 
     }
 
+
+    // Function to update serial number by name
     public function update_SerialNo($serial_name, $serial_no)
     {
 
@@ -193,6 +225,8 @@ class Drug
 
     }
 
+
+    // Function to generate new serial number by name
     public function genarate_new_serial($serial_name, $serial_no)
     {
 
@@ -202,7 +236,7 @@ class Drug
     }
 
 
-
+    // Function to update GRN details
     public function update_GRNDetails($order_id, $supplier_id, $date)
     {
         $sql_getgrn = "SELECT * FROM tmp_grn_details WHERE Order_Id	= $order_id";
@@ -244,6 +278,8 @@ class Drug
         $this->add_grn_master($order_id, $supplier_id, $date, $net_total);
     }
 
+
+    // Function to add GRN detail to main table
     public function add_grn_details($order_id, $drug, $batch, $made_date, $exp_date, $Sell, $purchased, $qty, $total)
     {
         $sql_addgrn = "INSERT INTO grn_details (Order_Id, Drug_Id, BatchNo, MadeDate, ExpireDate, Rate, PurchasedPrice, Quantity, Total) VALUES ($order_id, $drug, '$batch', '$made_date', '$exp_date', $Sell, $purchased, $qty, $total)";
@@ -255,7 +291,7 @@ class Drug
     }
 
 
-
+    // Function to get current stock quantity by drug ID
     public function get_stock($drug_id)
     {
         $sql_get_stock = "SELECT * FROM stock WHERE Drug_Id = $drug_id";
@@ -264,6 +300,8 @@ class Drug
         return $row_get_stock['Quantity'];
     }
 
+
+    // Function to get current batch stock quantity by drug ID and batch number
     public function get_batch_stock($drug_id, $batch_no)
     {
         $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
@@ -272,6 +310,8 @@ class Drug
         return $row_get_bstock['Quantity'];
     }
 
+
+    // Function to check availability of stock by drug ID
     public function get_stock_availability($drug_id)
     {
         $sql_get_count = "SELECT * FROM stock WHERE Drug_Id = $drug_id";
@@ -280,6 +320,8 @@ class Drug
         return $row_get_count;
     }
 
+
+    // Function to check availability of batch stock by drug ID and batch number
     public function get_batch_stockAvailability($drug_id, $batch_no)
     {
         $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
@@ -288,6 +330,8 @@ class Drug
         return $row_get_bstock;
     }
 
+
+    // Function to add stock
     public function add_stock($drug_id, $Qty, $last_grn_date, $last_bill_date)
     {
 
@@ -300,6 +344,8 @@ class Drug
         }
     }
 
+
+    // Function to add batch stock
     public function add_batch_stock($drug_id, $batch_no, $qty, $made_date, $exp_date)
     {
         $add_batchstock_sql = "INSERT INTO batch_stock (Drug_Id, Batch_No, Quantity, MadeDate, ExpireDate ) 
@@ -311,18 +357,24 @@ class Drug
         }
     }
 
+
+    // Function to update stock
     public function update_stock($drug_id, $Qty, $last_grn_date = '0000-00-00')
     {
         $sql_update = "UPDATE stock SET Quantity = $Qty , Last_GRN_Date = '$last_grn_date' WHERE Drug_Id  = $drug_id";
         mysqli_query($this->sqlcon, $sql_update);
     }
 
+
+    // Function to update batch stock
     public function update_batch_stock($drug_id, $batch_no, $qty)
     {
         $sql_update = "UPDATE batch_stock SET Quantity = $qty WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
         mysqli_query($this->sqlcon, $sql_update);
     }
 
+
+    // Function to list stock
     public function list_stock()
     {
         echo "<tbody>";
@@ -348,6 +400,8 @@ class Drug
 
     }
 
+
+    // Function to list batch stock
     public function list_batch_stock()
     {
         echo "<tbody>";
@@ -368,6 +422,8 @@ class Drug
     }
 
 
+
+    // Function to check GRN items by order ID
     public function check_grn_items($order_id)
     {
         $sql_check_grn = "SELECT * FROM tmp_grn_details WHERE Order_Id = $order_id";
@@ -376,6 +432,8 @@ class Drug
         return $row_check_grn;
     }
 
+
+    // Function to add GRN master
     public function add_grn_master($order_id, $supplier_id, $date, $total_amount)
     {
 
@@ -388,6 +446,8 @@ class Drug
         }
     }
 
+
+    // Function to get batch stock details by drug ID and batch number
     public function get_batch_stock_details($drug_id, $batch_no)
     {
         $sql_get_batch = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
@@ -396,6 +456,8 @@ class Drug
         return json_encode($row_get_batch);
     }
 
+
+    // Function to get total number of drugs
     public function get_drugs_num()
     {
         $sql_get_count = "SELECT * FROM drug ";
@@ -404,6 +466,8 @@ class Drug
         return $row_get_count;
     }
 
+
+    // Function to get count of drugs expiring soon
     public function expire_soon_drug_count($date)
     {
         $sql_get_exp_count = "SELECT * FROM batch_stock WHERE ExpireDate <= '$date'";
@@ -412,6 +476,8 @@ class Drug
         return $row_get_exp_count;
     }
 
+
+    // Function to get details of drugs expiring soon
     public function expire_soon_drug_detais($date, $date2)
     {
         $sql_get_exp = "SELECT * FROM batch_stock WHERE ExpireDate <= '$date'";
@@ -449,6 +515,8 @@ class Drug
 
     }
 
+
+    // Function to get drug details by drug ID and column name
     public function get_drug_details($drug, $col)
     {
         $sql_get_drug_det = "SELECT * FROM drug WHERE Drug_Id = $drug";
@@ -457,8 +525,44 @@ class Drug
         return $row_get_drug_det[$col];
     }
 
+    // Get drug medical name.
+    public function get_drug_listGRN_med($drug)
+    {
+        $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        return $row_get_drug['MedicalName'];
+    }
+    
+    // Function to List GRN
+    public function list_grn()
+    {
+        
+        echo "<tbody>";
+        $sql_getgrn_details = "SELECT * FROM grn_details";
+        $res_getgrn_details = mysqli_query($this->sqlcon, $sql_getgrn_details);
+        while ($row_grn_details = mysqli_fetch_array($res_getgrn_details)) {
+            $grn_id = $row_grn_details['GRN_Id'];
+            $drug = $row_grn_details['Drug_Id'];
+            echo "<tr>";
+            echo "<td>" . $row_grn_details['GRN_Id'] . "</td>";
+            echo "<td>" . $row_grn_details['Order_Id'] . "</td>";
+            echo "<td data-bs-toggle='popover' data-bs-trigger='hover' data-bs-content='" . $this->get_drug_listGRN_med($drug) . "' title='Medical Name'>" . $this->get_drug($drug) . "
+            </td>";
+            echo "<td>" . $row_grn_details['BatchNo'] . "</td>";
+            echo "<td>" . $row_grn_details['MadeDate'] . "</td>";
+            echo "<td>" . $row_grn_details['ExpireDate'] . "</td>";
+            echo "<td>" . $row_grn_details['Rate'] . "</td>";
+            echo "<td>" . $row_grn_details['PurchasedPrice'] . "</td>";
+            echo "<td>" . $row_grn_details['Quantity'] . "</td>";
+            echo "<td>" . $row_grn_details['Total'] . "</td>";
+            echo "<td><a id = '" . $grn_id . "'  href='javascript: void(0);' class='action-icon btn_delGRN'> 
+            <i class='mdi mdi-delete'></i></a></td>";
+            echo "</tr>";
+        }
+        echo "</tbody>";
 
-
+    }
 
 
 }

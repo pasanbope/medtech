@@ -86,6 +86,5 @@ if ($Patient == "") {
     }
 }
 
-//Add Appoinment SMS code here...............
 
 ?>

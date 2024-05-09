@@ -16,7 +16,6 @@ $today = date('Y-m-d');
 $time = date("h:i:s");
 $ip = getenv('REMOTE_ADDR');
 
-// Call the add_patient method with appropriate parameters
 $title = $_POST['title'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];

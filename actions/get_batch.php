@@ -3,10 +3,10 @@
     <?php
     $drug_id = $_POST['drug_id'];
 
-    // Include the Prescription class file
+    // Include the Drug class file
     include '../class/drug.php';
 
-    // Create an instance of the Prescription class
+    // Create an instance of the Drug class
     $drug = new Drug();
 
     echo $drug->select_batch_from_drug($drug_id);

@@ -7,13 +7,13 @@
 <?php
 
 
-// Include the Patient class file
+// Include the Drug class file
 include '../class/drug.php';
 
-// Create an instance of the Patient class
+// Create an instance of the Drug class
 $drug = new Drug();
 
-// Call the add_patient method with appropriate parameters
+
 $order_id = $_POST['order_id'];
 $drug_id = $_POST['drug_id'];
 $batch_no = $_POST['batch_no'];

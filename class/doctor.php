@@ -3,6 +3,8 @@ class Doctor
 {
     private $sqlcon;
 
+
+    // Constructor to establish database connection
     public function __construct()
     {
         if (file_exists('../db-config.php')) {
@@ -17,6 +19,8 @@ class Doctor
         }
     }
 
+    
+    // Function to add a doctor to the database
     public function add_doctor($title, $firstname, $lastname, $tel, $address, $designation, $nic, $gender)
     {
 
@@ -25,6 +29,8 @@ class Doctor
         mysqli_query($this->sqlcon, $add_patient_sql);
     }
 
+
+    // Function to list doctors
     public function list_doctor()
     {
         echo "<tbody>";
@@ -47,6 +53,8 @@ class Doctor
 
     }
 
+
+    // Function to select a doctor from a dropdown
     public function select_doctor()
     {
         $sql_doc = "select * from doctor";
@@ -56,6 +64,8 @@ class Doctor
         }
     }
 
+
+    // Function to check doctor's schedule for a specific date
     public function check_doc_shedule($Doctor, $Date)
     {
         $sql_check = "SELECT * FROM doctor_schedule WHERE Doctor_Id = $Doctor AND Date = '$Date'";
@@ -64,6 +74,8 @@ class Doctor
         return $res_count;
     }
 
+
+    // Function to add a doctor's schedule
     public function add_doc_shedule($Date, $Doctor, $Time, $Patient, $Active = 1)
     {
         $sql_addshed = "INSERT INTO doctor_schedule (Date, Doctor_Id, Sched_Time, Patient_Count, Is_Enable)
@@ -81,6 +93,8 @@ class Doctor
         }
     }
 
+
+    // Function to add appointment for a doctor's schedule
     public function add_appoinment_forShed($Date, $Doctor)
     {
         $sql_addshed = "INSERT INTO tbl_appoinment_number (Doc_Id, App_Date, App_Number)
@@ -89,6 +103,7 @@ class Doctor
     }
 
 
+    // Function to add an appointment
     public function add_appoinment($Date, $InputDoc, $Patient, $Ptime, $PatAppNum)
     {
         $sql_addap = "INSERT INTO appointment(Date, Doctor_Id, Patient_Id, Time, Patient_App_Num)
@@ -100,6 +115,7 @@ class Doctor
         }
     }
 
+    // Function to view appointment for a doctor's schedule
     public function view_appoinment_forShed($Date, $Doctor)
     {
         $sql_addshed = "SELECT * FROM tbl_appoinment_number WHERE App_Date = '$Date' AND Doc_Id = $Doctor";
@@ -108,6 +124,8 @@ class Doctor
         return $row_Shed['App_Number'];
     }
 
+
+    // Function to update appointment for a doctor's schedule
     public function update_appoinment_forShed($Date, $Doctor, $Pnum)
     {
         $new_p_num = $Pnum + 1;
@@ -115,6 +133,8 @@ class Doctor
         mysqli_query($this->sqlcon, $sql_addshed);
     }
 
+    
+    // Function to get patient from an appointment
     public function get_patient_from_appoinment($app_no, $app_date, $doc_id)
     {
         if ($app_no == null) {
@@ -133,6 +153,7 @@ class Doctor
 
     }
 
+    // Function to get doctor's details
     public function get_doc($doc)
     {
         $sql_get_drug = "SELECT * FROM doctor WHERE Doctor_Id  = $doc";
@@ -141,6 +162,7 @@ class Doctor
         return $row_get_drug['FirstName'];
     }
 
+    // Function to get patient's details
     public function get_pat($pat)
     {
         $sql_get_pat = "SELECT * FROM patient WHERE Patient_Id = $pat";
@@ -151,7 +173,7 @@ class Doctor
 
 
 
-
+    // Function to list appointments
     public function list_appoinment(){
         echo "<tbody>";
         $sql_getapp = "SELECT * FROM appointment";
@@ -172,6 +194,7 @@ class Doctor
     }
 
 
+    // Function to update doctor's schedul
     public function update_shedule($Time, $Patient, $Doctor, $Date)
     {
         $sql_update = "UPDATE doctor_schedule SET Sched_Time = '$Time' , Patient_Count = $Patient WHERE Doctor_Id = $Doctor AND Date = '$Date'";
@@ -183,6 +206,8 @@ class Doctor
         }
     }
 
+    
+    // Function to get details by ID
     public function getdet_byID($uid, $col)
     {
         $sql_get_doc = "SELECT * FROM doctor WHERE Login_Id = $uid";
@@ -191,6 +216,8 @@ class Doctor
         return $row_get_doc[$col];
     }
 
+
+    // Function to get doctor's schedule
     public function get_shedule($day, $doc_id, $col)
     {
         $sql_get_shed = "SELECT * FROM doctor_schedule WHERE Date = '$day' AND Doctor_Id = $doc_id";
@@ -199,6 +226,8 @@ class Doctor
         return $row_get_shed[$col];
     }
 
+
+    // Function to get details by doctor's ID
     public function getdet_by_docID($doc_id, $col)
     {
         $sql_get_doc = "SELECT * FROM doctor WHERE Doctor_Id = $doc_id";
@@ -207,6 +236,8 @@ class Doctor
         return $row_get_doc[$col];
     }
 
+
+    // Function to get appointment
     public function get_appoinment($day, $doc_id)
     {
         $sql_get_app = "SELECT * FROM doctor_schedule WHERE Date = '$day' AND Doctor_Id = $doc_id";
@@ -215,6 +246,8 @@ class Doctor
         return json_encode($row_get_app);
     }
 
+    
+    // Function to check appointment
     public function check_appoinment($day, $doc_id)
     {
         $sql_book_app = "SELECT * FROM appointment WHERE Date = '$day' AND Doctor_Id = $doc_id";
@@ -223,6 +256,8 @@ class Doctor
         return json_encode($row_book_app);
     }
 
+
+    // Function to get appointment for doctor's schedule
     public function get_appoinment_docshed($day, $doc_id)
     {
         $sql_get_app2 = "SELECT * FROM doctor_schedule WHERE Date = '$day' AND Doctor_Id = $doc_id";

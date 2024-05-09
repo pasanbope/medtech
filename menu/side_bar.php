@@ -1,7 +1,7 @@
 <div class="leftside-menu">
 
     <!-- Brand Logo Light -->
-    <a href="" class="logo logo-light">
+    <a href="home.php" class="logo logo-light">
         <span class="logo-lg">
             <img src="assets/images/logo.png" alt="logo">
         </span>
@@ -11,7 +11,7 @@
     </a>
 
     <!-- Brand Logo Dark -->
-    <a href="index.php" class="logo logo-dark">
+    <a href="home.php" class="logo logo-dark">
         <span class="logo-lg">
             <img src="assets/images/logo-dark.png" alt="dark logo">
         </span>
@@ -201,6 +201,9 @@
                         <ul class="side-nav-second-level">
                             <li>
                                 <a href="home.php?page=add-grn">Add GRN</a>
+                            </li>
+                            <li>
+                                <a href="home.php?page=list-grn">GRN List</a>
                             </li>
                         </ul>
                     </div>

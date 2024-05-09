@@ -6,9 +6,9 @@
         $app_date = $_POST['App_date'];
         $doc_id = $_POST['Doc_ID'];
 
-        // Include the Patient class file
+        // Include the Doctor class file
         include '../class/doctor.php';
-        // Create an instance of the Patient class
+        // Create an instance of the Doctor class
         $doctor = new Doctor();
 
         // Include the Patient class file

@@ -1,12 +1,12 @@
 <?php
 
-// Include the Patient class file
+// Include the Supplier class file
 include '../class/supplier.php';
 
-// Create an instance of the Patient class
+// Create an instance of the Supplier class
 $supplier = new Supplier();
 
-// Call the add_patient method with appropriate parameters
+
 $CompanyName = $_POST['CompanyName'];
 $ContactPersonName = $_POST['ContactPersonName'];
 $Contactnumber = $_POST['Contactnumber'];

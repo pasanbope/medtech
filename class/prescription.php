@@ -4,6 +4,7 @@ class Prescription
 {
     private $sqlcon;
 
+    // Constructor method to initialize the database connection.
     public function __construct()
     {
         if (file_exists('../db-config.php')) {
@@ -18,12 +19,16 @@ class Prescription
         }
     }
 
+
+    // Get age from birthday.
     public function get_birthday($bday)
     {
         $age = date_diff(date_create($bday), date_create('today'))->y;
         return $age;
     }
 
+
+    // Add prescription details.
     public function add_pres_detail($pre_no, $batch_no, $expire_date, $drug_id, $qty, $freq, $remark, $advice)
     {
 
@@ -37,6 +42,8 @@ class Prescription
 
     }
 
+
+    // Get drug brand name.
     public function get_drug_pres($drug)
     {
         $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
@@ -46,6 +53,7 @@ class Prescription
     }
 
 
+    // Get drug medical name.
     public function get_drug_pres_med($drug)
     {
         $sql_get_drug = "SELECT * FROM drug WHERE Drug_Id = $drug";
@@ -54,6 +62,8 @@ class Prescription
         return $row_get_drug['MedicalName'];
     }
 
+
+    // List prescription details.
     public function list_pres_detail()
     {
 
@@ -80,6 +90,8 @@ class Prescription
 
     }
 
+
+    // Delete prescription details.
     public function del_pres_detail($pres_id)
     {
         $sql_del_pres = "DELETE FROM tmp_prescription_details WHERE Pres_id  = $pres_id";
@@ -87,6 +99,8 @@ class Prescription
 
     }
 
+
+    // Get the serial number for prescriptions.
     public function get_SerialNo_Pres($serial_name)
     {
 
@@ -97,6 +111,8 @@ class Prescription
 
     }
 
+
+    // Update the serial number for prescriptions.
     public function update_SerialNo_Pres($serial_name, $serial_no)
     {
 
@@ -105,6 +121,8 @@ class Prescription
 
     }
 
+
+    // Generate a new serial number for prescriptions.
     public function genarate_new_serial($serial_name, $serial_no)
     {
 
@@ -113,6 +131,8 @@ class Prescription
         $this->update_SerialNo_Pres($serial_name, $new_serial);
     }
 
+
+    // Update prescription details and master record.
     public function update_Pres_Details($pres_no, $date, $app_id, $patint_id, $doc_id, $time, $note, $ill, $test)
     {
         $sql_getpres = "SELECT * FROM tmp_prescription_details WHERE Prescription_NO = $pres_no";
@@ -143,6 +163,8 @@ class Prescription
         $this->add_prescription_master($pres_no, $app_id, $patint_id, $doc_id, $date, $time, $note, $ill, $test);
     }
 
+
+    // Get the current stock of a drug.
     public function get_stock($drug_id)
     {
         $sql_get_stock = "SELECT * FROM stock WHERE Drug_Id = $drug_id";
@@ -151,12 +173,16 @@ class Prescription
         return $row_get_stock['Quantity'];
     }
 
+   
+    // Update the stock of a drug.
     public function update_stock($drug_id, $Qty, $last_grn_date = '0000-00-00')
     {
         $sql_update = "UPDATE stock SET Quantity = $Qty , Last_GRN_Date = '$last_grn_date' WHERE Drug_Id  = $drug_id";
         mysqli_query($this->sqlcon, $sql_update);
     }
 
+
+    // Get the current batch stock of a drug.
     public function get_batch_stock($drug_id, $batch_no)
     {
         $sql_get_bstock = "SELECT * FROM batch_stock WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
@@ -165,6 +191,7 @@ class Prescription
         return $row_get_bstock['Quantity'];
     }
 
+    // Update the batch stock of a drug.
     public function update_batch_stock($drug_id, $batch_no, $qty)
     {
         $sql_update = "UPDATE batch_stock SET Quantity = $qty WHERE Drug_Id = $drug_id AND Batch_No = '$batch_no'";
@@ -172,7 +199,7 @@ class Prescription
     }
 
 
-
+    // Add prescription details to the main prescription table.
     public function add_pres_details($pres_no, $drug, $batch_no, $qty, $freq, $remark, $advice)
     {
         $sql_addpres = "INSERT INTO prescription_details (Prescription_Id, Drug_Id, Batch_No, Quantity, Frequency, Remarks, Adviced) 
@@ -184,6 +211,8 @@ class Prescription
         }
     }
 
+
+    // Check if prescription items exist.
     public function check_pres_items($pres_no)
     {
         $sql_check_pres = "SELECT * FROM tmp_prescription_details WHERE Prescription_NO = $pres_no";
@@ -192,6 +221,8 @@ class Prescription
         return $row_check_pres;
     }
 
+
+    // Add prescription master record.
     public function add_prescription_master($pres_id, $app_id, $patint_id, $doc_id, $p_date, $p_time, $note, $ill, $test)
     {
 
@@ -204,6 +235,8 @@ class Prescription
         }
     }
 
+
+    // Get doctor's name for prescription.
     public function get_doc_pres($doc)
     {
         $sql_get_drug = "SELECT * FROM doctor WHERE Doctor_Id  = $doc";
@@ -213,6 +246,8 @@ class Prescription
         return $full_name;
     }
 
+
+    // Get patient's name for prescription.
     public function get_pat_pres($pat)
     {
         $sql_get_pat = "SELECT * FROM patient WHERE Patient_Id = $pat";
@@ -222,6 +257,8 @@ class Prescription
         return $full_name;
     }
 
+
+    // List prescription master records.
     public function list_pres_master()
     {
 
@@ -252,6 +289,8 @@ class Prescription
 
     }
 
+
+    // List today's prescription master records.
     public function list_pres_master_today()
     {
         $today = date('Y-m-d');
@@ -283,6 +322,7 @@ class Prescription
     }
 
 
+    // List prescription details for pharmacy
     public function list_pres_detail_pharmacy($pres_id)
     {
 
@@ -311,6 +351,8 @@ class Prescription
 
     }
 
+
+    // Get the total drug charge for a prescription.
     public function get_total_drug_charge($pres_id)
     {
         $sql_getapp = "SELECT * FROM prescription_details WHERE Prescription_Id = $pres_id";
@@ -327,6 +369,8 @@ class Prescription
         return $tot_drug_price;
     }
 
+
+    // Get the total drug cost for a prescription.
     public function get_total_drug_cost($pres_id)
     {
         $sql_getapp = "SELECT * FROM prescription_details WHERE Prescription_Id = $pres_id";
@@ -347,6 +391,7 @@ class Prescription
     }
 
 
+    // Get prescription master details by prescription ID.  
     public function getPres_Master_by_PresId($pres_id, $col)
     {
         $sql_get_pre_mast = "SELECT * FROM prescription_master WHERE Prescription_Id = $pres_id";
@@ -355,6 +400,8 @@ class Prescription
         return $row_get_pre_mast[$col];
     }
 
+
+    // Get the rate of a drug.
     public function get_dru_rate($drug_id, $batch_num)
     {
         $sql_get_dru_rate = "SELECT * FROM grn_details WHERE Drug_Id = $drug_id";
@@ -364,6 +411,8 @@ class Prescription
 
     }
 
+
+    // Get the purchased price of a drug.
     public function get_dru_purchased($drug_id, $batch_num)
     {
         $sql_get_dru_purchased = "SELECT * FROM grn_details WHERE Drug_Id = $drug_id";
@@ -373,6 +422,8 @@ class Prescription
 
     }
 
+
+    // Add a bill for a patient.
     public function add_bill($pat_id, $doc_charge, $drug_charge, $drug_cost, $tot)
     {
 
@@ -387,6 +438,7 @@ class Prescription
     }
 
 
+    // View bill details by prescription ID.
     public function view_bill_by_pres($pres_id, $col)
     {
         $sql_view_bill = "SELECT * FROM patient_bill WHERE Prescription_Id = $pres_id";
@@ -397,7 +449,7 @@ class Prescription
     }
 
 
-
+    // Update prescription issuance status.
     public function update_prescription_issue($pres_id)
     {
 

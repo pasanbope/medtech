@@ -2,47 +2,71 @@
 if (isset($_GET['page'])) {
     if ($_GET['page'] == 'add-doctor') {
         $page = 'pages/add-doctor.php';
-    } elseif ($_GET['page'] == 'list-doctor') {
+    } 
+    elseif ($_GET['page'] == 'list-doctor') {
         $page = 'pages/list-doctor.php';
-    } elseif ($_GET['page'] == 'add-patient') {
+    } 
+    elseif ($_GET['page'] == 'add-patient') {
         $page = 'pages/add-patient.php';
-    } elseif ($_GET['page'] == 'list-patient') {
+    } 
+    elseif ($_GET['page'] == 'list-patient') {
         $page = 'pages/list-patient.php';
-    } elseif ($_GET['page'] == 'new-appoinment') {
+    } 
+    elseif ($_GET['page'] == 'new-appoinment') {
         $page = 'pages/new-appoinment.php';
-    } elseif ($_GET['page'] == 'list-appoinment') {
+    }
+    elseif ($_GET['page'] == 'list-appoinment') {
         $page = 'pages/list-appoinment.php';
-    } elseif ($_GET['page'] == 'new-drug') {
+    } 
+    elseif ($_GET['page'] == 'new-drug') {
         $page = 'pages/new-drug.php';
-    } elseif ($_GET['page'] == 'list-drug') {
+    } 
+    elseif ($_GET['page'] == 'list-drug') {
         $page = 'pages/list-drug.php';
-    } elseif ($_GET['page'] == 'add-supplier') {
+    } 
+    elseif ($_GET['page'] == 'add-supplier') {
         $page = 'pages/add-supplier.php';
-    } elseif ($_GET['page'] == 'list-supplier') {
+    } 
+    elseif ($_GET['page'] == 'list-supplier') {
         $page = 'pages/list-supplier.php';
-    } elseif ($_GET['page'] == 'add-grn') {
+    } 
+    elseif ($_GET['page'] == 'add-grn') {
         $page = 'pages/add-grn.php';
-    } elseif ($_GET['page'] == 'add-category') {
+    }
+    elseif ($_GET['page'] == 'list-grn') {
+        $page = 'pages/list-grn.php';
+    }
+    elseif ($_GET['page'] == 'add-category') {
         $page = 'pages/add-category.php';
-    } elseif ($_GET['page'] == 'add-mesure') {
+    } 
+    elseif ($_GET['page'] == 'add-mesure') {
         $page = 'pages/add-mesure.php';
-    } elseif ($_GET['page'] == 'add-doctor-shedule') {
+    } 
+    elseif ($_GET['page'] == 'add-doctor-shedule') {
         $page = 'pages/add-doc_shedule.php';
-    } elseif ($_GET['page'] == 'new-prescription') {
+    } 
+    elseif ($_GET['page'] == 'new-prescription') {
         $page = 'pages/new-prescription.php';
-    } elseif ($_GET['page'] == 'view-prescription') {
+    } 
+    elseif ($_GET['page'] == 'view-prescription') {
         $page = 'pages/view-prescription.php';
-    } elseif ($_GET['page'] == 'add-user') {
+    } 
+    elseif ($_GET['page'] == 'add-user') {
         $page = 'pages/add-user.php';
-    } elseif ($_GET['page'] == 'user-logs') {
+    } 
+    elseif ($_GET['page'] == 'user-logs') {
         $page = 'pages/list-user-logs.php';
-    } elseif ($_GET['page'] == 'profilr-doctor') {
+    } 
+    elseif ($_GET['page'] == 'profilr-doctor') {
         $page = 'pages/view-doc.php';
-    } elseif ($_GET['page'] == 'repotr-stock') {
+    } 
+    elseif ($_GET['page'] == 'repotr-stock') {
         $page = 'pages/list-stock.php';
-    } elseif ($_GET['page'] == 'report-batch-stock') {
+    } 
+    elseif ($_GET['page'] == 'report-batch-stock') {
         $page = 'pages/list-batch-stock.php';
-    } elseif ($_GET['page'] == 'all-prescription') {
+    } 
+    elseif ($_GET['page'] == 'all-prescription') {
         // $page = 'pages/all-prescriptions.php';
         if (isset($_GET['pres'])) {
             $pres_id = $_GET['pres'];
@@ -50,17 +74,22 @@ if (isset($_GET['page'])) {
         } else {
             $page = 'pages/all-prescriptions.php';
         }
-    } elseif ($_GET['page'] == 'print-reciept') {
+    } 
+    elseif ($_GET['page'] == 'print-reciept') {
         $page = 'pages/recipt.php';
 
-    } elseif ($_GET['page'] == 'login') {
+    } 
+    elseif ($_GET['page'] == 'login') {
         $page = 'pages/login.php';
-    } elseif ($_GET['page'] == 'logout') {
+    } 
+    elseif ($_GET['page'] == 'logout') {
         $page = 'pages/logout.php';
-    } else {
+    } 
+    else {
         $page = 'pages/dashboard.php';
     }
-} else {
+} 
+else {
     $page = 'pages/dashboard.php';
 }
 ?>

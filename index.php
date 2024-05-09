@@ -109,7 +109,7 @@
 
     <footer class="footer footer-alt">
         2018 -
-        <script>document.write(new Date().getFullYear())</script> © MedTech - dreamdesign.com
+        <script>document.write(new Date().getFullYear())</script> © MedTech - Pasan Bopegamage
     </footer>
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>

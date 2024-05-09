@@ -4,6 +4,7 @@ class Patient
 {
 	private $sqlcon;
 
+    // Constructor method to initialize the database connection.
 	public function __construct()
 	{
 		if (file_exists('../db-config.php')) {
@@ -18,6 +19,8 @@ class Patient
 		}
 	}
 
+
+    // Add a patient to the database.
 	public function add_patient($title, $firstname, $lastname, $tel, $address, $birthday, $gender)
 	{
 
@@ -26,6 +29,8 @@ class Patient
 		mysqli_query($this->sqlcon, $add_patient_sql);
 	}
 
+
+    // List all patients.
 	public function list_patient()
 	{
 		echo "<tbody>";
@@ -47,6 +52,8 @@ class Patient
 
 	}
 
+
+	// Select a patient.
 	public function select_patient($P_id = 1)
 	{
 		$sql_pat = "SELECT * from patient";
@@ -57,6 +64,7 @@ class Patient
 		}
 	}
 
+    // Get details of a patient by ID.
 	public function get_details_By_Id($patient_id = 0, $col)
 	{
 		$sql_pat_details = "SELECT * FROM patient WHERE Patient_Id = $patient_id";
@@ -71,6 +79,8 @@ class Patient
 
 	}
 
+
+    // Get age from birthday.
 	public function get_birthday($bday = 0)
 	{
 		if ($bday == 0) {
@@ -81,6 +91,8 @@ class Patient
 		}
 	}
 
+
+    // Get the total number of patients.
 	public function get_pat_num()
 	{
 		$sql_get_pat_num = "SELECT * FROM patient ";

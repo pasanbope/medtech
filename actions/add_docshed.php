@@ -24,9 +24,9 @@ if ($Patient == "") {
 
 } else {
 
-    // Include the Patient class file
+    // Include the Doctor class file
     include '../class/doctor.php';
-    // Create an instance of the Patient class
+    // Create an instance of the Doctor class
     $doctor = new Doctor();
     if ($doctor->check_doc_shedule($Doctor, $Date) == 0) {
         $doctor->add_doc_shedule($Date, $Doctor, $Time, $Patient);
