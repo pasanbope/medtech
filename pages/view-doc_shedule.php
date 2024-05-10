@@ -1,3 +1,7 @@
+<!-- Vendor js -->
+<!-- <script src="assets/js/vendor.min.js"></script> -->
+<!-- Jquery min -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <div class="content">
 
     <!-- Start Content-->
@@ -36,11 +40,11 @@
                                 </select>
                             </div>
                         </div>
-                        <br/>
+                        <br />
                         <div class="tab-content">
                             <div class="tab-pane show active" id="hoverable-rows-preview">
-                                <div class="table-responsive-sm">
-                                    <table id="datatable-buttons" class="table table-hover table-centered mb-0">
+                                <div class="table-responsive-sm" id="result">
+                                    <table class="table table-centered mb-0">
                                         <thead>
                                             <tr>
                                                 <th>Schedule ID</th>
@@ -51,10 +55,6 @@
                                                 <th>Is Enable</th>
                                             </tr>
                                         </thead>
-                                        <?php
-                                        // Create an instance of the Doctor class
-                                        $doctor->list_doc_sched()
-                                        ?>
                                     </table>
                                 </div>
                             </div> <!-- end preview-->
@@ -69,3 +69,21 @@
     </div> <!-- container -->
 
 </div> <!-- content -->
+
+<script>
+    $(document).ready(function () {
+        $("#doc").change(function () {
+
+            $.post(
+                "actions/view_doc_shed_action.php",
+                {
+                    InputDoc: $('#doc').val(),
+
+                },
+                function (data) {
+                    $('#result').html(data);
+                });
+
+        });
+    });
+</script>

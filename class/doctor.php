@@ -19,7 +19,7 @@ class Doctor
         }
     }
 
-    
+
     // Function to add a doctor to the database
     public function add_doctor($title, $firstname, $lastname, $tel, $address, $designation, $nic, $gender)
     {
@@ -133,7 +133,7 @@ class Doctor
         mysqli_query($this->sqlcon, $sql_addshed);
     }
 
-    
+
     // Function to get patient from an appointment
     public function get_patient_from_appoinment($app_no, $app_date, $doc_id)
     {
@@ -184,7 +184,8 @@ class Doctor
 
 
     // Function to list appointments
-    public function list_appoinment(){
+    public function list_appoinment()
+    {
         echo "<tbody>";
         $sql_getapp = "SELECT * FROM appointment";
         $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
@@ -216,7 +217,7 @@ class Doctor
         }
     }
 
-    
+
     // Function to get details by ID
     public function getdet_byID($uid, $col)
     {
@@ -256,7 +257,7 @@ class Doctor
         return json_encode($row_get_app);
     }
 
-    
+
     // Function to check appointment
     public function check_appoinment($day, $doc_id)
     {
@@ -277,9 +278,10 @@ class Doctor
     }
 
     // Function to view doctor's schedule
-    public function list_doc_sched(){
+    public function list_doc_sched($doc_ID)
+    {
         echo "<tbody>";
-        $sql_getapp = "SELECT * FROM doctor_schedule";
+        $sql_getapp = "SELECT * FROM doctor_schedule WHERE Doctor_Id = $doc_ID";
         $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
         while ($row_app = mysqli_fetch_array($res_getapp)) {
             $doc = $row_app['Doctor_Id'];
@@ -289,19 +291,19 @@ class Doctor
             echo "<td>" . $this->get_doc_shed($doc) . "</td>";
             echo "<td>" . $row_app['Sched_Time'] . "</td>";
             echo "<td>" . $row_app['Patient_Count'] . "</td>";
-            
+
             // Check the value of Is_Enable and display the appropriate badge
             if ($row_app['Is_Enable'] == 1) {
                 echo "<td><span class='badge bg-success'>Enable</span></td>";
             } else {
                 echo "<td><span class='badge bg-danger'>Disable</span></td>";
             }
-            
+
             echo "</tr>";
         }
         echo "</tbody>";
     }
-    
+
 
 
 }

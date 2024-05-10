@@ -1,4 +1,3 @@
-
 <?php
 class Drug
 {
@@ -533,11 +532,11 @@ class Drug
         $row_get_drug = mysqli_fetch_array($res_get_drug);
         return $row_get_drug['MedicalName'];
     }
-    
+
     // Function to List GRN
     public function list_grn()
     {
-        
+
         echo "<tbody>";
         $sql_getgrn_details = "SELECT * FROM grn_details";
         $res_getgrn_details = mysqli_query($this->sqlcon, $sql_getgrn_details);
@@ -558,6 +557,31 @@ class Drug
             echo "<td>" . $row_grn_details['Total'] . "</td>";
             echo "<td><a id = '" . $grn_id . "'  href='javascript: void(0);' class='action-icon btn_delGRN'> 
             <i class='mdi mdi-delete'></i></a></td>";
+            echo "</tr>";
+        }
+        echo "</tbody>";
+
+    }
+
+    public function list_grn_by_order($orderId)
+    {
+
+        echo "<tbody>";
+        $sql_getgrn_details = "SELECT * FROM grn_details WHERE Order_Id = $orderId";
+        $res_getgrn_details = mysqli_query($this->sqlcon, $sql_getgrn_details);
+        while ($row_grn_details = mysqli_fetch_array($res_getgrn_details)) {
+            $grn_id = $row_grn_details['GRN_Id'];
+            $drug = $row_grn_details['Drug_Id'];
+            echo "<tr>";
+            echo "<td>" . $row_grn_details['GRN_Id'] . "</td>";
+            echo "<td data-bs-toggle='popover' data-bs-trigger='hover' data-bs-content='" . $this->get_drug_listGRN_med($drug) . "' title='Medical Name'>" . $this->get_drug($drug) . "
+            </td>";
+            echo "<td>" . $row_grn_details['BatchNo'] . "</td>";
+            echo "<td>" . $row_grn_details['ExpireDate'] . "</td>";
+            echo "<td>" . $row_grn_details['Rate'] . "</td>";
+            echo "<td>" . $row_grn_details['PurchasedPrice'] . "</td>";
+            echo "<td>" . $row_grn_details['Quantity'] . "</td>";
+            echo "<td>" . $row_grn_details['Total'] . "</td>";
             echo "</tr>";
         }
         echo "</tbody>";

@@ -134,20 +134,6 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="header-title">Tasks Overview</h4>
-                        <div>
-                            <button type="button" class="btn btn-soft-secondary btn-sm">
-                                ALL
-                            </button>
-                            <button type="button" class="btn btn-soft-primary btn-sm">
-                                1M
-                            </button>
-                            <button type="button" class="btn btn-soft-secondary btn-sm">
-                                6M
-                            </button>
-                            <button type="button" class="btn btn-soft-secondary btn-sm">
-                                1Y
-                            </button>
-                        </div>
                     </div>
 
                     <div class="card-body">
