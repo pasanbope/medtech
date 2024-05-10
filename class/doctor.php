@@ -162,6 +162,16 @@ class Doctor
         return $row_get_drug['FirstName'];
     }
 
+    // Function to get doctor's full name
+    public function get_doc_shed($doc)
+    {
+        $sql_get_drug = "SELECT * FROM doctor WHERE Doctor_Id  = $doc";
+        $res_get_drug = mysqli_query($this->sqlcon, $sql_get_drug);
+        $row_get_drug = mysqli_fetch_array($res_get_drug);
+        $full_name = $row_get_drug['Title'] . " " . $row_get_drug['FirstName'] . " " . $row_get_drug['LastName'];
+        return $full_name;
+    }
+
     // Function to get patient's details
     public function get_pat($pat)
     {
@@ -265,6 +275,34 @@ class Doctor
         $row_get_app2 = mysqli_num_rows($res_get_app2);
         return json_encode($row_get_app2);
     }
+
+    // Function to view doctor's schedule
+    public function list_doc_sched(){
+        echo "<tbody>";
+        $sql_getapp = "SELECT * FROM doctor_schedule";
+        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+        while ($row_app = mysqli_fetch_array($res_getapp)) {
+            $doc = $row_app['Doctor_Id'];
+            echo "<tr>";
+            echo "<td>" . $row_app['Schedule_Id'] . "</td>";
+            echo "<td>" . $row_app['Date'] . "</td>";
+            echo "<td>" . $this->get_doc_shed($doc) . "</td>";
+            echo "<td>" . $row_app['Sched_Time'] . "</td>";
+            echo "<td>" . $row_app['Patient_Count'] . "</td>";
+            
+            // Check the value of Is_Enable and display the appropriate badge
+            if ($row_app['Is_Enable'] == 1) {
+                echo "<td><span class='badge bg-success'>Enable</span></td>";
+            } else {
+                echo "<td><span class='badge bg-danger'>Disable</span></td>";
+            }
+            
+            echo "</tr>";
+        }
+        echo "</tbody>";
+    }
+    
+
 
 }
 ?>

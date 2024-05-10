@@ -260,66 +260,77 @@ class Prescription
 
     // List prescription master records.
     public function list_pres_master()
-    {
+{
+    echo "<tbody>";
+    $sql_getapp = "SELECT * FROM prescription_master";
+    $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+    while ($row_app = mysqli_fetch_array($res_getapp)) {
+        $doc = $row_app['Doctor_Id'];
+        $pat = $row_app['Patient_Id'];
 
-        echo "<tbody>";
-        $sql_getapp = "SELECT * FROM prescription_master";
-        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
-        while ($row_app = mysqli_fetch_array($res_getapp)) {
-            $doc = $row_app['Doctor_Id'];
-            $pat = $row_app['Patient_Id'];
+        echo "<tr>";
 
-            echo "<tr>";
-
-            echo "<td>" . $row_app['Prescription_Id'] . "</td>";
-            echo "<td>" . $row_app['Appointment_Id'] . "</td>";
-            echo "<td>" . $this->get_pat_pres($pat) . "</td>";
-            echo "<td>" . $this->get_doc_pres($doc) . "</td>";
-            echo "<td>" . $row_app['P_Date'] . "</td>";
-            echo "<td>" . $row_app['P_Time'] . "</td>";
-            echo "<td>" . $row_app['P_Description'] . "</td>";
-            echo "<td>" . $row_app['Illness'] . "</td>";
-            echo "<td>" . $row_app['Test'] . "</td>";
-            echo "<td>" . $row_app['Is_issued'] . "</td>";
-
-            echo "</tr>";
-
+        echo "<td>" . $row_app['Prescription_Id'] . "</td>";
+        echo "<td>" . $row_app['Appointment_Id'] . "</td>";
+        echo "<td>" . $this->get_pat_pres($pat) . "</td>";
+        echo "<td>" . $this->get_doc_pres($doc) . "</td>";
+        echo "<td>" . $row_app['P_Date'] . "</td>";
+        echo "<td>" . $row_app['P_Time'] . "</td>";
+        echo "<td>" . $row_app['P_Description'] . "</td>";
+        echo "<td>" . $row_app['Illness'] . "</td>";
+        echo "<td>" . $row_app['Test'] . "</td>";
+        
+        // Check the value of Is_issued and display the appropriate badge
+        if ($row_app['Is_issued'] == 1) {
+            echo "<td><span class='badge bg-success'>Issued</span></td>";
+        } else {
+            echo "<td><span class='badge bg-danger'>Not Issued</span></td>";
         }
-        echo "</tbody>";
+        
+        echo "</tr>";
 
     }
+    echo "</tbody>";
+}
+
 
 
     // List today's prescription master records.
     public function list_pres_master_today()
-    {
-        $today = date('Y-m-d');
-        echo "<tbody>";
-        $sql_getapp = "SELECT * FROM prescription_master WHERE P_Date = '$today' AND Is_issued = 0";
-        $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
-        while ($row_app = mysqli_fetch_array($res_getapp)) {
-            $doc = $row_app['Doctor_Id'];
-            $pat = $row_app['Patient_Id'];
+{
+    $today = date('Y-m-d');
+    echo "<tbody>";
+    $sql_getapp = "SELECT * FROM prescription_master WHERE P_Date = '$today' AND Is_issued = 0";
+    $res_getapp = mysqli_query($this->sqlcon, $sql_getapp);
+    while ($row_app = mysqli_fetch_array($res_getapp)) {
+        $doc = $row_app['Doctor_Id'];
+        $pat = $row_app['Patient_Id'];
 
-            echo "<tr>";
+        echo "<tr>";
 
-            echo "<td><a href='home.php?page=all-prescription&pres=" . $row_app['Prescription_Id'] . "'>" . $row_app['Prescription_Id'] . "</a></td>";
-            echo "<td>" . $row_app['Appointment_Id'] . "</td>";
-            echo "<td>" . $this->get_pat_pres($pat) . "</td>";
-            echo "<td>" . $this->get_doc_pres($doc) . "</td>";
-            echo "<td>" . $row_app['P_Date'] . "</td>";
-            echo "<td>" . $row_app['P_Time'] . "</td>";
-            echo "<td>" . $row_app['P_Description'] . "</td>";
-            echo "<td>" . $row_app['Illness'] . "</td>";
-            echo "<td>" . $row_app['Test'] . "</td>";
-            echo "<td>" . $row_app['Is_issued'] . "</td>";
-
-            echo "</tr>";
-
+        echo "<td><a href='home.php?page=all-prescription&pres=" . $row_app['Prescription_Id'] . "'>" . $row_app['Prescription_Id'] . "</a></td>";
+        echo "<td>" . $row_app['Appointment_Id'] . "</td>";
+        echo "<td>" . $this->get_pat_pres($pat) . "</td>";
+        echo "<td>" . $this->get_doc_pres($doc) . "</td>";
+        echo "<td>" . $row_app['P_Date'] . "</td>";
+        echo "<td>" . $row_app['P_Time'] . "</td>";
+        echo "<td>" . $row_app['P_Description'] . "</td>";
+        echo "<td>" . $row_app['Illness'] . "</td>";
+        echo "<td>" . $row_app['Test'] . "</td>";
+        
+        // Check the value of Is_issued and display the appropriate badge
+        if ($row_app['Is_issued'] == 1) {
+            echo "<td><span class='badge bg-success'>Issued</span></td>";
+        } else {
+            echo "<td><span class='badge bg-danger'>Not Issued</span></td>";
         }
-        echo "</tbody>";
+        
+        echo "</tr>";
 
     }
+    echo "</tbody>";
+}
+
 
 
     // List prescription details for pharmacy

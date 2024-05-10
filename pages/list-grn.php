@@ -23,38 +23,117 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="tab-content">
-                            <div class="tab-pane show active" id="hoverable-rows-preview">
-                                <div class="table-responsive-sm">
-                                    <table id="datatable-buttons"
-                                        class="table table-hover table-centered mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>GRN ID</th>
-                                                <th>Order Id</th>
-                                                <th>Drug</th>
-                                                <th>Batch No</th>
-                                                <th>Manufacture Date</th>
-                                                <th>Expire Date</th>
-                                                <th>Rate</th>
-                                                <th>Purchased Price</th>
-                                                <th>Quantity</th>
-                                                <th>Total Price(Rs)</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                        // Include the Drug class file
-                                        include 'class/drug.php';
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Accordion Item #1
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="hoverable-rows-preview">
+                                                <div class="table-responsive-sm">
+                                                    <table id="datatable-buttons"
+                                                        class="table table-striped dt-responsive nowrap w-100">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>GRN ID</th>
+                                                                <th>Order Id</th>
+                                                                <th>Drug</th>
+                                                                <th>Batch No</th>
+                                                                <th>Manufacture Date</th>
+                                                                <th>Expire Date</th>
+                                                                <th>Rate</th>
+                                                                <th>Purchased Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total Price(Rs)</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <?php
 
-                                        // Create an instance of the Drug class
-                                        $drug = new Drug();
-                                        $drug->list_grn();
-                                        ?>
-                                    </table>
+                                                        include 'class/drug.php';
+
+
+                                                        $drug = new Drug();
+                                                        $drug->list_grn();
+                                                        ?>
+                                                    </table>
+                                                </div>
+                                            </div> <!-- end preview-->
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> <!-- end preview-->
-                        </div> <!-- end tab-content-->
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Accordion Item #2
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                    <div class="tab-content">
+                                            <div class="tab-pane show active" id="hoverable-rows-preview">
+                                                <div class="table-responsive-sm">
+                                                    <table id="datatable-buttons"
+                                                        class="table table-striped dt-responsive nowrap w-100">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>GRN ID</th>
+                                                                <th>Order Id</th>
+                                                                <th>Drug</th>
+                                                                <th>Batch No</th>
+                                                                <th>Manufacture Date</th>
+                                                                <th>Expire Date</th>
+                                                                <th>Rate</th>
+                                                                <th>Purchased Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total Price(Rs)</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <?php
+                                                        $drug->list_grn();
+                                                        ?>
+                                                    </table>
+                                                </div>
+                                            </div> <!-- end preview-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Accordion Item #3
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by
+                                        default, until the collapse
+                                        plugin adds the appropriate classes that we use to style each element. These
+                                        classes control the overall
+                                        appearance, as well as the showing and hiding via CSS transitions. You can
+                                        modify any of this with
+                                        custom CSS or overriding our default variables. It's also worth noting that just
+                                        about any HTML can go
+                                        within the <code>.accordion-body</code>, though the transition does limit
+                                        overflow.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div> <!-- end card body-->
                 </div> <!-- end card -->

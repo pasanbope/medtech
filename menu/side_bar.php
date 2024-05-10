@@ -266,6 +266,9 @@
                         <li>
                             <a href="home.php?page=add-doctor-shedule">Edit Doctor Schedule</a>
                         </li>
+                        <li>
+                            <a href="home.php?page=view-doctor-shedule">View Doctor Schedule</a>
+                        </li>
                     </ul>
                 </div>
             </li>
