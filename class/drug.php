@@ -43,6 +43,7 @@ class Drug
         while ($row_drug = mysqli_fetch_array($res_getdrug)) {
             $mesure_id = $row_drug['Measure_Id'];
             $category = $row_drug['Category_Id'];
+			$Drug_Id = $row_drug['Drug_Id'];
             echo "<tr><td>" . $row_drug['Drug_Id'] . "</td>";
             echo "<td>" . $row_drug['MedicalName'] . "</td>";
             echo "<td>" . $row_drug['BrandName'] . "</td>";
@@ -50,13 +51,85 @@ class Drug
             echo "<td>" . $this->get_measurement($mesure_id) . "</td>";
             echo "<td>" . $this->get_category($category) . "</td>";
 
-            echo "<td> <a href='#' data-id='" . $row_drug['Drug_Id'] . "'";
-            echo "class='action-icon btn_edit' data-bs-target='#full-width-modal' data-bs-toggle='modal'> 
+            echo "<td> <a href='#' data-bs-whatever='" . $row_drug['Drug_Id'] . "'";
+            echo "class='action-icon btn_edit' data-bs-target='#full-width-modal_" . $row_drug['Drug_Id'] . "' data-bs-toggle='modal'> 
     		<i class='mdi mdi-square-edit-outline'></i></a>
             </td></tr>";
+			$this->list_drug_model($Drug_Id);
         }
         echo "</tbody>";
 
+    }
+	
+	    // Function to list drugs for model
+    public function list_drug_model($Drug_Id)
+    {
+        $sql_getdrug = "SELECT * FROM drug WHERE Drug_Id = $Drug_Id";
+        $res_getdrug = mysqli_query($this->sqlcon, $sql_getdrug);
+        $row_drug = mysqli_fetch_array($res_getdrug);
+            $mesure_id = $row_drug['Measure_Id'];
+            $category = $row_drug['Category_Id'];
+        ?>
+				<div id="full-width-modal_<?php echo $Drug_Id;?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="fullWidthModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-full-width">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="fullWidthModalLabel">Edit data</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="row g-2">
+									<div class="mb-3 col-md-4">
+										<label for="inputGender" class="form-label">Catogary</label>
+										<select id="inputGender" class="form-select">
+											<option>Tablet</option>
+											<option>Cream</option>
+											<option>Syrup</option>
+											<option>Powder</option>
+										</select>
+									</div>
+
+									<div class="mb-3 col-md-4">
+										<label for="inptMedName" class="form-label">Medicinal name</label>
+										<input type="text" class="form-control" id="inptMedName" placeholder="Medicinal name" value="<?php echo $row_drug['MedicalName']; ?>">
+									</div>
+
+									<div class="mb-3 col-md-4">
+										<label for="inptBrandName" class="form-label">Brand name</label>
+										<input type="text" class="form-control" id="inptBrandName" placeholder="Brand name" value="<?php echo $row_drug['BrandName'];?>">
+									</div>
+
+								</div>
+
+								<div class="row g-2">
+									<div class="mb-3 col-md-4">
+										<label for="example-number" class="form-label">Re Order Level</label>
+										<input class="form-control" id="example-number" type="number" name="number" value="<?php echo $row_drug['Rol'];?>">
+									</div>
+
+									<div class="mb-3 col-md-4">
+										<label for="inputGender" class="form-label">Measurement Type</label>
+										<select id="inputGender" class="form-select">
+											<option>ML</option>
+											<option>tablets</option>
+											<option>G</option>
+											<option>MG</option>
+										</select>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary btn_<?php echo $Drug_Id;?>">Save changes</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div>
+		<?php		
+        
     }
 
     // Function to add a drug category
