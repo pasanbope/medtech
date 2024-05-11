@@ -33,7 +33,7 @@
                                 <select id="inputCat" class="form-select">
                                     <option valuue="0">Select Category</option>
                                     <?php
-                                    include('dbconn.php');
+                                    include ('dbconn.php');
                                     $sql_cat = "select * from drug_category";
                                     $res_cat = mysqli_query($conn, $sql_cat);
                                     while ($row_cat = mysqli_fetch_array($res_cat)) {
@@ -83,7 +83,7 @@
                         <br>
 
                         <button type="button" id="adddrug_btn" class="btn btn-primary">Save</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
                 </div> <!-- end row-->

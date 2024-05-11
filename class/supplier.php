@@ -41,10 +41,7 @@ class Supplier
             echo "<td>" . $row_sup['ContactNumber'] . "</td>";
             echo "<td>" . $row_sup['Email'] . "</td>";
 
-            echo "<td> <a href='#' data-id='" . $row_sup['Supplier_Id'] . "'";
-            echo "class='action-icon btn_edit' data-bs-target='#full-width-modal' data-bs-toggle='modal'> 
-			<i class='mdi mdi-square-edit-outline'></i></a>
-            </td></tr>";
+            echo "</tr>";
         }
         echo "</tbody>";
     }

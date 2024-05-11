@@ -1,3 +1,7 @@
+<!-- Vendor js -->
+<!-- <script src="assets/js/vendor.min.js"></script> -->
+<!-- Jquery min -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <div class="content">
 
     <!-- Start Content-->
@@ -34,7 +38,6 @@
                                             <th>Re-Order Level</th>
                                             <th>Mesurement type</th>
                                             <th>Catagory</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -58,7 +61,3 @@
     </div> <!-- container -->
 
 </div> <!-- content -->
-
-<!-- Full width modal content -->
-<!-- /.modal -->
-<!--End Full width modal content -->

@@ -55,7 +55,7 @@
                                     <option>Select</option>
                                     <optgroup>
                                         <?php
-                                        include('dbconn.php');
+                                        include ('dbconn.php');
                                         $sql_role = "select * from user_roles";
                                         $res_role = mysqli_query($conn, $sql_role);
                                         while ($row_role = mysqli_fetch_array($res_role)) {
@@ -70,7 +70,7 @@
                             </div>
                         </div><br>
                         <button type="button" id="adduser_btn" class="btn btn-primary">Register</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
                 </div> <!-- end row-->

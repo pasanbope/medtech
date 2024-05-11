@@ -33,7 +33,6 @@
                                             <th>Contact Person Name</th>
                                             <th>Contact Number</th>
                                             <th>Email</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <?php

@@ -227,6 +227,9 @@
                             <li>
                                 <a href="home.php?page=report-batch-stock">Batch Stock</a>
                             </li>
+                            <li>
+                                <a href="home.php?page=daily-report">Daily Report</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -263,9 +266,13 @@
                 </a>
                 <div class="collapse" id="sidebarDocShed">
                     <ul class="side-nav-second-level">
-                        <li>
-                            <a href="home.php?page=add-doctor-shedule">Edit Doctor Schedule</a>
-                        </li>
+                        <?php
+                        if ($roll_id == 2) {
+                            ?>
+                            <li>
+                                <a href="home.php?page=add-doctor-shedule">Edit Doctor Schedule</a>
+                            </li>
+                        <?php } ?>
                         <li>
                             <a href="home.php?page=view-doctor-shedule">View Doctor Schedule</a>
                         </li>

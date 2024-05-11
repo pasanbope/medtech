@@ -37,26 +37,26 @@ if (($title == '') or ($firstname == '') or ($lastname == '') or ($tel == '') or
 
 
 
-    //     require_once('../notify-php-master/autoload.php');
+    require_once ('../notify-php-master/autoload.php');
 
-    // $api_instance = new NotifyLk\Api\SmsApi();
-// $user_id = "26935"; // string | API User ID - Can be found in your settings page.
-// $api_key = "iZfjbOWYPXqyU5ZkOwSG"; // string | API Key - Can be found in your settings page.
-// $message = "Welcome, ".$fullName." ! You are now part of our Egaloya Medical Center. Your health journey starts here. For appointments & updates, call us. Stay healthy, stay happy!"; // string | Text of the message. 320 chars max.
-// $to = "94".$tel; // string | Number to send the SMS. Better to use 9471XXXXXXX format.
-// $sender_id = "NotifyDEMO"; // string | This is the from name recipient will see as the sender of the SMS. Use \\\"NotifyDemo\\\" if you have not ordered your own sender ID yet.
-// $contact_fname = ""; // string | Contact First Name - This will be used while saving the phone number in your Notify contacts (optional).
-// $contact_lname = ""; // string | Contact Last Name - This will be used while saving the phone number in your Notify contacts (optional).
-// $contact_email = ""; // string | Contact Email Address - This will be used while saving the phone number in your Notify contacts (optional).
-// $contact_address = ""; // string | Contact Physical Address - This will be used while saving the phone number in your Notify contacts (optional).
-// $contact_group = 0; // int | A group ID to associate the saving contact with (optional).
-// $type = null; // string | Message type. Provide as unicode to support unicode (optional).
+    $api_instance = new NotifyLk\Api\SmsApi();
+    $user_id = "26935"; // string | API User ID - Can be found in your settings page.
+    $api_key = "iZfjbOWYPXqyU5ZkOwSG"; // string | API Key - Can be found in your settings page.
+    $message = "Welcome, " . $fullName . " ! You are now part of our Egaloya Medical Center. Your health journey starts here. For appointments & updates, call us. Stay healthy, stay happy!"; // string | Text of the message. 320 chars max.
+    $to = "94" . $tel; // string | Number to send the SMS. Better to use 9471XXXXXXX format.
+    $sender_id = "NotifyDEMO"; // string | This is the from name recipient will see as the sender of the SMS. Use \\\"NotifyDemo\\\" if you have not ordered your own sender ID yet.
+    $contact_fname = ""; // string | Contact First Name - This will be used while saving the phone number in your Notify contacts (optional).
+    $contact_lname = ""; // string | Contact Last Name - This will be used while saving the phone number in your Notify contacts (optional).
+    $contact_email = ""; // string | Contact Email Address - This will be used while saving the phone number in your Notify contacts (optional).
+    $contact_address = ""; // string | Contact Physical Address - This will be used while saving the phone number in your Notify contacts (optional).
+    $contact_group = 0; // int | A group ID to associate the saving contact with (optional).
+    $type = null; // string | Message type. Provide as unicode to support unicode (optional).
 
-    // try {
-//     $api_instance->sendSMS($user_id, $api_key, $message, $to, $sender_id, $contact_fname, $contact_lname, $contact_email, $contact_address, $contact_group, $type);
-// } catch (Exception $e) {
-//     echo 'Exception when calling SmsApi->sendSMS: ', $e->getMessage(), PHP_EOL;
-// }
+    try {
+        $api_instance->sendSMS($user_id, $api_key, $message, $to, $sender_id, $contact_fname, $contact_lname, $contact_email, $contact_address, $contact_group, $type);
+    } catch (Exception $e) {
+        echo 'Exception when calling SmsApi->sendSMS: ', $e->getMessage(), PHP_EOL;
+    }
 
     echo "<div class='alert alert-success alert-dismissible text-bg-success border-0 fade show' role='alert'>
     <button type='button' class='btn-close btn-close-white' data-bs-dismiss='alert' aria-label='Close'></button>

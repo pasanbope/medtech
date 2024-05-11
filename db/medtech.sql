@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 07:40 AM
+-- Generation Time: May 11, 2024 at 08:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.13
 
@@ -41,30 +41,13 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`Appointment_Id`, `Date`, `Doctor_Id`, `Patient_Id`, `Time`, `Patient_App_Num`) VALUES
-(4, '2024-03-06', 1, 1, '', 0),
-(5, '2024-03-06', 1, 2, '', 0),
-(6, '2024-03-06', 1, 1, '', 0),
-(7, '2024-03-06', 1, 2, '', 0),
-(8, '2024-03-07', 1, 1, '', 0),
-(9, '2024-03-07', 1, 2, '', 0),
-(10, '2024-03-07', 1, 2, '', 0),
-(11, '2024-03-15', 1, 1, '', 0),
-(12, '2024-03-22', 1, 1, '', 0),
-(13, '2024-04-06', 1, 5, '', 0),
-(14, '2024-04-06', 1, 2, '', 0),
-(15, '2024-04-06', 1, 4, '', 0),
-(16, '2024-04-06', 1, 1, '', 0),
-(17, '2024-04-11', 1, 1, '07:00:00', 0),
-(18, '2024-04-11', 1, 3, '07:10:00', 0),
-(19, '2024-04-13', 1, 1, '06:00:00', 1),
-(20, '2024-04-13', 1, 4, '06:10:00', 1),
-(21, '2024-04-13', 1, 8, '06:20:00', 1),
-(22, '2024-04-13', 1, 4, '06:30:00', 2),
-(23, '2024-04-09', 1, 4, '11:12:00', 1),
-(24, '2024-04-09', 1, 3, '11:22:00', 2),
-(25, '2024-04-17', 1, 1, '16:00:00', 1),
-(26, '2024-04-17', 1, 3, '16:10:00', 2),
-(27, '2024-04-17', 1, 2, '16:20:00', 3);
+(1, '2024-05-06', 1, 1, '02:00:00', 1),
+(2, '2024-05-11', 1, 4, '04:36:00', 1),
+(3, '2024-05-11', 1, 2, '04:46:00', 2),
+(4, '2024-05-11', 1, 5, '04:56:00', 3),
+(5, '2024-05-11', 1, 3, '05:06:00', 4),
+(6, '2024-05-11', 2, 5, '13:00:00', 1),
+(7, '2024-05-11', 2, 4, '13:10:00', 2);
 
 -- --------------------------------------------------------
 
@@ -85,9 +68,14 @@ CREATE TABLE `batch_stock` (
 --
 
 INSERT INTO `batch_stock` (`Drug_Id`, `Batch_No`, `Quantity`, `MadeDate`, `ExpireDate`) VALUES
-(1, '1', 27, '2024-04-01', '2024-05-01'),
-(2, '1', 200, '2024-04-01', '2024-05-01'),
-(3, '1', 100, '2024-04-01', '2024-05-01');
+(1, '11', 68, '2020-03-04', '2024-05-05'),
+(2, '13', 33, '2024-05-01', '2024-05-20'),
+(3, '12B', 68, '2024-02-20', '2026-06-09'),
+(4, '1211B', 100, '2020-02-05', '2028-06-06'),
+(4, '14C', 200, '2024-01-02', '2026-05-03'),
+(5, '234dD', 0, '2024-05-07', '2029-01-08'),
+(8, '133D', 500, '2021-07-08', '2028-10-17'),
+(10, '12M', 100, '2020-06-02', '2037-07-08');
 
 -- --------------------------------------------------------
 
@@ -105,6 +93,7 @@ CREATE TABLE `doctor` (
   `Designation` varchar(255) DEFAULT NULL,
   `NIC` varchar(15) DEFAULT NULL,
   `Gender` varchar(10) DEFAULT NULL,
+  `Doc_charge` float(11,2) NOT NULL,
   `Login_Id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -112,9 +101,9 @@ CREATE TABLE `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`Doctor_Id`, `Title`, `FirstName`, `LastName`, `Telphone`, `Address`, `Designation`, `NIC`, `Gender`, `Login_Id`) VALUES
-(1, 'Prof.', 'Kaumini', 'Dilshika', '077-6575547', 'Ingiriya, Sri Lanka', 'Cardiologist', '20023343555', 'Female', 2),
-(2, 'Dr.', 'Narada', 'Opanayake', '077-2287488', 'Egaloya', 'Neurologist', '198906821221', 'Male', 3);
+INSERT INTO `doctor` (`Doctor_Id`, `Title`, `FirstName`, `LastName`, `Telphone`, `Address`, `Designation`, `NIC`, `Gender`, `Doc_charge`, `Login_Id`) VALUES
+(1, 'Prof.', 'Kaumini', 'Dilshika', '077-6575547', 'Ingiriya, Sri Lanka', 'Cardiologist', '20023343555', 'Female', 2500.00, 2),
+(2, 'Dr.', 'Narada', 'Opanayake', '077-2287488', 'Egaloya', 'Neurologist', '198906821221', 'Male', 2000.00, 3);
 
 -- --------------------------------------------------------
 
@@ -136,29 +125,14 @@ CREATE TABLE `doctor_schedule` (
 --
 
 INSERT INTO `doctor_schedule` (`Schedule_Id`, `Date`, `Doctor_Id`, `Sched_Time`, `Patient_Count`, `Is_Enable`) VALUES
-(1, '2024-03-14', 1, '22:32:00', 12, 1),
-(2, '2024-03-05', 1, '22:55:00', 20, 1),
-(3, '2024-03-06', 1, '23:20:00', 3, 1),
-(4, '2024-03-07', 1, '23:22:00', 2, 1),
-(5, '2024-03-08', 1, '04:25:00', 50, 1),
-(6, '2024-03-09', 1, '04:28:00', 32, 1),
-(7, '2024-03-10', 1, '05:00:00', 5, 1),
-(8, '2024-03-11', 1, '07:00:00', 7, 1),
-(9, '2024-03-12', 1, '08:00:00', 8, 1),
-(10, '2024-03-13', 1, '09:00:00', 99, 1),
-(11, '2024-03-15', 1, '21:22:00', 124, 1),
-(12, '2024-03-16', 1, '21:59:00', 12, 1),
-(13, '2024-03-17', 1, '21:56:00', 12, 1),
-(14, '2024-03-18', 1, '21:00:00', 33, 1),
-(15, '2024-03-19', 1, '21:56:00', 1, 1),
-(16, '2024-03-22', 1, '22:45:00', 12, 1),
-(17, '2024-04-09', 1, '11:12:00', 23, 1),
-(18, '2024-04-10', 1, '05:00:00', 20, 1),
-(19, '2024-04-11', 1, '13:00:00', 123, 1),
-(20, '2024-04-12', 1, '06:00:00', 23, 1),
-(21, '2024-04-13', 1, '08:10:00', 60, 1),
-(22, '2024-04-14', 1, '20:00:00', 123, 1),
-(23, '2024-04-17', 1, '16:00:00', 20, 1);
+(1, '2024-04-27', 1, '17:00:00', 12, 1),
+(2, '2024-05-06', 1, '02:00:00', 12, 1),
+(3, '2024-05-11', 1, '04:36:00', 10, 1),
+(4, '2024-05-13', 1, '05:00:00', 20, 1),
+(5, '2024-05-14', 1, '06:00:00', 58, 1),
+(6, '2024-05-15', 1, '03:00:00', 20, 1),
+(7, '2024-05-11', 2, '13:00:00', 10, 1),
+(8, '2024-05-13', 2, '02:00:00', 23, 1);
 
 -- --------------------------------------------------------
 
@@ -180,8 +154,8 @@ CREATE TABLE `drug` (
 --
 
 INSERT INTO `drug` (`Drug_Id`, `MedicalName`, `BrandName`, `Rol`, `Measure_Id`, `Category_Id`) VALUES
-(1, 'Acetaminophen', 'Panadol', 12, 2, 1),
-(2, 'Acetylsalicylic acid', 'Aspirin', 10, 3, 1),
+(1, 'Paracitamol', 'Panadol', 12, 2, 1),
+(2, 'Acetylsalicylic acid', 'Aspirin', 45, 3, 1),
 (3, 'Acetaminophen', 'Tylenol', 23, 3, 1),
 (4, 'Amoxicillin', 'Amoxil', 20, 3, 1),
 (5, 'Azithromycin', 'Zithromax', 28, 3, 1),
@@ -237,9 +211,14 @@ CREATE TABLE `grn_details` (
 --
 
 INSERT INTO `grn_details` (`GRN_Id`, `Order_Id`, `Drug_Id`, `BatchNo`, `MadeDate`, `ExpireDate`, `Rate`, `PurchasedPrice`, `Quantity`, `Total`) VALUES
-(1, 6, 1, '1', '2024-04-01', '2024-05-01', 60.00, 50.00, 100, 5000.00),
-(2, 6, 2, '1', '2024-04-01', '2024-05-01', 120.00, 100.00, 200, 20000.00),
-(3, 6, 3, '1', '2024-04-01', '2024-05-01', 20.00, 10.00, 100, 1000.00);
+(1, 1, 1, '11', '2020-03-04', '2029-07-12', 12.00, 10.00, 100, 1000.00),
+(2, 1, 2, '13', '2024-05-01', '2029-05-01', 14.00, 12.00, 50, 600.00),
+(3, 2, 3, '12B', '2024-02-20', '2026-06-09', 130.00, 120.00, 100, 12000.00),
+(4, 2, 4, '14C', '2024-01-02', '2026-05-03', 14.00, 12.00, 200, 2400.00),
+(5, 3, 4, '1211B', '2020-02-05', '2028-06-06', 25.00, 20.00, 100, 2000.00),
+(6, 3, 5, '234dD', '2024-05-07', '2029-01-08', 5.00, 2.00, 10, 20.00),
+(7, 3, 10, '12M', '2020-06-02', '2037-07-08', 50.00, 45.00, 100, 4500.00),
+(8, 3, 8, '133D', '2021-07-08', '2028-10-17', 8.00, 10.00, 500, 5000.00);
 
 -- --------------------------------------------------------
 
@@ -259,7 +238,9 @@ CREATE TABLE `grn_master` (
 --
 
 INSERT INTO `grn_master` (`Order_Id`, `Supplier_Id`, `Date`, `TotalAmount`) VALUES
-(6, 1, '2024-04-16', 26000.00);
+(1, 2, '2024-05-06', 1600.00),
+(2, 4, '2024-05-10', 14400.00),
+(3, 3, '2024-05-11', 11520.00);
 
 -- --------------------------------------------------------
 
@@ -305,19 +286,11 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`Patient_Id`, `Title`, `FirstName`, `LastName`, `Telephone`, `Address`, `Birthday`, `Gender`) VALUES
-(1, 'Mr.', 'Tineth', 'Pathirage', '077-5467257', 'Aluthhena,Egaloya,Bulathsinhala', '2001-11-13', 'Male'),
-(2, 'Mr.', 'Vinodya', 'Senarathne', '099-8877654', 'Moratuwa', '2001-03-08', 'Male'),
-(3, 'Mr.', 'Narada', 'Opanayake', '456-5466645', 'Egaloya', '1989-03-06', 'Male'),
-(4, 'Mr.', 'Tineth', 'parthirage', '433-3344334', 'gunabusa', '2020-03-06', 'Female'),
-(5, 'Mr.', 'Tineth2522', 'parthirage', '433-3344334', 'gunabusa', '2024-03-06', 'Female'),
-(6, 'Mr.', 'Tineth', 'parthirage', '433-3344334', 'gunabusa', '2024-03-06', 'Female'),
-(7, 'Mr.', 'asdasda', 'sdasdadas', '344-24234', 'earradsfasfasd', '2024-03-14', 'Male'),
-(8, 'Mr.', 'asdasda', 'sdasdadas', '344-24234', 'earradsfasfasd', '2024-03-14', 'Male'),
-(9, 'Mr.', 'asdasda', 'sdasdadas', '344-24234', 'earradsfasfasd', '2024-03-14', 'Male'),
-(10, 'Mr.', 'asdasda', 'sdasdadas', '344-24234', 'earradsfasfasd', '2024-03-14', 'Male'),
-(11, 'Mr.', 'asdasda', 'sasasas', '344-24234', 'earradsfasfasd', '2024-03-14', 'Male'),
-(12, 'Mr.', 'Nadeesha', 'Kalhara', '099-8899888', 'Thuththukudiya', '2000-03-08', 'Male'),
-(13, 'Mrs.', 'sddd', 'sddd', '222-2222222', 'wwwwwww', '2024-03-15', 'Female');
+(1, 'Mrs.', 'Vinodya', 'Senarathne', '077-6899997', 'Moratuwa', '2001-03-08', 'Female'),
+(2, 'Mr.', 'Tineth', 'Pathirage', '077-8177928', 'Aluthhena, Egaloya', '2001-06-06', 'Male'),
+(3, 'Mrs.', 'Kalpani', 'Jayasinghe', '077-6765565', 'Matugama', '1998-06-10', 'Female'),
+(4, 'Mr.', 'Chamindu', 'Janith', '077-3245144', 'Horana', '2001-03-01', 'Male'),
+(5, 'Mrs.', 'Yamuna', 'Malkanthi', '077-6564533', 'Bulathsinhala', '1972-07-05', 'Female');
 
 -- --------------------------------------------------------
 
@@ -327,10 +300,21 @@ INSERT INTO `patient` (`Patient_Id`, `Title`, `FirstName`, `LastName`, `Telephon
 
 CREATE TABLE `patient_bill` (
   `Prescription_Id` int(11) NOT NULL,
-  `Doctor_Charge` decimal(10,2) DEFAULT NULL,
-  `Drug_Charge` decimal(10,2) DEFAULT NULL,
-  `Total_Amount` decimal(10,2) DEFAULT NULL
+  `Doctor_Charge` float(10,2) DEFAULT NULL,
+  `Drug_Charge` float(10,2) DEFAULT NULL,
+  `Drug_Cost` float(10,2) NOT NULL,
+  `Total_Amount` float(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patient_bill`
+--
+
+INSERT INTO `patient_bill` (`Prescription_Id`, `Doctor_Charge`, `Drug_Charge`, `Drug_Cost`, `Total_Amount`) VALUES
+(1, 2500.00, 214.00, 180.00, 2714.00),
+(2, 2500.00, 2720.00, 2500.00, 5220.00),
+(3, 2500.00, 1610.00, 1460.00, 4110.00),
+(4, 2000.00, 288.00, 244.00, 2288.00);
 
 -- --------------------------------------------------------
 
@@ -342,6 +326,7 @@ CREATE TABLE `prescription_details` (
   `Prescription_Details_Id` int(11) NOT NULL,
   `Prescription_Id` int(11) DEFAULT NULL,
   `Drug_Id` int(11) DEFAULT NULL,
+  `Batch_No` varchar(100) NOT NULL,
   `Quantity` int(11) DEFAULT NULL,
   `Frequency` varchar(1000) NOT NULL,
   `Remarks` varchar(1000) NOT NULL,
@@ -352,24 +337,15 @@ CREATE TABLE `prescription_details` (
 -- Dumping data for table `prescription_details`
 --
 
-INSERT INTO `prescription_details` (`Prescription_Details_Id`, `Prescription_Id`, `Drug_Id`, `Quantity`, `Frequency`, `Remarks`, `Adviced`) VALUES
-(1, 14, 1, 10, 'Twice a day (BID or BD)', 'After Taking Foods', '2k bipan'),
-(2, 14, 2, 5, 'Four times a day (QID or QD)', 'Befor Taking Foods', '3k bipan'),
-(3, 14, 1, 10, 'Twice a day (BID or BD)', 'After Taking Foods', '2k bipan'),
-(4, 14, 1, 10, 'Twice a day (BID or BD)', 'After Taking Foods', '2k bipan'),
-(5, 14, 2, 5, 'Four times a day (QID or QD)', 'Befor Taking Foods', '3k bipan'),
-(6, 14, 1, 10, 'Twice a day (BID or BD)', 'After Taking Foods', '2k bipan'),
-(7, 14, 2, 5, 'Four times a day (QID or QD)', 'Befor Taking Foods', '3k bipan'),
-(8, 14, 1, 10, 'Twice a day (BID or BD)', 'After Taking Foods', '2k bipan'),
-(9, 14, 2, 5, 'Four times a day (QID or QD)', 'Befor Taking Foods', '3k bipan'),
-(10, 14, 1, 10, 'Twice a day (BID or BD)', 'After Taking Foods', '2k bipan'),
-(11, 14, 2, 5, 'Four times a day (QID or QD)', 'Befor Taking Foods', '3k bipan'),
-(12, 15, 1, 20, 'Four times a day (QID or QD)', 'After Taking Foods', 'assas'),
-(13, 16, 1, 3, 'Three times a day (TID or TDS)', 'Befor Taking Foods', 'wwww'),
-(14, 17, 1, 2, 'Once a day (OD)', 'After Taking Foods', 'xcxcxcxc'),
-(15, 18, 1, 2, 'Once a day (OD)', 'After Taking Foods', 'swdwsds'),
-(16, 19, 1, 3, 'Every 6 hours', 'After Taking Foods', 'kljn'),
-(17, 20, 1, 3, 'Four times a day (QID or QD)', 'After Taking Foods', 'sdsds');
+INSERT INTO `prescription_details` (`Prescription_Details_Id`, `Prescription_Id`, `Drug_Id`, `Batch_No`, `Quantity`, `Frequency`, `Remarks`, `Adviced`) VALUES
+(1, 1, 1, '11', 12, 'Once a day (OD)', 'After Taking Foods', 'meka bipan'),
+(2, 1, 2, '13', 5, 'Four times a day (QID or QD)', 'Befor Taking Foods', 'meka bipan'),
+(3, 2, 1, '11', 10, 'Every 6 hours', 'After Taking Foods', 'අනි​වා'),
+(4, 2, 3, '12B', 20, 'Every 6 hours', 'Befor Taking Foods', 'අනි​වා'),
+(5, 3, 3, '12B', 12, 'Every 6 hours', 'Befor Taking Foods', 'මතක තියාගනි​න්'),
+(6, 3, 5, '234dD', 10, 'As needed (PRN)', 'After Taking Foods', 'මතක තියාගනි​න්'),
+(7, 4, 2, '13', 12, 'Twice a day (BID or BD)', 'After Taking Foods', 'නාන්නෙ​පා'),
+(8, 4, 1, '11', 10, 'Every 6 hours', 'After Taking Foods', 'නාන්නෙ​පා');
 
 -- --------------------------------------------------------
 
@@ -390,6 +366,16 @@ CREATE TABLE `prescription_master` (
   `Is_issued` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `prescription_master`
+--
+
+INSERT INTO `prescription_master` (`Prescription_Id`, `Appointment_Id`, `Patient_Id`, `Doctor_Id`, `P_Date`, `P_Time`, `P_Description`, `Illness`, `Test`, `Is_issued`) VALUES
+(1, 1, 1, 1, '2024-05-06', '06:48:59', 'hoda na', 'kasilla', 'blood', 1),
+(2, 1, 4, 1, '2024-05-11', '04:32:31', 'වැ​ඩී', 'කැස්​ස', 'Blood', 1),
+(3, 2, 2, 1, '2024-05-11', '06:48:50', 'පරිස්සම් වෙය​න්', 'සෙ​ම', 'Urine', 1),
+(4, 1, 5, 2, '2024-05-11', '07:05:21', 'හ​රි', 'පීන​සේ', 'Blood', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -408,9 +394,13 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`Drug_Id`, `Quantity`, `Last_GRN_Date`, `Last_Bill_Date`) VALUES
-(1, 27, '0000-00-00', '0000-00-00'),
-(2, 200, '2024-04-16', '0000-00-00'),
-(3, 100, '2024-04-16', '0000-00-00');
+(1, 68, '0000-00-00', '0000-00-00'),
+(2, 33, '0000-00-00', '0000-00-00'),
+(3, 68, '0000-00-00', '0000-00-00'),
+(4, 300, '2024-05-11', '0000-00-00'),
+(5, 0, '0000-00-00', '0000-00-00'),
+(8, 500, '2024-05-11', '0000-00-00'),
+(10, 100, '2024-05-11', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -454,10 +444,14 @@ CREATE TABLE `tbl_appoinment_number` (
 --
 
 INSERT INTO `tbl_appoinment_number` (`Doc_Id`, `App_Date`, `App_Number`) VALUES
-(1, '2024-04-09', 3),
-(1, '2024-04-13', 3),
-(1, '2024-04-14', 1),
-(1, '2024-04-17', 4);
+(1, '2024-04-27', 1),
+(1, '2024-05-06', 2),
+(1, '2024-05-11', 5),
+(1, '2024-05-13', 1),
+(1, '2024-05-14', 1),
+(1, '2024-05-15', 1),
+(2, '2024-05-11', 3),
+(2, '2024-05-13', 1);
 
 -- --------------------------------------------------------
 
@@ -476,8 +470,8 @@ CREATE TABLE `tbl_serial` (
 --
 
 INSERT INTO `tbl_serial` (`Serial_Id`, `Serial_Name`, `Serial_No`) VALUES
-(1, 'Order No', 7),
-(2, 'Prescription No', 21);
+(1, 'Order No', 4),
+(2, 'Prescription No', 5);
 
 -- --------------------------------------------------------
 
@@ -539,7 +533,8 @@ INSERT INTO `user` (`User_Id`, `UserName`, `Password`, `Email`, `Role_Id`, `Enab
 (1, 'Pasan_B', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'pasan@abc.com', 1, 1),
 (2, 'kaumini_d', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'kaumini@abc.com', 2, 1),
 (3, 'naradado', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'narada@abc.com', 2, 1),
-(4, 'kaveesh', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'kavee@abc.com', 3, 1);
+(4, 'kaveesh', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'kavee@abc.com', 3, 1),
+(6, 'arun', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'arun@abc.com', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -562,12 +557,11 @@ CREATE TABLE `user_log` (
 --
 
 INSERT INTO `user_log` (`Log_Id`, `Log_Date`, `Log_Time`, `Log_User`, `Log_Ip`, `Log_Cat`, `Log_Details`) VALUES
-(1, '2024-03-14', '07:42:00', 1, '::1', 'insert', 'add new patient .$firstname'),
-(2, '2024-03-14', '07:42:38', 1, '::1', 'insert', 'add new patient .$firstname'),
-(3, '2024-03-14', '07:43:43', 1, '::1', 'insert', 'add new patient asdasda'),
-(4, '2024-03-14', '07:44:37', 1, '::1', 'insert', 'add new patient asdasda sasasas'),
-(5, '2024-03-20', '06:22:45', 3, '::1', 'insert', 'add new patient Nadeesha Kalhara'),
-(6, '2024-03-21', '06:04:05', 1, '::1', 'insert', 'add new patient sddd sddd');
+(1, '2024-04-26', '07:58:16', 2, '::1', 'insert', 'add new patient Vinodya Senarathne'),
+(2, '2024-05-11', '04:08:49', 2, '::1', 'insert', 'add new patient Tineth Pathirage'),
+(3, '2024-05-11', '04:10:08', 2, '::1', 'insert', 'add new patient Kalpani Jayasinghe'),
+(4, '2024-05-11', '04:11:05', 2, '::1', 'insert', 'add new patient Chamindu Janith'),
+(5, '2024-05-11', '04:11:58', 2, '::1', 'insert', 'add new patient Yamuna Malkanthi');
 
 -- --------------------------------------------------------
 
@@ -587,7 +581,8 @@ CREATE TABLE `user_roles` (
 INSERT INTO `user_roles` (`Role_Id`, `RoleName`) VALUES
 (1, 'super admin'),
 (2, 'Doctor'),
-(3, 'Pharmacist');
+(3, 'Pharmacist'),
+(4, 'Receptionist');
 
 --
 -- Indexes for dumped tables
@@ -741,7 +736,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `Appointment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `Appointment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -753,7 +748,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `doctor_schedule`
 --
 ALTER TABLE `doctor_schedule`
-  MODIFY `Schedule_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `Schedule_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `drug`
@@ -771,7 +766,7 @@ ALTER TABLE `drug_category`
 -- AUTO_INCREMENT for table `grn_details`
 --
 ALTER TABLE `grn_details`
-  MODIFY `GRN_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `GRN_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `measurement_type`
@@ -783,13 +778,13 @@ ALTER TABLE `measurement_type`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `Patient_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Patient_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `prescription_details`
 --
 ALTER TABLE `prescription_details`
-  MODIFY `Prescription_Details_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Prescription_Details_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -807,36 +802,29 @@ ALTER TABLE `tbl_serial`
 -- AUTO_INCREMENT for table `tmp_grn_details`
 --
 ALTER TABLE `tmp_grn_details`
-  MODIFY `GRN_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `GRN_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tmp_prescription_details`
 --
 ALTER TABLE `tmp_prescription_details`
-  MODIFY `Pres_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Pres_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `User_Id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `Log_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Log_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `appointment`
---
-ALTER TABLE `appointment`
-  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_Id`),
-  ADD CONSTRAINT `appointment_ibfk_2` FOREIGN KEY (`Patient_Id`) REFERENCES `patient` (`Patient_Id`);
 
 --
 -- Constraints for table `doctor`
@@ -862,14 +850,6 @@ ALTER TABLE `drug`
 --
 ALTER TABLE `patient_bill`
   ADD CONSTRAINT `patient_bill_ibfk_1` FOREIGN KEY (`Prescription_Id`) REFERENCES `prescription_master` (`Prescription_Id`);
-
---
--- Constraints for table `prescription_master`
---
-ALTER TABLE `prescription_master`
-  ADD CONSTRAINT `prescription_master_ibfk_1` FOREIGN KEY (`Appointment_Id`) REFERENCES `appointment` (`Appointment_Id`),
-  ADD CONSTRAINT `prescription_master_ibfk_2` FOREIGN KEY (`Patient_Id`) REFERENCES `patient` (`Patient_Id`),
-  ADD CONSTRAINT `prescription_master_ibfk_3` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_Id`);
 
 --
 -- Constraints for table `user`

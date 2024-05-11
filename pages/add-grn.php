@@ -139,7 +139,7 @@ $order_num = $drug->get_SerialNo('Order No');
                         <br>
 
                         <button type="button" id="addgrn_btn" class="btn btn-primary">Add</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
                 </div> <!-- end row-->

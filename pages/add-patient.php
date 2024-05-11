@@ -50,7 +50,7 @@
                                 <label class="form-label">Telephone</label>
                                 <input type="text" class="form-control" data-toggle="input-mask"
                                     data-mask-format="000-0000000" id="Tel" placeholder="Telephone Number">
-                                <span class="font-13 text-muted">e.g "xxx-xxxxxxx"</span>
+                                <span class="font-13 text-muted">e.g "771234567"</span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="inputAddress" class="form-label">Address</label>

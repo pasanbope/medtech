@@ -99,7 +99,7 @@
                         <div class="row mb-2">
                             <div class="col-sm-5">
                                 <button type="button" id="addapp_btn" class="btn btn-primary">Save</button>
-                                <button type="submit" class="btn btn-primary">Reset</button>
+                                <button type="reset" class="btn btn-primary">Reset</button>
                             </div>
                             <div class="col-sm-7">
                                 <div class="text-sm-end">

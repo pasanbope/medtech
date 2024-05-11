@@ -470,6 +470,103 @@ class Prescription
     }
 
 
+    public function get_day_report_doc_charge($date)
+    {
+        $sql_get_rep = "SELECT * FROM prescription_master WHERE P_Date = '$date' AND Is_issued = 1 ";
+        $res_get_rep = mysqli_query($this->sqlcon, $sql_get_rep);
+        $tot_doc_charge = 0;
+        while ($row_rep = mysqli_fetch_array($res_get_rep)) {
+            $pres_id = $row_rep['Prescription_Id'];
+
+            $sql_get_bill = "SELECT * FROM patient_bill WHERE Prescription_Id = $pres_id";
+            $res_get_bill = mysqli_query($this->sqlcon, $sql_get_bill);
+            $row_bill = mysqli_fetch_array($res_get_bill);
+            $doc_charge = $row_bill['Doctor_Charge'];
+            $tot_doc_charge = $tot_doc_charge + $doc_charge;
+        }
+        return $tot_doc_charge;
+    }
+
+    public function get_day_report_drug_charge($date)
+    {
+        $sql_get_rep = "SELECT * FROM prescription_master WHERE P_Date = '$date' AND Is_issued = 1 ";
+        $res_get_rep = mysqli_query($this->sqlcon, $sql_get_rep);
+        $tot_drug_charge = 0;
+        while ($row_rep = mysqli_fetch_array($res_get_rep)) {
+            $pres_id = $row_rep['Prescription_Id'];
+
+            $sql_get_bill = "SELECT * FROM patient_bill WHERE Prescription_Id = $pres_id";
+            $res_get_bill = mysqli_query($this->sqlcon, $sql_get_bill);
+            $row_bill = mysqli_fetch_array($res_get_bill);
+            $drug_charge = $row_bill['Drug_Charge'];
+            $tot_drug_charge = $tot_drug_charge + $drug_charge;
+        }
+        return $tot_drug_charge;
+    }
+
+    public function get_day_report_drug_cost($date)
+    {
+        $sql_get_rep = "SELECT * FROM prescription_master WHERE P_Date = '$date' AND Is_issued = 1 ";
+        $res_get_rep = mysqli_query($this->sqlcon, $sql_get_rep);
+        $tot_drug_cost = 0;
+        while ($row_rep = mysqli_fetch_array($res_get_rep)) {
+            $pres_id = $row_rep['Prescription_Id'];
+
+            $sql_get_bill = "SELECT * FROM patient_bill WHERE Prescription_Id = $pres_id";
+            $res_get_bill = mysqli_query($this->sqlcon, $sql_get_bill);
+            $row_bill = mysqli_fetch_array($res_get_bill);
+            $drug_cost = $row_bill['Drug_Cost'];
+            $tot_drug_cost = $tot_drug_cost + $drug_cost;
+        }
+        return $tot_drug_cost;
+    }
+
+
+    public function get_day_report_drug_profit($date)
+    {
+        $sql_get_rep = "SELECT * FROM prescription_master WHERE P_Date = '$date' AND Is_issued = 1 ";
+        $res_get_rep = mysqli_query($this->sqlcon, $sql_get_rep);
+        $tot_drug_cost = 0;
+        $tot_drug_charge = 0;
+        while ($row_rep = mysqli_fetch_array($res_get_rep)) {
+            $pres_id = $row_rep['Prescription_Id'];
+
+            $sql_get_bill = "SELECT * FROM patient_bill WHERE Prescription_Id = $pres_id";
+            $res_get_bill = mysqli_query($this->sqlcon, $sql_get_bill);
+            $row_bill = mysqli_fetch_array($res_get_bill);
+            $drug_cost = $row_bill['Drug_Cost'];
+            $drug_charge = $row_bill['Drug_Charge'];
+            $tot_drug_cost = $tot_drug_cost + $drug_cost;
+            $tot_drug_charge = $tot_drug_charge + $drug_charge;
+        }
+        return $tot_drug_charge - $tot_drug_cost;
+    }
+
+
+    public function get_day_report_pat_num($date)
+    {
+        $sql_get_rep = "SELECT * FROM prescription_master WHERE P_Date = '$date' AND Is_issued = 1 ";
+        $res_get_rep = mysqli_query($this->sqlcon, $sql_get_rep);
+        $row_rep = mysqli_num_rows($res_get_rep);
+
+
+        return $row_rep;
+    }
+
+    public function get_day_report_doc_num($date)
+    {
+        $sql_get_rep = "SELECT * FROM prescription_master WHERE P_Date = '$date' AND Is_issued = 1 GROUP BY Doctor_Id";
+        $res_get_rep = mysqli_query($this->sqlcon, $sql_get_rep);
+        $row_rep = mysqli_num_rows($res_get_rep);
+
+
+        return $row_rep;
+    }
+
+
+
+
+
 
 
 }

@@ -4,7 +4,7 @@ class Patient
 {
 	private $sqlcon;
 
-    // Constructor method to initialize the database connection.
+	// Constructor method to initialize the database connection.
 	public function __construct()
 	{
 		if (file_exists('../db-config.php')) {
@@ -20,7 +20,7 @@ class Patient
 	}
 
 
-    // Add a patient to the database.
+	// Add a patient to the database.
 	public function add_patient($title, $firstname, $lastname, $tel, $address, $birthday, $gender)
 	{
 
@@ -30,7 +30,7 @@ class Patient
 	}
 
 
-    // List all patients.
+	// List all patients.
 	public function list_patient()
 	{
 		echo "<tbody>";
@@ -43,10 +43,7 @@ class Patient
 			echo "<td>" . $row_pats['Birthday'] . "</td>";
 			echo "<td>" . $row_pats['Address'] . "</td>";
 
-			echo "<td> <a href='#' data-id=''";
-			echo "class='action-icon btn_edit' data-bs-target='#full-width-modal' data-bs-toggle='modal'> 
-			<i class='mdi mdi-square-edit-outline'></i></a>
-            </td></tr>";
+			echo "</tr>";
 		}
 		echo "</tbody>";
 
@@ -64,7 +61,7 @@ class Patient
 		}
 	}
 
-    // Get details of a patient by ID.
+	// Get details of a patient by ID.
 	public function get_details_By_Id($patient_id = 0, $col)
 	{
 		$sql_pat_details = "SELECT * FROM patient WHERE Patient_Id = $patient_id";
@@ -80,7 +77,7 @@ class Patient
 	}
 
 
-    // Get age from birthday.
+	// Get age from birthday.
 	public function get_birthday($bday = 0)
 	{
 		if ($bday == 0) {
@@ -92,7 +89,7 @@ class Patient
 	}
 
 
-    // Get the total number of patients.
+	// Get the total number of patients.
 	public function get_pat_num()
 	{
 		$sql_get_pat_num = "SELECT * FROM patient ";

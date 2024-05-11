@@ -39,13 +39,13 @@
                 </div><br>
 
                 <button type="button" id="addmess_btn" class="btn btn-primary">Add</button>
-                <button type="submit" class="btn btn-primary">Reset</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
                 </form>
                 <!-- end add new doctor form -->
             </div> <!-- end row-->
         </div>
     </div> <!-- container -->
-    
+
     <script>
         $(document).ready(function () {
             $("#addmess_btn").click(function () {
@@ -64,4 +64,3 @@
     </script>
 
 </div><!-- content -->
-

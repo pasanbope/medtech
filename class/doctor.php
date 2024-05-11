@@ -43,11 +43,7 @@ class Doctor
             echo "<td>" . $row_doc['Designation'] . "</td>";
             echo "<td>" . $row_doc['NIC'] . "</td>";
 
-            echo "<td> <a href='#' data-id='" . $row_doc['Doctor_Id'] . "'";
-            echo "class='action-icon btn_edit' data-bs-target='#full-width-modal' data-bs-toggle='modal'> 
-			<iclass='mdi mdi-square-edit-outline'></i></a>
-            <a href='javascript:void(0);' class='action-icon'> <i class='mdi mdi-delete'></i></a>
-            </td></tr>";
+            echo "<tr>";
         }
         echo "</tbody>";
 

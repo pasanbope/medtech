@@ -61,7 +61,7 @@
                         <br>
 
                         <button type="button" id="addsup_btn" class="btn btn-primary">Save</button>
-                        <button type="submit" class="btn btn-primary">Reset</button>
+                        <button type="reset" class="btn btn-primary">Reset</button>
                     </form>
                     <!-- end add new doctor form -->
                 </div> <!-- end row-->

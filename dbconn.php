@@ -1,15 +1,8 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$dbname = 'medtech';
+include "db-config.php";
 
-// $host = 'localhost';
-// $user = 'dreamdes_pasan';
-// $pass = 'pasan2020';
-// $dbname = 'dreamdes_medtech';
 
-$conn = mysqli_connect($host, $user, $pass, $dbname);
+$conn = mysqli_connect($sql_server, $sql_username, $sql_password, $sql_database);
 if (!$conn) {
     die("Connection Failed : " . mysqli_connect_error());
 }
