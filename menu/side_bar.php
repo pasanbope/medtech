@@ -291,9 +291,13 @@
                     </a>
                     <div class="collapse" id="sidebarPres">
                         <ul class="side-nav-second-level">
-                            <li>
-                                <a href="home.php?page=new-prescription">New Prescription</a>
-                            </li>
+                            <?php
+                            if ($roll_id == 2) {
+                                ?>
+                                <li>
+                                    <a href="home.php?page=new-prescription">New Prescription</a>
+                                </li>
+                            <?php } ?>
                             <li>
                                 <a href="home.php?page=view-prescription">View Prescription</a>
                             </li>
